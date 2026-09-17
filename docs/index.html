@@ -1,0 +1,2709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Harness Matrix — an interactive 3D model of a reliability and evaluation harness for a markets agentic platform: system layers x reliability controls x banking workflows.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harness Matrix — 3D Reliability &amp; Evaluation Harness for a Markets Agentic Platform</title>
+<style>
+:root{
+  /* ---------- enterprise palette (hues locked; ink steps contrast-verified) ---------- */
+  --bg:#f7f9fc; --panel:#ffffff; --ink:#16233b; --navy:#101d33; --muted:#5a6b84;
+  --line:#dfe6ef; --line-strong:#c8d5e5;
+  --blue:#3f74ad;   --blue-soft:#dbe7f5;   --blue-ink:#2c66aa;   --blue-line:#c4d8ee;
+  --purple:#7a58c2; --purple-soft:#e6def6; --purple-ink:#5b3fa8; --purple-line:#d5c8ee;
+  --green:#3f8f63;  --green-soft:#d9ecdf;  --green-ink:#297246;  --green-line:#bfdecb;
+  --amber:#d98e04;  --warn-soft:#fdf3e0;   --warn-ink:#926304;   --warn-line:#ecd9ac;
+  --red:#c0392b;    --red-soft:#fbe9e7;    --red-line:#eec6c0;
+  --navy-ink:#3a4fae;
+  /* ---------- surfaces: page < region < card ---------- */
+  --sunken:#f1f5fa; --raised:#ffffff;
+  /* ---------- elevation ---------- */
+  --shadow-1:0 1px 2px rgba(16,29,51,.05), 0 2px 6px rgba(16,29,51,.06);
+  --shadow-2:0 2px 4px rgba(16,29,51,.06), 0 10px 24px rgba(16,29,51,.10);
+  --shadow-3:0 4px 10px rgba(16,29,51,.10), 0 18px 44px rgba(16,29,51,.18);
+  /* ---------- radii (outer = inner + padding) ---------- */
+  --r-xs:5px; --r-sm:6px; --r-md:8px; --r-lg:10px; --r-xl:14px; --r-pill:999px;
+  /* ---------- type scale ---------- */
+  --fs-micro:11.5px; --fs-small:12.5px; --fs-body:13.5px;
+  /* ---------- focus + motion ---------- */
+  --focus:#1d4f8c; --t:150ms; --ease:cubic-bezier(.2,0,0,1);
+}
+*{box-sizing:border-box; margin:0; padding:0}
+[hidden]{display:none !important}
+html,body{height:100%}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:14px; line-height:1.5;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  display:flex; flex-direction:column; overflow:hidden;
+}
+::selection{background:#cfe0f4}
+:where(button,input,select,a,[role="button"],summary):focus-visible{outline:2px solid var(--focus); outline-offset:2px}
+.num,.badge,.chip,.vcmp,.pre,.sl-item small{font-variant-numeric:tabular-nums}
+
+/* ================= header ================= */
+header.top{
+  background:var(--panel); border-bottom:1px solid var(--line);
+  padding:16px 24px 14px; display:flex; gap:28px; align-items:flex-start; justify-content:space-between;
+}
+.titles{min-width:0}
+.titles h1{font-size:21px; font-weight:700; letter-spacing:-.018em; line-height:1.22; color:var(--navy); text-wrap:balance}
+.titles .brand{font-size:11.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--blue-ink); margin-bottom:3px}
+.sub{font-size:14px; color:var(--muted); margin-top:4px; max-width:80ch}
+.titles .read{margin-top:9px; font-size:13px; color:var(--muted); line-height:1.5}
+.titles .read b{font-weight:600}
+.titles .read .op{color:var(--line-strong); margin:0 1px}
+/* start here card in the details panel */
+.start-card{
+  border:1px solid var(--line-strong); border-radius:var(--r-md); background:var(--sunken);
+  padding:12px; margin:2px 0 14px;
+}
+.start-card .btn{width:100%; justify-content:center}
+.start-q{margin:9px 0 0; font-size:12.5px; color:var(--muted); line-height:1.4; font-style:italic}
+/* the two harnesses, as a compact stack */
+.mech{margin:0 0 8px}
+.mech .p-lab{margin-bottom:2px}
+.stack{margin:5px 0 0; border:1px solid var(--line); border-radius:8px; overflow:hidden}
+.srow{display:flex; gap:9px; align-items:baseline; padding:6px 10px; font-size:12px}
+.srow + .srow{border-top:1px solid var(--line)}
+.srow-run{background:#f6f9fd}
+.srow-eval{background:#faf7fd}
+.srow-rel{background:#f5faf6}
+.skey{flex:0 0 94px; font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--muted)}
+.sval{color:var(--ink); line-height:1.4}
+.sjoin{font-size:11.5px; color:var(--muted); padding:2px 10px 2px 126px; background:var(--panel)}
+.try{margin-top:12px; padding-top:11px; border-top:1px solid var(--line)}
+.try-row{display:flex; flex-wrap:wrap; gap:6px; margin-top:7px}
+/* legend bar (only present while an overlay needs explaining) */
+.lg-title{font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin-inline-end:4px}
+.lg-item{display:inline-flex; align-items:center; gap:7px; font-size:12px; color:var(--muted)}
+.lg-item i{width:11px; height:11px; border-radius:3px; display:inline-block; border:1px solid rgba(16,29,51,.08)}
+.searchwrap{position:relative; min-width:320px; flex:0 1 420px; padding-top:2px}
+#search{
+  width:100%; height:38px; padding:0 13px; font-size:var(--fs-body); font-family:inherit; color:var(--ink);
+  border:1px solid var(--line); border-radius:var(--r-md); background:var(--sunken); outline:none;
+  transition:border-color var(--t) var(--ease), box-shadow var(--t) var(--ease), background-color var(--t) var(--ease);
+}
+#search::placeholder{color:var(--muted)}
+#search:focus{border-color:var(--blue); background:var(--panel); box-shadow:0 0 0 3px rgba(63,116,173,.14)}
+.searchlist{
+  position:absolute; top:44px; inset-inline:0; background:var(--panel); border:1px solid var(--line);
+  border-radius:var(--r-md); box-shadow:var(--shadow-2); max-height:340px; overflow-y:auto;
+  scrollbar-gutter:stable; z-index:60;
+}
+.sl-group{padding:9px 13px 3px; font-size:var(--fs-micro); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.sl-item{display:block; width:100%; text-align:start; border:0; background:none; font:inherit; font-size:13px; color:var(--ink); padding:7px 13px; cursor:pointer}
+@media (hover:hover){ .sl-item:hover{background:var(--blue-soft)} }
+.sl-item:focus-visible{background:var(--blue-soft)}
+.sl-item small{color:var(--muted); margin-inline-start:6px}
+.resultbar{
+  display:flex; align-items:center; gap:12px; padding:9px 24px; background:#eef4fb;
+  border-bottom:1px solid var(--blue-line); font-size:var(--fs-small); color:var(--blue-ink);
+}
+.resultbar b{font-weight:700}
+.resultbar button{
+  margin-inline-start:auto; height:28px; padding:0 11px; font:inherit; font-size:var(--fs-small);
+  color:var(--blue-ink); background:var(--panel); border:1px solid var(--blue-line); border-radius:var(--r-sm); cursor:pointer;
+  transition:background-color var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+
+/* ================= toolbar: four labelled sections, clear action hierarchy ================= */
+.toolbar{
+  background:var(--panel); border-bottom:1px solid var(--line);
+  padding:11px 24px; display:flex; flex-wrap:wrap; gap:10px 26px; align-items:center;
+  position:relative; z-index:50; box-shadow:0 1px 0 rgba(16,29,51,.02);
+}
+.tb-group{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.tb-end{margin-inline-start:auto}
+.tb-label{font-size:var(--fs-micro); font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+.tb-sep{width:1px; align-self:stretch; min-height:26px; background:var(--line)}
+/* quiet segmented controls for secondary choices */
+.seg{display:inline-flex; flex-wrap:wrap; gap:2px; padding:2px; background:var(--sunken); border:1px solid var(--line); border-radius:var(--r-md)}
+.seg > button,.seg-opt > span{
+  display:inline-flex; align-items:center; justify-content:center; height:28px; padding:0 12px;
+  font:inherit; font-size:var(--fs-small); font-weight:500; color:var(--ink); white-space:nowrap;
+  background:none; border:1px solid transparent; border-radius:var(--r-sm); cursor:pointer;
+  transition:background-color var(--t) var(--ease), color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.seg-opt{position:relative; display:inline-flex}
+.seg-opt input{position:absolute; inset:0; opacity:0; margin:0; cursor:pointer}
+.seg-opt input:checked + span,.seg > button.active{background:var(--panel); color:var(--navy); font-weight:600; box-shadow:var(--shadow-1); border-color:var(--line-strong)}
+.seg-opt input:focus-visible + span{outline:2px solid var(--focus); outline-offset:1px}
+@media (hover:hover){
+  .seg > button:hover,.seg-opt > span:hover{background:#e9eff7}
+  .seg-opt input:checked + span:hover,.seg > button.active:hover{background:var(--panel)}
+}
+.seg-opt input:active + span,.seg > button:active{transform:scale(.96)}
+/* buttons */
+.btn{
+  display:inline-flex; align-items:center; gap:7px; height:32px; padding:0 13px; font:inherit;
+  font-size:var(--fs-small); font-weight:600; color:var(--ink); background:var(--panel);
+  border:1px solid var(--line-strong); border-radius:var(--r-sm); cursor:pointer; white-space:nowrap;
+  transition:background-color var(--t) var(--ease), border-color var(--t) var(--ease), transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+@media (hover:hover){ .btn:hover{background:var(--sunken)} }
+.btn:active{transform:scale(.97)}
+.btn-quiet{font-weight:500; color:var(--muted); border-color:var(--line)}
+@media (hover:hover){ .btn-quiet:hover{color:var(--ink); border-color:var(--line-strong); background:var(--sunken)} }
+.btn-primary{
+  background:var(--navy); border-color:var(--navy); color:#fff;
+  box-shadow:0 1px 2px rgba(16,29,51,.18);
+}
+@media (hover:hover){ .btn-primary:hover{background:#1b2f52} }
+.btn-icon{padding:0 10px}
+#scenario-select{
+  height:32px; font:inherit; font-size:var(--fs-small); font-weight:500; color:var(--ink);
+  border:1px solid var(--line-strong); border-radius:var(--r-sm); background:var(--panel);
+  max-width:260px; padding-inline:9px; cursor:pointer;
+}
+#scenario-select:focus-visible{border-color:var(--blue)}
+/* "More" popover */
+.menu-wrap{position:relative}
+.menu-pop{
+  position:absolute; top:38px; inset-inline-end:0; z-index:80; min-width:216px;
+  background:var(--panel); border:1px solid var(--line); border-radius:var(--r-lg);
+  box-shadow:var(--shadow-3); padding:10px;
+}
+.menu-title{font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); padding:4px 8px 6px}
+.menu-row{
+  display:flex; align-items:center; gap:10px; width:100%; text-align:start; font:inherit; font-size:var(--fs-small);
+  color:var(--ink); background:none; border:0; border-radius:var(--r-sm); padding:8px; cursor:pointer;
+}
+@media (hover:hover){ .menu-row:hover{background:var(--sunken)} }
+.menu-row[aria-pressed="true"]{background:var(--blue-soft); color:var(--blue-ink); font-weight:600}
+.menu-row .mk{
+  margin-inline-start:auto; width:34px; height:20px; border-radius:var(--r-pill); background:var(--line);
+  position:relative; transition:background-color var(--t) var(--ease); flex:0 0 auto;
+}
+.menu-row .mk::after{
+  content:""; position:absolute; top:2px; inset-inline-start:2px; width:16px; height:16px; border-radius:50%;
+  background:#fff; box-shadow:0 1px 2px rgba(16,29,51,.25); transition:transform var(--t) var(--ease);
+}
+.menu-row[aria-pressed="true"] .mk{background:var(--blue)}
+.menu-row[aria-pressed="true"] .mk::after{transform:translateX(14px)}
+.menu-sep{height:1px; background:var(--line); margin:8px 4px}
+
+/* ================= main: three intentional regions ================= */
+main{flex:1; display:grid; grid-template-columns:1fr 408px; min-height:0; gap:0}
+.canvas-zone{
+  display:flex; flex-direction:column; min-width:0; min-height:0;
+  background:
+    radial-gradient(circle, #e3ebf5 1.1px, transparent 1.1px) 0 0/28px 28px,
+    linear-gradient(180deg,#fdfefe 0%, #eef3f9 100%);
+}
+#canvas-wrap{flex:1 1 auto; position:relative; min-height:clamp(240px,42vh,420px); overflow:hidden; touch-action:none; cursor:grab}
+#canvas-wrap.dragging{cursor:grabbing}
+#canvas-wrap:focus{outline:none}
+#canvas-wrap:focus-visible{box-shadow:inset 0 0 0 2px var(--focus)}
+#scene{position:absolute; inset:0; width:100%; height:100%; display:block}
+#scene text{user-select:none; -webkit-user-select:none; font-family:inherit}
+#scene .lbl{cursor:pointer}
+#scene .lbl text{pointer-events:all}
+#scene .cell{pointer-events:all}
+/* axis labels — halo keeps them legible where they cross */
+.lbl-l text,.lbl-c text,.lbl-w text{paint-order:stroke; stroke:#ffffffd9; stroke-width:3.4px}
+.lbl-l text{font-size:12px; fill:#2d4258; font-weight:500}
+.lbl-c text{font-size:12.5px; fill:#4b3a7d; font-weight:500}
+.lbl-w text{font-size:12px; fill:#255e40; font-weight:500}
+.lbl-l.emph text,.lbl-l.sel text{fill:var(--blue-ink); font-weight:800; font-size:12.5px}
+.lbl-c.emph text,.lbl-c.sel text{fill:var(--purple-ink); font-weight:800; font-size:13px}
+.lbl-w.emph text,.lbl-w.sel text{fill:var(--green-ink); font-weight:800; font-size:12.5px}
+.axis-title{font-size:12.5px; font-weight:800; letter-spacing:.11em}
+.ax-t{font-size:12px; font-weight:700; letter-spacing:.05em}
+.seclbl{font-size:11px; fill:var(--purple-ink); font-weight:700; paint-order:stroke; stroke:#ffffffcc; stroke-width:2.6px}
+.evallbl{font-size:11px; fill:var(--blue-ink); font-weight:700; paint-order:stroke; stroke:#ffffffcc; stroke-width:2.6px}
+.vlbl{font-size:11px; font-weight:700; paint-order:stroke; stroke:#ffffffd9; stroke-width:3px}
+/* selected-cell emphasis (drawn over the cube so it can never be missed) */
+.selcell{pointer-events:none}
+.selguide{pointer-events:none}
+@media (prefers-reduced-motion: no-preference){
+  .selcell.pulse{animation:selpulse 1.5s ease-in-out infinite}
+  @keyframes selpulse{0%,100%{opacity:.82} 50%{opacity:1}}
+}
+/* the one floating card on the canvas */
+.callout{
+  position:absolute; background:var(--panel); border:1px solid var(--line); border-radius:var(--r-lg);
+  box-shadow:var(--shadow-1); padding:11px 14px; font-size:var(--fs-small); color:var(--ink); z-index:20; max-width:250px;
+}
+.callout b{display:block; font-size:13px; margin-bottom:3px; color:var(--navy)}
+.callout small{font-size:11.5px; color:var(--muted); line-height:1.4; display:block}
+.co-core{
+  inset-inline-end:16px; bottom:16px; inset-inline-start:auto; text-align:start; font-family:inherit;
+  border-inline-start:3px solid var(--navy); cursor:pointer;
+  transition:box-shadow var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.legend{display:flex; gap:13px; margin-top:8px; font-size:11.5px; color:var(--muted); flex-wrap:wrap}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:3px; margin-inline-end:5px; vertical-align:-1px}
+@media (hover:hover){ .co-core:hover{box-shadow:var(--shadow-2); transform:translateY(-1px)} }
+.co-core:active{transform:scale(.99)}
+/* scenario stage card: in flow above the canvas */
+.stage-card{
+  flex:0 0 auto; background:var(--panel); border-bottom:1px solid var(--line); border-inline-start:3px solid var(--green);
+  padding:12px 24px; font-size:var(--fs-small);
+}
+.sc-top{display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:5px}
+.sc-title{font-weight:700; font-size:var(--fs-small); color:var(--green-ink); letter-spacing:.01em}
+.mini.is-play::before{content:'▶ '}
+.mini.is-pause::before{content:'❚❚ '}
+.mini.is-replay::before{content:'↺ '}
+.mini[data-sc="prev"]::before{content:'◀ '}
+.mini[data-sc="next"]::before{content:''}
+.mini[data-sc="next"]::after{content:' ▶'}
+.mini[disabled]{opacity:.45; cursor:not-allowed}
+.sc-actions{display:flex; gap:7px; align-items:center}
+.mini{
+  height:28px; padding:0 11px; font:inherit; font-size:var(--fs-small); font-weight:500; color:var(--ink);
+  border:1px solid var(--line-strong); background:var(--panel); border-radius:var(--r-sm); cursor:pointer;
+  transition:background-color var(--t) var(--ease), border-color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+@media (hover:hover){ .mini:hover{background:var(--sunken)} }
+.mini:active{transform:scale(.96)}
+.mini.primary{background:var(--navy); border-color:var(--navy); color:#fff; font-weight:600}
+.sc-desc{font-size:var(--fs-small); color:var(--muted); margin-bottom:5px; text-wrap:pretty}
+.sc-stage b{font-size:13px; color:var(--navy)}
+.sc-gap{margin:8px 0 0; font-size:12px; color:var(--muted); line-height:1.5}
+.sc-gap .chip{margin-inline-start:2px}
+.sc-controls{display:inline-flex; gap:5px; flex-wrap:wrap; margin-inline-start:9px; vertical-align:middle}
+.sc-controls i{font-style:normal; font-size:var(--fs-micro); font-weight:600; color:var(--purple-ink); background:var(--purple-soft); border-radius:var(--r-pill); padding:2px 9px}
+.sc-note{color:var(--muted); margin-top:4px; font-size:var(--fs-small); text-wrap:pretty}
+/* how to read this */
+.howto{
+  flex:0 0 auto; background:var(--panel); border-top:1px solid var(--line);
+  padding:10px 24px; display:flex; flex-wrap:wrap; align-items:center; gap:8px 18px;
+}
+.howto-line{font-size:var(--fs-small); color:var(--muted); margin:0}
+.howto-line b{color:var(--ink); font-weight:700}
+.howto-line .hl{font-weight:600}
+.hl-layer{color:var(--blue-ink)} .hl-control{color:var(--purple-ink)} .hl-workflow{color:var(--green-ink)}
+.howto-axes{display:flex; flex-wrap:wrap; gap:8px; margin-inline-start:auto}
+.ax-chip{
+  display:flex; align-items:baseline; gap:8px; font:inherit; font-size:var(--fs-small); text-align:start;
+  background:var(--sunken); border:1px solid var(--line); border-inline-start-width:3px;
+  border-radius:var(--r-sm); padding:6px 11px; cursor:pointer; color:var(--ink);
+  transition:background-color var(--t) var(--ease), border-color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.ax-chip b{font-weight:700; font-size:var(--fs-small)}
+.ax-chip span{color:var(--muted); font-size:12px}
+@media (hover:hover){ .ax-chip:hover{background:var(--panel); border-color:var(--line-strong)} }
+.ax-chip:active{transform:scale(.98)}
+.ax-chip-blue{border-inline-start-color:var(--blue)} .ax-chip-blue b{color:var(--blue-ink)}
+.ax-chip-purple{border-inline-start-color:var(--purple)} .ax-chip-purple b{color:var(--purple-ink)}
+.ax-chip-green{border-inline-start-color:var(--green)} .ax-chip-green b{color:var(--green-ink)}
+/* tooltip */
+#tooltip{
+  position:absolute; z-index:70; pointer-events:none; background:var(--panel); border:1px solid var(--line);
+  border-radius:var(--r-md); box-shadow:var(--shadow-2); padding:10px 13px; font-size:12.5px; max-width:290px;
+}
+#tooltip .tt-row{display:flex; gap:9px; align-items:baseline; margin-bottom:3px}
+#tooltip .tt-k{color:var(--muted); min-width:84px; font-size:var(--fs-micro); text-transform:uppercase; letter-spacing:.05em}
+#tooltip .tt-hint{color:var(--muted); font-style:italic; margin-top:6px; font-size:var(--fs-small)}
+.axis-tabs{display:none; gap:7px; padding:11px 16px 0}
+.axis-tabs button{
+  flex:1; height:36px; font:inherit; font-size:var(--fs-small); border:1px solid var(--line-strong);
+  background:var(--panel); border-radius:var(--r-sm); cursor:pointer; color:var(--ink);
+}
+/* trace strip */
+.trace-panel{flex:0 1 auto; background:var(--panel); border-top:1px solid var(--line); padding:12px 24px 13px; max-height:158px; overflow-y:auto}
+.trace-head{font-size:var(--fs-small); color:var(--muted); margin-bottom:9px}
+.trace-head .req{font-weight:700; color:var(--navy); background:var(--sunken); border:1px solid var(--line); border-radius:var(--r-xs); padding:2px 8px; margin-inline-end:9px}
+.trace-flow{display:flex; flex-wrap:wrap; align-items:center; gap:4px 2px}
+.tfield{font-size:var(--fs-small); background:var(--blue-soft); color:var(--blue-ink); font-weight:600; border-radius:var(--r-xs); padding:3px 9px}
+.tarrow{color:var(--muted); font-size:var(--fs-small); padding:0 2px}
+.trace-note{font-size:var(--fs-small); color:var(--muted); margin-top:10px; max-width:104ch; text-wrap:pretty}
+
+/* ================= details panel ================= */
+aside.panel{
+  background:var(--panel); border-inline-start:1px solid var(--line); overflow-y:auto;
+  padding:0 24px 32px; min-height:0; scrollbar-gutter:stable;
+}
+.panel-bar{
+  position:sticky; top:0; z-index:5; margin:0 -24px 16px; padding:14px 24px 11px;
+  background:var(--panel); border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px;
+}
+.panel-crumb{font-size:var(--fs-micro); font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+.panel-back{background:none; border:1px solid var(--line-strong); color:var(--navy); font:inherit; font-size:12px; font-weight:600;
+  padding:4px 10px; border-radius:999px; cursor:pointer; margin-inline-end:6px}
+.panel-back:hover{background:var(--sunken)}
+.panel-nav{display:flex; align-items:center; gap:2px; flex:0 0 auto}
+.panel-clear{
+  margin-inline-start:auto; height:28px; padding:0 11px; font:inherit; font-size:var(--fs-small); font-weight:500; color:var(--muted);
+  background:var(--panel); border:1px solid var(--line); border-radius:var(--r-sm); cursor:pointer; white-space:nowrap;
+  transition:background-color var(--t) var(--ease), border-color var(--t) var(--ease), color var(--t) var(--ease);
+}
+@media (hover:hover){ .panel-clear:hover{background:var(--sunken); color:var(--ink); border-color:var(--line-strong)} }
+.p-kicker{font-size:var(--fs-micro); font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+.panel h2{font-size:17.5px; margin:2px 0 7px; letter-spacing:-.015em; line-height:1.26; color:var(--navy); text-wrap:balance}
+.p-lede{font-size:var(--fs-body); color:var(--muted); margin-bottom:11px; text-wrap:pretty}
+.p-tags{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px}
+.p-coords{display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding-top:14px; border-top:1px solid var(--line); margin-top:2px}
+.p-coords .p-lab{margin:0}
+.tag{display:inline-flex; align-items:baseline; gap:7px; font-size:12px; border-radius:var(--r-pill); padding:4px 11px; border:1px solid transparent}
+.tag i{font-style:normal; font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; opacity:.85}
+.tag b{font-weight:600}
+.tag-gate.tag-pass{background:var(--green-soft); border-color:var(--green-line); color:var(--green-ink)}
+.tag-gate.tag-warn{background:var(--warn-soft); border-color:var(--warn-line); color:var(--warn-ink)}
+.tag-gate.tag-fail{background:var(--red-soft); border-color:var(--red-line); color:var(--red)}
+.tag-layer{background:var(--blue-soft); border-color:var(--blue-line); color:var(--blue-ink)}
+.tag-control{background:var(--purple-soft); border-color:var(--purple-line); color:var(--purple-ink)}
+.tag-workflow{background:var(--green-soft); border-color:var(--green-line); color:var(--green-ink)}
+.panel h3{font-size:var(--fs-micro); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:22px 0 9px}
+.panel p{font-size:var(--fs-body); margin-bottom:10px; text-wrap:pretty}
+.panel dl{display:grid; grid-template-columns:minmax(96px,116px) 1fr; row-gap:10px; column-gap:14px}
+.panel dt{font-size:var(--fs-small); font-weight:700; color:var(--muted); padding-top:1px}
+.panel dd{font-size:var(--fs-body); min-width:0}
+/* accordions */
+.acc-list{display:grid; gap:9px; margin-top:4px}
+.acc{border:1px solid var(--line); border-radius:var(--r-md); background:var(--panel); overflow:hidden}
+.acc[open]{box-shadow:var(--shadow-1); border-color:var(--line-strong)}
+.acc > summary{
+  list-style:none; cursor:pointer; display:flex; align-items:center; gap:10px;
+  padding:11px 13px; font-size:12.5px; font-weight:700; color:var(--navy); letter-spacing:.01em;
+  transition:background-color var(--t) var(--ease);
+}
+.acc > summary::-webkit-details-marker{display:none}
+.acc > summary::after{
+  content:"⌄"; margin-inline-start:auto; font-size:15px; line-height:1; color:var(--muted);
+  transform:translateY(-2px); transition:transform var(--t) var(--ease);
+}
+.acc[open] > summary::after{transform:translateY(1px) rotate(180deg)}
+@media (hover:hover){ .acc > summary:hover{background:var(--sunken)} }
+.acc > summary:focus-visible{outline:2px solid var(--focus); outline-offset:-2px}
+.acc-body{padding:2px 14px 14px; font-size:var(--fs-body)}
+.acc-body p:last-child{margin-bottom:0}
+.acc-body dl{row-gap:9px}
+.acc-tag{
+  font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  padding:2px 7px; border-radius:var(--r-xs); background:var(--sunken); color:var(--muted);
+}
+.chips{display:flex; flex-wrap:wrap; gap:6px}
+.chip{
+  display:inline-block; font-size:12.5px; font-weight:500; border-radius:var(--r-pill); padding:3px 10px;
+  background:var(--sunken); border:1px solid var(--line); color:var(--ink); max-width:100%;
+}
+.chip.blue{background:var(--blue-soft); border-color:var(--blue-line); color:var(--blue-ink)}
+.chip.purple{background:var(--purple-soft); border-color:var(--purple-line); color:var(--purple-ink)}
+.chip.green{background:var(--green-soft); border-color:var(--green-line); color:var(--green-ink)}
+.chip.warn{background:var(--warn-soft); border-color:var(--warn-line); color:var(--warn-ink)}
+.chip.link{cursor:pointer; transition:background-color var(--t) var(--ease), border-color var(--t) var(--ease), transform var(--t) var(--ease)}
+@media (hover:hover){ .chip:hover{border-color:var(--line-strong)} .chip.link:hover{background:var(--panel); border-color:var(--blue)} }
+.chip.link:active{transform:scale(.96)}
+.key{
+  border-inline-start:3px solid var(--blue); background:var(--blue-soft); border-radius:0 var(--r-md) var(--r-md) 0;
+  padding:12px 15px; font-size:12.5px; font-weight:600; color:var(--blue-ink); margin:12px 0 16px; line-height:1.5;
+}
+.panel ul{padding-inline-start:19px; font-size:var(--fs-body)}
+.panel li{margin-bottom:5px}
+.pre{
+  background:var(--sunken); border:1px solid var(--line); border-radius:var(--r-md); padding:12px 14px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:11.5px; line-height:1.6;
+  overflow-x:auto; white-space:pre; color:#33475f;
+}
+.q-list{list-style:none; padding:0; display:grid; gap:6px}
+.q-list button{
+  width:100%; text-align:start; font:inherit; font-size:12.5px; color:var(--ink);
+  background:var(--sunken); border:1px solid var(--line); border-radius:var(--r-sm); padding:9px 12px; cursor:pointer;
+  transition:background-color var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+@media (hover:hover){ .q-list button:hover{background:var(--blue-soft); border-color:var(--blue-line)} }
+.generic-note{
+  margin-top:16px; font-size:var(--fs-small); color:var(--muted); background:#fbf7ec; border:1px solid var(--warn-line);
+  border-radius:var(--r-sm); padding:10px 13px; line-height:1.5;
+}
+.ph{color:var(--muted); font-style:italic}
+.badge{
+  display:inline-block; font-size:var(--fs-micro); font-weight:700; letter-spacing:.05em; border-radius:var(--r-xs);
+  padding:2px 8px; margin-inline-start:8px; vertical-align:1px; white-space:nowrap;
+}
+.badge.PASS{background:var(--green-soft); color:var(--green-ink); border:1px solid var(--green-line)}
+.badge.WARNING{background:var(--warn-soft); color:var(--warn-ink); border:1px solid var(--warn-line)}
+.badge.FAIL{background:var(--red-soft); color:var(--red); border:1px solid var(--red-line)}
+.badge.sev-warn{background:var(--warn-soft); color:var(--warn-ink)}
+.badge.sev-fail{background:var(--red-soft); color:var(--red)}
+.vcmp{display:flex; gap:9px; align-items:baseline; flex-wrap:wrap}
+.vcmp .up{color:var(--green-ink); font-weight:700}
+.vcmp .down{color:var(--red); font-weight:700}
+.vcmp .flat{color:var(--muted); font-weight:700}
+.fail-card{border:1px solid var(--line); border-radius:var(--r-md); padding:12px 14px; margin-bottom:10px; background:var(--panel)}
+.fail-card h4{font-size:12.5px; margin-bottom:7px; color:var(--navy)}
+.fail-card p{font-size:12.5px; margin-bottom:5px}
+.fail-card .fk{font-size:var(--fs-micro); font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.05em}
+.coord-row{display:flex; gap:6px; flex-wrap:wrap; margin:10px 0 6px}
+
+/* ---------- selection argument blocks ---------- */
+.op{color:var(--muted); font-weight:400}
+.p-note{font-size:12px; color:var(--muted); margin:-6px 0 10px; line-height:1.45}
+.p-answer{font-size:14px; font-weight:600; color:var(--navy); line-height:1.45; margin:2px 0 13px; text-wrap:pretty}
+.p-arg{display:grid; gap:11px; margin-bottom:14px}
+.p-block{border-inline-start:3px solid var(--line); padding-inline-start:13px}
+.p-block p{margin:0}
+.p-block-why{border-inline-start-color:var(--blue)}
+.p-block-fail{border-inline-start-color:var(--amber)}
+.p-block-ctrl{border-inline-start-color:var(--green)}
+.p-lab{display:block; font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:4px}
+.p-meta{border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; margin-bottom:14px}
+.p-row{display:grid; grid-template-columns:1fr; gap:4px; padding:10px 13px; border-bottom:1px solid var(--line); align-items:start}
+.p-row:last-child{border-bottom:0}
+.p-row .p-lab{margin:0}
+.p-row > div{min-width:0}
+.p-row p{margin:0}
+.badge.NONE{background:var(--sunken); color:var(--muted); border:1px solid var(--line)}
+.ill{font-size:11.5px; color:var(--muted); font-style:italic}
+/* ---------- breadcrumb ---------- */
+.crumbs{display:flex; align-items:center; gap:6px; flex:1 1 auto; flex-wrap:wrap; min-width:0; overflow:hidden}
+.crumb{font:inherit; font-size:12.5px; font-weight:600; border:0; padding:4px 9px; border-radius:var(--r-pill); cursor:pointer; white-space:nowrap; max-width:100%; overflow:hidden; text-overflow:ellipsis; flex:0 1 auto}
+.crumb-wf{color:var(--green-ink); background:var(--green-soft)}
+.crumb-layer{color:var(--blue-ink); background:var(--blue-soft)}
+.crumb-ctrl{color:var(--purple-ink); background:var(--purple-soft)}
+.crumb.current{cursor:default; box-shadow:inset 0 0 0 1.5px currentColor}
+@media (hover:hover){ .crumb:not(.current):hover{filter:brightness(.96)} }
+.crumb-sep{color:var(--muted); font-size:12px}
+/* ---------- scenario step sequence ---------- */
+.sc-steps{display:flex; flex-wrap:wrap; gap:5px; margin-top:9px; list-style:none; padding:0}
+.sc-step{
+  display:inline-flex; align-items:baseline; gap:5px; font-size:11.5px; font-weight:600;
+  border:1px solid var(--line); border-radius:var(--r-pill); padding:3px 10px; color:var(--muted); background:var(--panel);
+  transition:background-color var(--t) var(--ease), color var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+.sc-step b{font-weight:700; opacity:.65}
+.sc-step.past{background:var(--sunken); color:var(--muted); opacity:.7}
+.sc-step.current{background:var(--navy); border-color:var(--navy); color:#fff; opacity:1}
+.sc-step.current b{opacity:.85}
+.sc-step.next{border-color:var(--green); border-style:dashed; color:var(--green-ink)}
+/* ================= footer ================= */
+footer.takeaway{
+  background:var(--panel); border-top:1px solid var(--line); padding:12px 24px;
+  font-size:var(--fs-small); color:var(--ink); display:flex; align-items:center; gap:9px;
+}
+footer.takeaway span{max-width:104ch; text-wrap:pretty}
+footer.takeaway strong{font-weight:700; color:var(--navy)}
+
+/* ================= filters popover ================= */
+.filters-pop{
+  position:fixed; z-index:80; background:var(--panel); border:1px solid var(--line); border-radius:var(--r-lg);
+  box-shadow:var(--shadow-3); padding:16px 18px; display:flex; gap:20px; flex-wrap:wrap; max-width:680px;
+}
+.fp-col{display:flex; flex-direction:column; gap:2px; border:0; min-width:0}
+.fp-col h4{font-size:var(--fs-micro); text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:7px; font-weight:700}
+.fp-col label{display:flex; gap:9px; align-items:center; font-size:12.5px; padding:3.5px 0; cursor:pointer}
+.fp-col input{accent-color:var(--blue); width:15px; height:15px; margin:0}
+.fp-foot{display:flex; align-items:flex-end}
+#fp-clear{
+  height:30px; padding:0 13px; font:inherit; font-size:var(--fs-small); color:var(--ink); background:var(--sunken);
+  border:1px solid var(--line-strong); border-radius:var(--r-sm); cursor:pointer;
+}
+@media (hover:hover){ .filters-pop button:hover{background:var(--blue-soft)} }
+
+/* ================= toast ================= */
+.toast{
+  position:fixed; bottom:64px; inset-inline-start:50%; transform:translateX(-50%); z-index:100;
+  background:var(--navy); color:#fff; font-size:12.5px; border-radius:var(--r-md); padding:12px 18px;
+  max-width:min(580px,90vw); box-shadow:var(--shadow-3); line-height:1.5;
+}
+.visually-hidden{position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+
+/* ================= presentation mode ================= */
+body.present .searchwrap,
+body.present .resultbar,
+body.present #filters-btn,
+body.present .tb-overlay .seg,
+body.present .tb-view,
+body.present #reset-cam,
+body.present .howto,
+body.present .axis-tabs,
+body.present .titles .sub{display:none !important}
+body.present header.top{padding:12px 22px 11px; align-items:center}
+body.present .titles h1{font-size:19px}
+body.present .titles .read{margin-top:7px; font-size:12.5px}
+body.present .toolbar{padding:9px 22px; gap:8px 22px}
+body.present main{grid-template-columns:1fr 390px}
+body.present .lbl-l text{font-size:13px} body.present .lbl-c text{font-size:13.5px} body.present .lbl-w text{font-size:13px}
+body.present .lbl-l.emph text,body.present .lbl-l.sel text{font-size:13.5px}
+body.present .lbl-c.emph text,body.present .lbl-c.sel text{font-size:14px}
+body.present .lbl-w.emph text,body.present .lbl-w.sel text{font-size:13.5px}
+body.present .axis-title{font-size:13.5px}
+body.present .seclbl{font-size:11.5px} body.present .evallbl{font-size:12px} body.present .vlbl{font-size:12px}
+body.present footer.takeaway{padding:10px 22px}
+
+/* ================= responsive ================= */
+@media (max-width:1200px){
+  main{grid-template-columns:1fr 372px}
+}
+@media (max-width:1100px){
+  body{overflow:auto}
+  main{grid-template-columns:1fr}
+  #canvas-wrap{flex:none; height:58vh; min-height:360px}
+  aside.panel{border-inline-start:0; border-top:1px solid var(--line); max-height:none}
+  .panel-bar{top:-1px}
+  .tb-end{margin-inline-start:0}
+}
+@media (max-width:900px){
+  .axis-tabs{display:flex}
+  header.top{flex-direction:column; gap:14px}
+  .searchwrap{min-width:0; flex:1 1 auto; width:100%}
+  .toolbar{gap:10px 18px; padding:10px 16px}
+  header.top{padding:14px 16px}
+  .howto{padding:11px 16px}
+  .howto-axes{margin-inline-start:0; width:100%}
+  .co-core{max-width:214px}
+}
+@media (max-width:640px){
+  .tb-label{flex:0 0 74px}
+  .seg > button,.seg-opt > span{height:26px; padding:0 9px; font-size:12px}
+  .btn,#scenario-select{height:30px}
+  .howto-axes{flex-direction:column}
+  .ax-chip{width:100%}
+  aside.panel{padding:0 16px 26px}
+  .panel-bar{margin:0 -16px 14px; padding:14px 16px 11px}
+  .panel dl{grid-template-columns:1fr; row-gap:3px; column-gap:0}
+  .panel dd{margin-bottom:10px}
+  .co-core{max-width:186px}
+  footer.takeaway{padding:11px 16px}
+  .filters-pop{inset-inline:10px !important; width:auto !important; max-height:62vh; overflow-y:auto}
+  .menu-pop{inset-inline-end:0; min-width:200px}
+}
+@media (pointer:coarse){
+  .seg > button,.seg-opt > span,#scenario-select,.btn{height:34px}
+  #search{font-size:16px}
+}
+@media (max-height:720px){
+  body{overflow:auto}
+  main{display:block}
+  .canvas-zone{display:block}
+  #canvas-wrap{flex:none; height:min(54vh,440px); min-height:300px}
+  aside.panel{max-height:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms !important; animation-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="titles">
+    <p class="brand">Harness Matrix</p>
+    <h1>3D Reliability &amp; Evaluation Harness for a Markets Agentic Platform</h1>
+    <p class="sub">One shared framework for evaluating reliability across system layers, controls and banking workflows.</p>
+    <p class="read">Every point in the cube is: <b class="hl hl-layer">System Layer</b> <span class="op">×</span> <b class="hl hl-control">Reliability Control</b> <span class="op">×</span> <b class="hl hl-workflow">Workflow</b></p>
+  </div>
+  <div class="searchwrap">
+    <input id="search" type="search" autocomplete="off" role="combobox" aria-expanded="false"
+      aria-controls="searchlist" aria-autocomplete="list" aria-label="Search the reliability matrix"
+      placeholder="Search — retrieval, security, Recall@K, credit…">
+    <div class="searchlist" id="searchlist" aria-label="Search results" hidden></div>
+  </div>
+</header>
+
+<div class="resultbar" id="resultbar" role="status" hidden></div>
+
+<div class="toolbar" role="toolbar" aria-label="Harness controls">
+  <div class="tb-group">
+    <span class="tb-label" id="lbl-explore">Explore</span>
+    <div class="seg" role="radiogroup" aria-labelledby="lbl-explore">
+      <label class="seg-opt"><input type="radio" name="mode" value="system"><span>System layers</span></label>
+      <label class="seg-opt"><input type="radio" name="mode" value="reliability"><span>Controls</span></label>
+      <label class="seg-opt"><input type="radio" name="mode" value="workflow"><span>Workflows</span></label>
+      <label class="seg-opt"><input type="radio" name="mode" value="intersection" checked><span>Intersection</span></label>
+    </div>
+  </div>
+
+  <div class="tb-group tb-overlay">
+    <span class="tb-label" id="lbl-overlay">Overlay</span>
+    <div class="seg" role="group" aria-labelledby="lbl-overlay">
+      <button data-ov="harness" class="ov-btn active" aria-pressed="true">Harness</button>
+      <button data-ov="failures" class="ov-btn" aria-pressed="false">Failure modes</button>
+      <button data-ov="evals" class="ov-btn" aria-pressed="false">Evals</button>
+      <button data-ov="security" class="ov-btn" aria-pressed="false">Security</button>
+    </div>
+    <div class="menu-wrap">
+      <button id="more-btn" class="btn btn-quiet" aria-expanded="false" aria-haspopup="true" aria-controls="more-menu">More ▾</button>
+      <div class="menu-pop" id="more-menu" hidden>
+        <div class="menu-title">More overlays</div>
+        <button class="menu-row ov-btn" data-ov="trace" aria-pressed="false">Trace timeline<span class="mk" aria-hidden="true"></span></button>
+        <button class="menu-row ov-btn" data-ov="compare" aria-pressed="false">Compare versions<span class="mk" aria-hidden="true"></span></button>
+        <button class="menu-row ov-btn" data-ov="gates" aria-pressed="false">Release gates<span class="mk" aria-hidden="true"></span></button>
+        <div class="menu-sep" role="presentation"></div>
+        <button class="menu-row ov-btn" data-ov="coverage" aria-pressed="false">Coverage of the model<span class="mk" aria-hidden="true"></span></button>
+        <button class="menu-row" id="hints-btn" aria-pressed="true">Harness card<span class="mk" aria-hidden="true"></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tb-group tb-view">
+    <span class="tb-label" id="lbl-view">View</span>
+    <div class="seg" role="radiogroup" aria-labelledby="lbl-view">
+      <label class="seg-opt"><input type="radio" name="view" value="iso" checked><span>Iso</span></label>
+      <label class="seg-opt"><input type="radio" name="view" value="front"><span>Front</span></label>
+      <label class="seg-opt"><input type="radio" name="view" value="workflow"><span>Workflows</span></label>
+      <label class="seg-opt"><input type="radio" name="view" value="controls"><span>Controls</span></label>
+      <label class="seg-opt"><input type="radio" name="view" value="pipeline"><span>Pipeline</span></label>
+    </div>
+    <button id="reset-cam" class="btn btn-quiet">Reset</button>
+  </div>
+
+  <div class="tb-group tb-scenario">
+    <span class="tb-label" id="lbl-scenario">Scenario</span>
+    <select id="scenario-select" aria-labelledby="lbl-scenario"><option value="">Choose a scenario…</option></select>
+    <button id="scenario-play" class="btn btn-primary">▶&nbsp;Play</button>
+  </div>
+
+  <div class="tb-group tb-end">
+    <button id="present-btn" class="btn btn-quiet" aria-pressed="false">Presentation</button>
+    <button id="filters-btn" class="btn btn-quiet" aria-expanded="false" aria-haspopup="true">Filters</button>
+  </div>
+</div>
+
+<main>
+  <section class="canvas-zone" aria-label="3D matrix canvas">
+    <section id="stage-card" class="stage-card" aria-label="Scenario stage" hidden></section>
+    <div class="axis-tabs" id="axis-tabs">
+      <button data-view="pipeline">System pipeline</button>
+      <button data-view="controls">Controls</button>
+      <button data-view="workflow">Workflows</button>
+    </div>
+    <div id="canvas-wrap" tabindex="0" role="application"
+      aria-roledescription="3D reliability matrix"
+      aria-label="Interactive 3D matrix: 11 system layers across 7 reliability controls across 6 banking workflows. Use left and right arrows to move across layers, up and down arrows across controls, Page Up and Page Down across workflows, Enter to open a cell, L for the layer slice, C for the control plane, W for the workflow plane, Escape to clear.">
+      <svg id="scene" xmlns="http://www.w3.org/2000/svg" aria-hidden="false"></svg>
+
+      <button type="button" class="callout co-core" id="harness-callout">
+        <b>Reusable platform harness</b>
+        <small>across components, controls, and workflows</small>
+        <span class="legend" aria-hidden="true">
+          <span><i style="background:#3f74ad"></i>Layers</span>
+          <span><i style="background:#7a58c2"></i>Controls</span>
+          <span><i style="background:#3f8f63"></i>Workflows</span>
+        </span>
+      </button>
+
+      <div id="tooltip" role="tooltip" hidden></div>
+    </div>
+
+    <section class="howto" id="axis-legend" aria-label="Legend" hidden></section>
+
+    <section id="trace-panel" class="trace-panel" hidden aria-label="Trace timeline"></section>
+  </section>
+
+  <aside id="panel" class="panel" role="region" aria-label="Details panel"></aside>
+</main>
+
+<footer class="takeaway">
+  <span>One shared reliability and evaluation harness, reused across agents, tools and workflows, with task-specific thresholds where needed.</span>
+</footer>
+
+<div id="filters-pop" class="filters-pop" role="group" aria-label="Filters" hidden></div>
+<div id="toast" class="toast" role="status" hidden></div>
+<div id="announcer" class="visually-hidden" aria-live="polite"></div>
+<script>
+/* =====================================================================
+   DATA — all conceptual content lives here. Nothing below should know
+   about layer/control/workflow names except through these structures.
+   ===================================================================== */
+'use strict';
+
+const LAYERS = [
+ { id:'ingestion', name:'Ingestion & Parsing', short:'Ingestion',
+   purpose:'Bring in filings, transcripts, market data, CRM and credit records; convert them into clean, structured text the rest of the pipeline can trust.',
+   techniques:'OCR, table detection, header/footer stripping, entity normalisation, document typing, source-identity capture',
+   failures:'OCR errors, flattened tables, lost footnotes, mis-sent or malicious documents',
+   evals:'extraction accuracy, table/figure fidelity, document classification accuracy, OCR error rate',
+   security:'source identity & quarantine, sender verification, PII handling at the boundary, source-authority tagging',
+   latency:'per-document parsing cost; batch vs real-time trade-off; index write cost',
+   agentic:'Ingestion quality caps everything downstream — an agent can only reason about what survived parsing.',
+   chips:['extraction accuracy','table fidelity','doc classification'] },
+ { id:'chunking', name:'Chunking & Representation', short:'Chunking',
+   purpose:'Split documents into retrievable units that carry enough context and the metadata needed to filter by permission and freshness.',
+   techniques:'semantic chunking, sliding windows, section-aware splits, metadata enrichment (client, date, document type)',
+   failures:'chunks cut mid-table or mid-sentence; orphan numbers without units; missing permission metadata',
+   evals:'chunk-level relevance, boundary quality, context sufficiency on answered questions',
+   security:'metadata must carry ownership and permission tags used by downstream filtering',
+   latency:'chunking is offline — near-zero runtime cost',
+   agentic:'The granularity of the agent’s evidence is decided here, before any query is ever run.',
+   chips:['chunk relevance','boundary quality'] },
+ { id:'embeddings', name:'Embeddings & Indexes',
+   short:'Embeddings',
+   purpose:'Vectorise chunks for semantic search and manage the indexes (versioned, isolated, monitored).',
+   techniques:'embedding models, HNSW/IVF indexes, hybrid lexical + vector, index versioning, per-client collections',
+   failures:'index drift after a model swap, near-duplicate chunks, stale vectors after re-chunking',
+   evals:'index recall, embedding quality benchmarks, duplicate rate, per-client isolation',
+   security:'collection-level isolation per client and entitlement; index access controls',
+   latency:'embedding compute per document; index size drives memory cost',
+   agentic:'A silent index regression degrades every agent on the platform at once — the most under-watched layer.',
+   chips:['index recall','isolation'] },
+ { id:'retrieval', name:'Retrieval', short:'Retrieval',
+   purpose:'Find the right evidence for a query across filings, market data, credit records and engagement memory.',
+   techniques:'hybrid BM25 + vector search, query rewriting, filter-aware search, multi-collection routing',
+   failures:'wrong evidence, missing evidence, stale evidence',
+   evals:'Recall@K, Precision@K, MRR, nDCG, evidence completeness',
+   security:'permission-aware filtering, data isolation, entitlement checks on market-data fields',
+   latency:'top contributor to query latency; multi-collection fan-out cost',
+   agentic:'The highest-leverage stage for hallucination control: a missing fact becomes an invented one downstream.',
+   chips:['Recall@K','nDCG','evidence completeness'] },
+ { id:'reranking', name:'Reranking & Evidence Selection', short:'Reranking',
+   purpose:'Reorder candidate evidence and select the final set that actually fits the prompt budget.',
+   techniques:'cross-encoders, LLM-based rerank, deduplication, budget-aware selection',
+   failures:'reranker drops the one decisive chunk; over-trusts salient but wrong documents',
+   evals:'nDCG after rerank, evidence completeness on decisive-document sets, selection precision',
+   security:'reranking must respect the permission filters applied at retrieval — no re-leak',
+   latency:'a cross-encoder pass adds 50–300 ms per request',
+   agentic:'Decides which facts the model can even see; selection errors are invisible in normal operation.',
+   chips:['nDCG','selection precision'] },
+ { id:'context', name:'Context & Augmentation', short:'Context',
+   purpose:'Assemble the final prompt: evidence, system context, memory, user constraints — within a token budget.',
+   techniques:'prompt templating, evidence packing, token budgeting, memory injection, section budgets',
+   failures:'context overflow silently drops key evidence; prompt injection via retrieved content',
+   evals:'context relevance, injection-resistance suite, token-budget adherence',
+   security:'treat retrieved content as untrusted data, never as instructions',
+   latency:'prompt size scales token cost and latency linearly',
+   agentic:'Where data becomes instructions — the main prompt-injection surface of the platform.',
+   chips:['injection suite','token budget'] },
+ { id:'generation', name:'Generation & Reasoning', short:'Generation',
+   purpose:'Produce the analysis, numbers and recommendations from the assembled context.',
+   techniques:'structured outputs, grounded chain-of-thought, forced citations, abstention when evidence is thin',
+   failures:'unsupported claims, incorrect synthesis, confident wrong numbers',
+   evals:'correctness, groundedness, completeness, citation validity, abstention rate',
+   security:'output leakage of restricted data; per-audience field allow-lists',
+   latency:'the largest token cost in most requests',
+   agentic:'The only stage humans read — all upstream errors concentrate and become visible here.',
+   chips:['groundedness','citation validity','abstention'] },
+ { id:'tools', name:'Tools & Function Calling', short:'Tools',
+   purpose:'Call market-data APIs, internal credit systems, calculators and other external capabilities.',
+   techniques:'function schemas, argument validation, retries with backoff, idempotency keys, least-privilege authorisation',
+   failures:'wrong tool, wrong arguments, timeouts, partial results',
+   evals:'tool-selection accuracy, argument accuracy, task success, final-state correctness',
+   security:'least privilege, per-client tool authorisation, full audit logging of calls and arguments',
+   latency:'external API latency is outside our control — budget and fallback for it',
+   agentic:'Tool actions have real-world side effects — the highest-stakes stage of the pipeline.',
+   chips:['tool-selection accuracy','argument accuracy'] },
+ { id:'orchestration', name:'Agent Orchestration', short:'Orchestration',
+   purpose:'Plan the steps, route to sub-agents, and manage loops and parallel work within budgets.',
+   techniques:'planner–executor patterns, routers, parallel sub-tasks, step and token budget caps, trajectory templates',
+   failures:'unnecessary repeated calls, loops, wrong sub-agent routing, scope loss in child calls',
+   evals:'trajectory correctness, routing accuracy, step efficiency, overall task success',
+   security:'identity and permission scope must propagate to every child call',
+   latency:'each model round-trip adds latency; cost scales with loop count, not just model size',
+   agentic:'Cost and reliability are properties of the trajectory, not of the model.',
+   chips:['trajectory correctness','step efficiency'] },
+ { id:'memory', name:'Memory', short:'Memory',
+   purpose:'Store and reuse engagement state — client facts, history, open issues — across sessions.',
+   techniques:'episodic/semantic memory, TTL and expiration, conflict handling, revalidation against authoritative systems',
+   failures:'stale memory presented as current, cross-client contamination',
+   evals:'memory accuracy audits, freshness compliance, contamination (canary) rate, provenance coverage',
+   security:'client-level partitioning, retention policy, scope checks on every read',
+   latency:'reads are cheap; revalidation before client-facing use is not',
+   agentic:'The only stage that persists across tasks — errors here compound over time and clients.',
+   chips:['memory accuracy','contamination (0)'] },
+ { id:'validation', name:'Final Validation & Output', short:'Validation',
+   purpose:'Check every claim against its evidence, run policy and DLP checks, and route to humans where required.',
+   techniques:'claim-level groundedness checks, citation validation, numeric cross-checks, policy filters, DLP scan, escalation routing',
+   failures:'unsupported claim passes the gate; over-strict gate kills useful answers',
+   evals:'claim-level groundedness, citation validity, escalation precision, gate pass rate',
+   security:'final DLP scan, per-audience format rules, redaction with reviewer approval',
+   latency:'one extra model or rule pass per output',
+   agentic:'The last line before a human sees it — release gates live here.',
+   chips:['groundedness','citation validity'] },
+];
+
+const CONTROLS = [
+ { id:'quality', name:'Quality & Evals', short:'Quality',
+   question:'How do we measure that each stage does its job?',
+   covers:'Golden sets, per-stage metric suites, LLM-as-judge, benchmark dashboards.',
+   metrics:['task success','per-stage metric suites','LLM-as-judge','golden-set coverage'] },
+ { id:'hallucination', name:'Hallucination & Reliability', short:'Reliability',
+   question:'Where can the system state something unsupported — and how do we catch it?',
+   covers:'Groundedness checks, citation validation, factual consistency, abstention behaviour.',
+   metrics:['groundedness','citation validity','abstention rate','factual consistency'] },
+ { id:'security', name:'Security & Permissions', short:'Security',
+   question:'What must each stage be forbidden to touch, call, or reveal?',
+   covers:'Permission-aware filtering, least privilege, data isolation, DLP, injection resistance, audit.',
+   metrics:['unauthorised access (target 0)','injection suite pass rate','DLP hits','audit coverage'] },
+ { id:'observability', name:'Observability & Logging', short:'Observability',
+   question:'Can any request be reconstructed end-to-end, later, by a human?',
+   covers:'Request IDs, full traces, prompt and evidence capture, latency and token accounting.',
+   metrics:['trace completeness','log coverage','time-to-debug','prompt/evidence capture'] },
+ { id:'latency', name:'Latency & Cost', short:'Latency & Cost',
+   question:'Does each stage fit the latency budget and cost ceiling of the workflow?',
+   covers:'p50/p95 budgets, token accounting, per-workflow cost ceilings, cache policy.',
+   metrics:['p50/p95 latency','tokens per request','cost per task','cache hit rate'] },
+ { id:'regression', name:'Regression & Release Gates', short:'Regression',
+   question:'Did a change make anything worse anywhere in the pipeline — before it ships?',
+   covers:'Benchmark diffs, shadow comparisons, canaries, gate definitions, rollback automation.',
+   metrics:['benchmark deltas vs baseline','gate pass rate','canary health','rollback speed'] },
+ { id:'human', name:'Human Review & Escalation', short:'Human Review',
+   question:'What must a human see before it ships — and can the human trust what they see?',
+   covers:'Escalation rules, review UX, sign-off trails, correction feedback loops.',
+   metrics:['escalation rate','false-escalation rate','time-to-review','human correction rate'] },
+];
+
+const WORKFLOWS = [
+ { id:'market_research', name:'Market Research Agent', short:'Market Research',
+   description:'Answers market and company questions from filings, licensed market data and transcripts.',
+   sample:'“What explains the company’s recent share-price decline and what has management said about liquidity?”',
+   sources:['filings','LSEG / Bloomberg market data','earnings transcripts'],
+   risks:['explaining a false market premise','stale price information'],
+   evals:['evidence completeness','source freshness','groundedness'] },
+ { id:'credit_analysis', name:'Credit Analysis Agent', short:'Credit Analysis',
+   description:'Analyses client exposure and credit risk. Rule: current exposure → internal credit system; risk commentary → document retrieval. Never the reverse.',
+   sample:'“What is our current exposure to Client X and what risks appear in its latest filings?”',
+   sources:['internal credit system','filings'],
+   risks:['mixing internal exposure with public narrative','stale exposure figures'],
+   evals:['source authority','permissions compliance','freshness'] },
+ { id:'deal_analysis', name:'Deal Analysis Agent', short:'Deal Analysis',
+   description:'Analyses transaction documents: key terms, risks and non-standard clauses.',
+   sample:'“Summarise the key terms and risks in this transaction document set.”',
+   sources:['transaction documents','comparable deals','internal guidelines'],
+   risks:['missing a non-standard clause','confidential terms leaking across deals'],
+   evals:['completeness','clause-level recall','confidentiality'] },
+ { id:'document_drafting', name:'Document Drafting Agent', short:'Doc Drafting',
+   description:'Drafts documents from negotiation records and templates with strict fidelity to the source.',
+   sample:'“Draft a term-sheet summary from the negotiation record.”',
+   sources:['negotiation records','templates','legal precedents'],
+   risks:['invented terms','wrong entity or client names'],
+   evals:['fidelity to source','entity accuracy','completeness'] },
+ { id:'client_briefing', name:'Client Briefing Agent', short:'Client Briefing',
+   description:'Prepares banker briefings by pulling CRM, credit, trade, filings, market data and engagement memory — all three dimensions working together.',
+   sample:'“Prepare a briefing before a banker meets the client.”',
+   sources:['CRM','credit','trade','filings','market data','engagement memory'],
+   risks:['stale memory','cross-client contamination','briefing too long to use in the meeting'],
+   evals:['coverage','freshness','citation validity'] },
+ { id:'other', name:'Other Specialist Workflows', short:'Other',
+   description:'Any future specialist agent (risk, compliance, sales) plugs into the same harness with its own thresholds — no re-architecture.',
+   sample:'“Any new specialist task inherits the full control stack from day one.”',
+   sources:['workflow-specific'],
+   risks:['new workflow silently bypassing a control','threshold drift from platform defaults'],
+   evals:['inheritance checks','threshold review'] },
+];
+
+/* Authored cells: "layerId:controlId:workflowId" */
+const CELLS = {
+ 'retrieval:quality:market_research': {
+   line:'Retrieval is the highest-leverage stage for market research: if the right filing or transcript is missed, every downstream claim is built on the wrong evidence.',
+   q:'How do we know that the Market Research Agent retrieved the right evidence for a question about a share-price decline?',
+   why:'If the wrong filing or transcript excerpt is retrieved, every downstream claim is built on the wrong premise — the agent may confidently explain a move that did not happen.',
+   metrics:['Recall@K','nDCG','evidence completeness','source authority','freshness'],
+   failures:['stale transcript instead of the latest earnings call','the liquidity discussion missing entirely'],
+   controls:['golden-set benchmark per question type','auto-eval with LLM-judge on evidence relevance','freshness check on retrieved documents'],
+   obs:'Log query rewrites, per-collection scores, and which documents survived into context.',
+   gate:'Recall@5 on the market-research golden set must not drop below 0.90.' },
+ 'retrieval:security:credit_analysis': {
+   line:'Credit answers may only surface documents the requesting banker is entitled to see — retrieval is where that entitlement is actually enforced.',
+   q:'Could retrieval expose information the banker is not authorised to access?',
+   why:'Credit files are per-client and per-entitlement. A retrieval that ignores permissions is a silent data leak — and it is invisible in normal output quality.',
+   metrics:['unauthorised retrieval rate (target 0)','cross-client leakage in canary tests','filter coverage'],
+   failures:['Client X documents returned while answering about Client Y','exposure figures surfaced without the required entitlement'],
+   controls:['identity-aware filtering','client-level permissions','metadata filtering','source-level authorisation','audit logging'],
+   obs:'Every retrieval logs the identity, the filters applied, and the document IDs returned.',
+   gate:'Unauthorised retrievals = 0. Any canary hit is a blocking release gate.' },
+ 'memory:hallucination:client_briefing': {
+   line:'Anything remembered about the client is treated as fact in the briefing, so stale memory becomes a confident wrong statement.',
+   q:'Could stale or incorrect persistent memory influence the briefing?',
+   why:'Memory is the only stage that persists across meetings. A wrong “client is worried about fees” from three quarters ago becomes a confident statement in today’s briefing.',
+   metrics:['memory accuracy sample audits','stale-memory rate','contradiction rate'],
+   failures:['stale memory presented as current fact','memory from a different engagement mixed in'],
+   controls:['freshness rules','source authority','memory expiration','conflict handling','revalidation against authoritative systems'],
+   obs:'Log which memory items were read, their write timestamp, and whether they were revalidated.',
+   gate:'Any memory item older than its TTL must be expired; contradictions with authoritative systems are escalated.' },
+ 'generation:quality:market_research': {
+   line:'The narrative the banker reads is only as good as the evidence behind it, so groundedness — not fluency — is the quality property at stake.',
+   q:'Is the generated market analysis grounded in what was actually retrieved?',
+   why:'Share-price questions tempt the model into plausible-sounding narratives. The failure mode is not a bad answer — it is a confident wrong premise.',
+   metrics:['groundedness','claim-level citation validity','abstention rate when evidence is thin'],
+   failures:['invented management quote','price move attributed to an unannounced event'],
+   controls:['claim-to-evidence link check','forced citations for numbers','abstention prompt when evidence is thin'],
+   obs:'Store the final prompt, evidence IDs, and the claim→citation map in the trace.',
+   gate:'Groundedness ≥ 0.90 on the golden set; 0 critical unsupported claims.' },
+ 'generation:hallucination:credit_analysis': {
+   line:'Internal exposure numbers and public risk commentary are generated in the same pass, which is exactly where the two sources get silently blended.',
+   q:'Can the credit commentary mix internal exposure numbers with public narrative?',
+   why:'Exposure must come from the internal credit system; risk commentary from filings. Mixing the two is exactly how a wrong exposure number becomes “the filing says…”.',
+   metrics:['source authority per claim','number fidelity (internal vs generated)','hallucination rate'],
+   failures:['exposure figure paraphrased and slightly wrong','public risk narrative applied to an internal metric'],
+   controls:['source tagging on every claim','numeric cross-check against the credit system','template separation of internal vs public content'],
+   obs:'Per-claim source tag (internal-system | document | memory) recorded in the trace.',
+   gate:'Numbers sourced from internal systems must match exactly; mismatches block the output.' },
+ 'tools:security:credit_analysis': {
+   line:'Calling the credit system is a privileged action, so this intersection is about least privilege and per-client authorisation rather than answer quality.',
+   q:'Which internal systems may the agent call, with which client scope, and who allowed it?',
+   why:'The credit system is a privileged source. A tool call without per-client scope is a direct leak path — more direct than retrieval.',
+   metrics:['least-privilege compliance','unauthorised tool calls (target 0)','argument validation failure rate'],
+   failures:['tool called for a client outside the request scope','bulk-export call where a single lookup was needed'],
+   controls:['least privilege','per-client tool authorisation','argument validation','audit logging of every call'],
+   obs:'Full audit trail: identity, tool, arguments, result size, authorisation decision.',
+   gate:'Unauthorised tool calls = 0; every privileged call must have an audit record.' },
+ 'tools:quality:market_research': {
+   line:'Market-data calls only help if the right endpoint is called with the right window, currency and adjustment.',
+   q:'Does the agent pick the right market-data call with the right arguments?',
+   why:'Price and volume questions look simple, but the API surface is large (adjustments, currencies, windows). A wrong argument returns a confidently wrong number.',
+   metrics:['tool-selection accuracy','argument accuracy','task success on price questions'],
+   failures:['wrong window (last 5 days vs YTD)','unadjusted prices mixed with adjusted'],
+   controls:['schema validation','unit tests on argument construction','result sanity checks (range, sign)'],
+   obs:'Log tool, arguments, result summary, and any retry in the trace.',
+   gate:'Tool-selection accuracy ≥ 0.95 on the market-data suite.' },
+ 'memory:security:client_briefing': {
+   line:'Engagement memory is long-lived, so it must be partitioned per client — one contamination poisons every future briefing for that client.',
+   q:'Is engagement memory strictly isolated per client?',
+   why:'Briefing memory is long-lived and cross-meeting. One cross-client contamination poisons every future briefing for that client.',
+   metrics:['cross-client leakage (canary, target 0)','retention compliance','isolation test pass rate'],
+   failures:['Client A notes appearing in Client B’s briefing','retired engagement still being read'],
+   controls:['client-level memory partitioning','retention policy enforcement','canary contamination tests'],
+   obs:'Log the memory partition key on every read and write.',
+   gate:'Canary contamination = 0; retention violations auto-purge and alert.' },
+ 'validation:quality:client_briefing': {
+   line:'The briefing is the highest-stakes output: validation is the last check that every claim carries evidence before a human reads it.',
+   q:'Before the banker opens the briefing, is every claim checked against its evidence?',
+   why:'The briefing is the highest-stakes output: it is read by a human who will trust it in a live client meeting.',
+   metrics:['citation validity','claim coverage vs required sections','escalation precision'],
+   failures:['an uncited strategic recommendation ships to the banker'],
+   controls:['claim-level citation validation','coverage check vs required sections','route to human when below threshold'],
+   obs:'Validation report attached to the trace: per-claim status and overall gate result.',
+   gate:'Citation validity ≥ 0.95 for client-facing output; below → human review.' },
+ 'validation:human:credit_analysis': {
+   line:'Exposure and limit statements carry regulatory weight, so a human — not the model — signs them off.',
+   q:'Which credit answers must a human sign off on before use?',
+   why:'Exposure and limit statements carry regulatory weight. The gate is not about model quality — it is about who is accountable.',
+   metrics:['escalation rate on credit outputs','false-escalation rate','time-to-human-review'],
+   failures:['an exposure summary sent to a client without sign-off'],
+   controls:['hard rule: exposure figures require human sign-off','approval trail stored with the output'],
+   obs:'Record reviewer, decision, and timestamp alongside the output.',
+   gate:'No client-facing credit output without a recorded human approval.' },
+ 'ingestion:quality:credit_analysis': {
+   line:'Filings are table-heavy, so parsing fidelity at ingestion decides whether the numbers downstream are real.',
+   q:'Do the filed PDFs survive OCR and table parsing faithfully?',
+   why:'Filings are table-heavy. A mangled balance sheet is not a “noisy document” — it becomes a wrong number with a citation.',
+   metrics:['extraction accuracy on tables','figure fidelity vs source','OCR error rate'],
+   failures:['a shifted table row turns revenue into expense','a lost footnote misstates a covenants table'],
+   controls:['table-aware parsing','figure-level diff against source','human spot-check sample'],
+   obs:'Store parser version and per-document confidence in the trace.',
+   gate:'Figure fidelity ≥ 0.99 on the filings benchmark; below → re-parse and flag.' },
+ 'retrieval:security:market_research': {
+   line:'Licensed market data is an entitlement question as much as an access-control one: the desk may only see the fields it pays for.',
+   q:'Is market data returned only within the firm’s licensed entitlements?',
+   why:'LSEG/Bloomberg feeds are licensed per product and per desk. Retrieval over market data is a licensing compliance issue, not just access control.',
+   metrics:['entitlement violations (target 0)','field-level filter coverage'],
+   failures:['a field returned that the desk is not licensed for','stale licensed data served after licence expiry'],
+   controls:['entitlement-aware index partitioning','field-level filters','licence expiry checks'],
+   obs:'Log data source, field set, and licence check result per call.',
+   gate:'Entitlement violations = 0.' },
+ 'context:security:market_research': {
+   line:'Everything retrieved is untrusted input, and context assembly is where data must stay data and never become instructions.',
+   q:'Can retrieved documents inject instructions into the context?',
+   why:'Retrieved content is untrusted input. A transcript that says “ignore previous instructions” is an attack surface — and context assembly is where data becomes prompt.',
+   metrics:['injection test pass rate','content-as-data compliance'],
+   failures:['a retrieved document alters the output format or triggers a tool call'],
+   controls:['content sandboxing in the prompt template','injection regression suite','tool calls only from the planner, never from content'],
+   obs:'Flag any retrieved content that trips the injection filter.',
+   gate:'Injection suite pass rate = 100% before release.' },
+ 'generation:latency:client_briefing': {
+   line:'A briefing has a meeting-time deadline, so generation latency is a workflow failure mode rather than a cost metric.',
+   q:'Does generation fit the “before the meeting” deadline?',
+   why:'Briefings have a hard real-world deadline — the meeting time — not just a p95 budget. A 40-second generation is a workflow failure even if the output is perfect.',
+   metrics:['p95 generation latency','token cost per briefing','on-time delivery rate'],
+   failures:['briefing lands 20 minutes before the meeting after three retries'],
+   controls:['token budget per section','section-level streaming','timeout with partial output'],
+   obs:'Per-section latency and token counts in the trace.',
+   gate:'p95 end-to-end ≤ 60 s for standard briefings.' },
+ 'orchestration:quality:client_briefing': {
+   line:'The briefing pulls six sources at once, so the plan decides whether it walks them in order or wanders.',
+   q:'Does orchestration visit the right sources in the right order without waste?',
+   why:'A briefing pulls CRM, credit, trade, filings, market data and memory. The planner decides the trajectory; a bad trajectory means missing sections or doubled cost.',
+   metrics:['trajectory correctness vs plan template','routing accuracy','step efficiency (calls vs template)'],
+   failures:['credit section skipped for a credit-sensitive client','repeated filings queries across sub-agents'],
+   controls:['plan template per briefing type','dedup of sub-task retrieval','budget cap on steps'],
+   obs:'Full trajectory in the trace: steps, sub-agents, decisions.',
+   gate:'Trajectory deviation from template requires a logged reason; step count ≤ 1.5× template.' },
+ 'ingestion:observability:market_research': {
+   line:'When a banker asks where a number came from, ingestion is where the source reference must already exist.',
+   q:'Can we reconstruct which source produced which evidence for a research answer?',
+   why:'When a banker asks “where did that number come from?”, the answer must be a specific document and section — not “the model said so”.',
+   metrics:['trace completeness (100% of evidence has a source ref)','time-to-trace-reconstruction'],
+   failures:['evidence without a document ID in the trace'],
+   controls:['source ref mandatory on every parsed unit','request ID propagated end-to-end'],
+   obs:'Request ID links ingestion records to the trace store.',
+   gate:'Trace completeness = 100%; a missing source ref is a data-quality alert.' },
+ 'retrieval:regression:market_research': {
+   line:'Retrieval changes quietly — index rebuilds, embedding swaps, filter tweaks — so this is where a silent recall drop is caught before release.',
+   q:'Did an index or retriever change make evidence recall worse?',
+   why:'Retrieval is the highest-leverage stage and it changes quietly — index rebuilds, embedding swaps, filter tweaks. A 2-point recall drop looks fine until a banker notices the missing context.',
+   metrics:['Recall@5 delta vs baseline','nDCG delta','freshness delta'],
+   failures:['index rebuild after an embedding swap silently drops recall'],
+   controls:['golden-set gate on every index change','shadow comparison of candidate vs baseline','rollback automation'],
+   obs:'Benchmark run ID attached to each release.',
+   gate:'No release if Recall@5 drops more than 0.5 points on the market-research golden set.' },
+ 'tools:latency:market_research': {
+   line:'External market-data APIs are outside our control, so this intersection is about what the user sees when they fail.',
+   q:'What happens when the market-data API is slow or down during a question?',
+   why:'External APIs are outside our control. The failure question is not “can we call it” but “what does the user see when it times out?”',
+   metrics:['p95 API latency','timeout rate','graceful-degradation rate'],
+   failures:['whole request hangs on a single slow API call','stale cached price served without a timestamp'],
+   controls:['per-call timeout + retry with backoff','cache with explicit staleness label','fallback to “data unavailable” rather than guessing'],
+   obs:'Per-API latency, retries, and cache hits in the trace.',
+   gate:'p95 tool latency ≤ 2 s; no silent stale data — staleness must be labelled.' },
+ 'validation:security:client_briefing': {
+   line:'The briefing may leave the firm, so the final DLP pass decides what the recipient can see.',
+   q:'Can the final output leak restricted data the recipient should not see?',
+   why:'The briefing may be shared outside the firm. A client-specific exposure figure or an internal rating in the output is a DLP incident.',
+   metrics:['DLP hits on final output (target 0)','sensitive field exposure rate'],
+   failures:['internal credit rating quoted in a client-facing section'],
+   controls:['final DLP scan','field allow-list per audience','redaction with reviewer approval'],
+   obs:'DLP scan result and matches stored with the output.',
+   gate:'DLP hits = 0 on client-facing output; any hit blocks and routes to review.' },
+ 'embeddings:quality:credit_analysis': {
+   line:'Credit documents look alike across clients, so index separation is what keeps the right document findable.',
+   q:'Does the credit-document index keep clients’ documents separated and findable?',
+   why:'Credit documents are numerous and similar across clients (“covenants”, “exposure”). Poor vector separation means near-miss retrieval — the right document is close but not returned.',
+   metrics:['per-client retrieval isolation','recall within client corpus','duplicate rate'],
+   failures:['Client A’s covenants document outranks Client B’s own'],
+   controls:['per-client collection or strict namespace filter','embedding version pinning','duplicate detection'],
+   obs:'Namespace and embedding model version on every index entry.',
+   gate:'Cross-client ranking leakage = 0 in the isolation suite.' },
+ 'reranking:quality:market_research': {
+   line:'The answer often lives in one decisive sentence, and reranking decides which evidence the model ever sees.',
+   q:'Does reranking keep the one decisive paragraph and drop the ten plausible ones?',
+   why:'In a share-price question the answer may be a single transcript sentence. Reranking decides which facts the model can even see.',
+   metrics:['nDCG after rerank vs before','evidence completeness on decisive-doc set','selection precision'],
+   failures:['the decisive sentence falls outside top-5 after rerank'],
+   controls:['decisive-document golden set','A/B of rerank on/off with quality gate','token-budget-aware selection'],
+   obs:'Pre- and post-rerank rankings in the trace.',
+   gate:'Completeness on the decisive set must not drop vs baseline.' },
+ 'memory:quality:client_briefing': {
+   line:'Memory entries are written by people and systems with varying precision, but the briefing treats them as facts.',
+   q:'Is the engagement memory accurate when the briefing relies on it?',
+   why:'Memory entries are written by people and systems with varying precision. The briefing treats them as facts — they are not.',
+   metrics:['memory accuracy audit sample','staleness rate','provenance coverage'],
+   failures:['a paraphrased banker note quoted as a client statement'],
+   controls:['provenance required on write','confidence + timestamp on read','conflicts surfaced, not silently resolved'],
+   obs:'Memory items read, with write source and age, in the trace.',
+   gate:'Memory items used in client-facing output must have provenance; missing → flag.' },
+ 'orchestration:security:credit_analysis': {
+   line:'Orchestration fans work out to sub-agents, so permissions must survive the trip or a child call ends up more privileged than the request.',
+   q:'Do permissions survive the trip through sub-agents and tool calls?',
+   why:'Orchestration fans work out to sub-agents and tools. If identity and scope are not propagated, a child call can be more privileged than the parent request.',
+   metrics:['permission propagation compliance','child-scope ⊆ parent-scope (target 100%)'],
+   failures:['a sub-agent tool call drops the client scope and reads all clients'],
+   controls:['contextual identity propagation','child-scope check ≤ parent-scope','tool allow-list per sub-agent'],
+   obs:'Scope chain in the trace: root request → step → tool.',
+   gate:'Any child call with wider scope = hard fail, request aborted.' },
+ 'ingestion:security:credit_analysis': {
+   line:'Credit documents arrive from email, uploads and partners, which makes ingestion the quarantine point.',
+   q:'Are credit documents quarantined and identity-checked on ingestion?',
+   why:'Credit documents enter from email, uploads and partners. An ingested mis-sent or malicious document becomes “authoritative” evidence downstream.',
+   metrics:['ingestion quarantine coverage','sender-identity verification rate'],
+   failures:['a mis-sent competitor document indexed as the client’s own'],
+   controls:['quarantine until sender + document type verified','document identity (entity, period) cross-check','source authority tagging'],
+   obs:'Ingestion provenance (sender, channel, time, verifier) on every document.',
+   gate:'No document enters the credit index without verified sender and entity match.' },
+ 'context:latency:market_research': {
+   line:'Context assembly is where token spend is decided, so it sets the cost and the latency of every answer.',
+   q:'Is the assembled context within the token budget that keeps latency and cost flat?',
+   why:'Context assembly is where token spend is decided. Packing 30 documents “to be safe” doubles cost and latency for a question that needed three.',
+   metrics:['p50 tokens in final prompt','budget adherence rate','cost per answer'],
+   failures:['a 3× budget context packed for a simple price question'],
+   controls:['token budget per answer type','relevance-scored packing (not all-or-nothing)','cost telemetry per workflow'],
+   obs:'Final prompt size and per-source token allocation in the trace.',
+   gate:'p50 tokens within 20% of the per-workflow budget.' },
+};
+
+/* Failure-mode overlay: layerId → failures */
+const FAILURES = {
+ chunking: [
+  { name:'Boundary split separates a claim from its qualifier', sev:'fail',
+    cause:'Fixed-size splitting cuts mid-sentence or mid-table, so a figure lands in one chunk and the sentence qualifying it lands in another.',
+    detect:'Clause-level golden questions answered without the qualifier; sample audits of the windows around each boundary.',
+    mitigate:'Structure-aware splitting on headings, tables and clauses, with overlap; keep tables intact and re-attach the parent section at retrieval.',
+    eval:'Retrieval-set completeness on clause-level questions; share of chunks whose parent boundary is intact.' },
+  { name:'Near-duplicate chunks crowd the selected set', sev:'warn',
+    cause:'Overlapping windows and repeated boilerplate make the same passage appear repeatedly, so distinct evidence never reaches the context.',
+    detect:'Duplicate ratio inside the retrieved set; distinct-source count per answer.',
+    mitigate:'Deduplicate by content hash and near-duplicate similarity before reranking; cap the number of chunks per document.',
+    eval:'Distinct-source count in the top-k; duplicate ratio of the selected set.' } ],
+ ingestion: [
+  { name:'OCR error', sev:'warn', cause:'Low-quality scan or unusual layout.', detect:'Figure-fidelity diff vs source; OCR confidence thresholds.', mitigate:'Table-aware parser, human spot-check sample, re-scan pipeline.', eval:'Extraction accuracy on filings benchmark.' },
+  { name:'Table structure lost', sev:'warn', cause:'Complex tables flattened to linear text.', detect:'Column/row alignment checks; figure diff.', mitigate:'Preserve table semantics; keep raw image for reference.', eval:'Table fidelity benchmark.' } ],
+ embeddings: [
+  { name:'Index drift after model swap', sev:'warn', cause:'Embedding model changed without re-benchmarking.', detect:'Recall benchmark before/after each index build.', mitigate:'Pin model version; shadow comparison; automatic rollback.', eval:'Recall@5 vs baseline.' } ],
+ retrieval: [
+  { name:'Wrong evidence', sev:'fail', cause:'A similar-but-wrong document outranks the right one.', detect:'nDCG on golden set; decisive-document misses.', mitigate:'Reranking, metadata filters, source-authority scoring.', eval:'nDCG, decisive-set completeness.' },
+  { name:'Missing evidence', sev:'warn', cause:'Query wording mismatches document wording.', detect:'Recall@K drop; coverage checks.', mitigate:'Query rewriting; hybrid lexical + vector search.', eval:'Recall@K.' },
+  { name:'Stale evidence', sev:'warn', cause:'Corpus not updated after new filings or data releases.', detect:'Freshness audit vs source systems.', mitigate:'TTL per document type; freshness label in context.', eval:'Freshness compliance rate.' } ],
+ reranking: [
+  { name:'Fluent passage outranks decisive evidence', sev:'fail',
+    cause:'Cross-encoder scores track surface relevance, so a well-written but tangential passage is promoted over the filing that settles the question.',
+    detect:'Shadow A/B of ranking orders against a labelled evidence set; rank churn of the decisive document.',
+    mitigate:'Feature source authority and freshness alongside the score; keep a rule-based floor for mandatory sources.',
+    eval:'nDCG@k and Recall@k on the labelled evidence set; age of the promoted evidence.' },
+  { name:'Truncation drops the passage carrying the answer', sev:'warn',
+    cause:'A fixed top-n keeps the highest scores, and when several passages score close together the decisive one falls just outside n.',
+    detect:'Answers with n vs n+2 in shadow runs; count of answers citing evidence outside the selected set.',
+    mitigate:'Evidence budget per question rather than a fixed n; guarantee at least one passage per document class.',
+    eval:'Evidence-completeness rate; share of answers needing evidence beyond the selected n.' } ],
+ context: [
+  { name:'Prompt injection from retrieved content', sev:'fail', cause:'Retrieved document contains instruction-like text.', detect:'Injection regression suite; anomalies in tool calls.', mitigate:'Treat content as data; sandboxed templates; tool calls only from the planner.', eval:'Injection suite pass rate (100%).' } ],
+ generation: [
+  { name:'Unsupported claim', sev:'fail', cause:'Model fills a gap plausibly instead of abstaining.', detect:'Claim→evidence link check; LLM-judge groundedness.', mitigate:'Forced citations, abstention prompt, validation gate.', eval:'Groundedness, citation validity.' },
+  { name:'Incorrect synthesis', sev:'warn', cause:'Multiple correct facts combined incorrectly.', detect:'Number-fidelity checks; unit tests on arithmetic.', mitigate:'Structured outputs; recompute numbers in validation.', eval:'Correctness on golden questions.' } ],
+ tools: [
+  { name:'Wrong tool', sev:'warn', cause:'Similar tool names or vague schemas.', detect:'Tool-selection accuracy metrics.', mitigate:'Disambiguated schemas; selection-confidence threshold.', eval:'Tool-selection accuracy.' },
+  { name:'Wrong arguments', sev:'warn', cause:'Units, windows or IDs mis-specified.', detect:'Argument validation; result sanity checks.', mitigate:'Schema + range validation; unit tests.', eval:'Argument accuracy.' },
+  { name:'Timeout', sev:'warn', cause:'External API slow or down.', detect:'Per-API latency monitoring.', mitigate:'Timeout + retry + labelled fallback.', eval:'Timeout rate; graceful-degradation rate.' } ],
+ orchestration: [
+  { name:'Unnecessary repeated calls', sev:'warn', cause:'Sub-agents re-derive what the parent already fetched.', detect:'Trajectory vs plan template; step efficiency.', mitigate:'Shared context between sub-agents; dedup.', eval:'Step efficiency, trajectory correctness.' } ],
+ memory: [
+  { name:'Stale memory', sev:'warn', cause:'No expiration on engagement facts.', detect:'Freshness audit vs authoritative systems.', mitigate:'TTL; revalidation before client-facing use.', eval:'Stale-memory rate.' },
+  { name:'Cross-client contamination', sev:'fail', cause:'Shared memory namespace or weak read filters.', detect:'Canary contamination tests.', mitigate:'Per-client partitions; scope check on every read.', eval:'Canary leakage (target 0).' } ],
+ validation: [
+  { name:'Unsupported claim passes', sev:'fail', cause:'Validator threshold too loose or skipped.', detect:'Validator accuracy on adversarial claim set.', mitigate:'Stricter claim-level checks; human escalation routing.', eval:'Citation validity, escalation precision.' } ],
+};
+
+/* Security overlay: layerId → short plane label (kept short: labels sit on the plane) */
+const SEC_OVERLAY = {
+ ingestion:'quarantine',
+ embeddings:'client isolation',
+ retrieval:'permission filtering',
+ context:'anti-injection',
+ tools:'least privilege',
+ memory:'client isolation',
+ validation:'DLP check',
+};
+
+const TRACE_FIELDS = [
+ 'request ID','original question','query rewrite','source routing decision','retrieved documents',
+ 'ranking scores','tool calls','tool arguments','tool results','model version','prompt version',
+ 'memory accessed','final evidence','validation result','latency','token usage','cost'
+];
+
+const SCENARIOS = [
+ { id:'mr_share', title:'Market Research — share-price decline', workflow:'market_research',
+   desc:'“What explains the recent share-price decline, and what has management said about liquidity?”',
+   steps:[
+    { layer:'ingestion',      controls:['observability','quality'], note:'Earnings transcript + filing PDFs parsed; source identity captured.' },
+    { layer:'retrieval',      controls:['quality','security','latency','observability'], note:'Hybrid search over filings and licensed market data, within entitlements.' },
+    { layer:'reranking',      controls:['quality'], note:'Keep the one decisive transcript sentence; drop plausible filler.' },
+    { layer:'context',        controls:['security','latency'], note:'Evidence packed inside the token budget; content treated as data.' },
+    { layer:'generation',     controls:['hallucination','quality'], note:'Every number must trace to a citation; abstain if the premise is unverified.' },
+    { layer:'tools',          controls:['security','latency'], note:'Live price/volume from LSEG within licence; timeout → labelled fallback.' },
+    { layer:'orchestration',  controls:['latency','quality'], note:'Plan followed; no redundant sub-agent calls.' },
+    { layer:'memory',         controls:['security'], note:'Engagement context read under client scope.' },
+    { layer:'validation',     controls:['hallucination','human','quality'], note:'Claim→evidence check; false-premise answers escalate to a human.' } ] },
+ { id:'cr_exposure', title:'Credit Analysis — exposure to Client X', workflow:'credit_analysis',
+   desc:'“What is our current exposure to Client X and what risks appear in its latest filings?”',
+   steps:[
+    { layer:'ingestion',      controls:['quality','security'], note:'Filings quarantined until sender and entity are verified.' },
+    { layer:'retrieval',      controls:['security','quality'], note:'Permission-aware: only Client X documents; 0 unauthorised retrievals.' },
+    { layer:'context',        controls:['security'], note:'Internal vs public sections kept separate in the prompt.' },
+    { layer:'generation',     controls:['hallucination'], note:'Risk commentary only from filings; no invented numbers.' },
+    { layer:'tools',          controls:['security','latency'], note:'Current exposure read from the internal credit system — least privilege.' },
+    { layer:'memory',         controls:['security','hallucination'], note:'Engagement memory revalidated before use.' },
+    { layer:'validation',     controls:['human','quality'], note:'Exposure figures require human sign-off before any client use.' } ] },
+ { id:'cb_briefing', title:'Client Briefing — pre-meeting prep', workflow:'client_briefing',
+   desc:'“Prepare a briefing before a banker meets the client.”',
+   steps:[
+    { layer:'ingestion',      controls:['observability'], note:'CRM, credit, trade, filings, market data, memory — all source-tagged.' },
+    { layer:'retrieval',      controls:['quality','security'], note:'Multi-source retrieval under client scope.' },
+    { layer:'reranking',      controls:['quality'], note:'Select the sections a meeting actually needs.' },
+    { layer:'context',        controls:['security','latency'], note:'Section budgets per briefing type.' },
+    { layer:'generation',     controls:['hallucination','latency'], note:'Per-section streaming toward the meeting deadline.' },
+    { layer:'tools',          controls:['security'], note:'Read-only tool calls within the client’s entitlements.' },
+    { layer:'orchestration',  controls:['latency','quality'], note:'Template trajectory; dedup of repeated retrievals.' },
+    { layer:'memory',         controls:['security','hallucination'], note:'Engagement memory with TTL; conflicts surfaced, not resolved silently.' },
+    { layer:'validation',     controls:['quality','human'], note:'Citation validity ≥ 0.95 or the briefing goes to a human.' } ] },
+];
+
+/* ---------------------------------------------------------------
+   Walks: the three authored scenarios above, plus a pipeline walk for every
+   other workflow, derived from the same layer/control data. Nothing is
+   hand-written twice and no agent is left undemonstrable.
+   --------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------
+   Composed walks. A walk is not a script: it is a projection of the
+   same three data sources, so any workflow, any control and any layer
+   can drive one. Six kinds of entry point, all of them derived:
+     workflow:w          → the 11 layers of one agent
+     cell:w:c            → one control, layer by layer, for one agent
+     layer:l:w           → every control at one layer, for one agent
+   --------------------------------------------------------------- */
+const COMPOSED={};
+function composeWalk(kind, key){
+  const ck='x:'+kind+':'+key;
+  if (COMPOSED[ck]) return COMPOSED[ck];
+  const parts=String(key).split(':').map(Number);
+  let w = parts[0], steps=[], title='', desc='';
+  if (kind==='layer'){
+    const l=parts[0], wf=parts[1];
+    const Ld=LAYERS[l], wd2=WORKFLOWS[wf];
+    steps = CONTROLS.map(Cd=>({ layer:Ld.id, chip:Cd.short, controls:[Cd.id],
+      note:`${Cd.name}: ${firstClause(Cd.covers)}` }));
+    title = `${Ld.short} — all ${CONTROLS.length} controls`;
+    desc  = `Every control bound to ${Ld.short} for the ${wd2.name.replace(' Agent','')}.`;
+    w = wf;
+  } else if (kind==='cell'){
+    const wf=parts[0], c=parts[1];
+    const Cd=CONTROLS[c], wd2=WORKFLOWS[wf];
+    steps = LAYERS.map(L=>({ layer:L.id, controls:[Cd.id],
+      note:`${Cd.name}: ${firstClause(Cd.covers)} — at ${L.short}, measured as ${firstClause(L.evals)}.` }));
+    title = `${Cd.short} through the ${wd2.name.replace(' Agent','')} pipeline`;
+    desc  = `Where ${Cd.name.toLowerCase()} attaches to evidence, stage by stage.`;
+    w = wf;
+  } else {
+    const wfd=WORKFLOWS[w];
+    steps = LAYERS.map(L=>{
+      const authored=Object.keys(CELLS).filter(k=>{const p=k.split(':'); return p[0]===L.id && p[2]===wfd.id;}).map(k=>k.split(':')[1]);
+      return { layer:L.id, controls: authored.length ? [...new Set(authored)] : ['quality','security','latency'], note:L.agentic };
+    });
+    title = wfd.name.replace(' Agent','') + ' — pipeline walk';
+    desc  = wfd.sample;
+  }
+  const wd=WORKFLOWS[w] || WORKFLOWS[0];
+  const sc={ id:ck, kind, title, desc, workflow:wd.id, composed:true, steps };
+  COMPOSED[ck]=sc;
+  return sc;
+}
+function findWalk(id){ return SCENARIOS.find(s=>s.id===id) || COMPOSED[id] || null; }
+function playWalk(spec){
+  const i=spec.indexOf(':');
+  const sc=composeWalk(spec.slice(0,i), spec.slice(i+1));
+  playScenario(sc.id);
+}
+
+/* one pipeline walk per agent, so every workflow is walkable from the dropdown */
+WORKFLOWS.forEach((wd,i)=>{
+  const sc=composeWalk('workflow', String(i));
+  SCENARIOS.push(Object.assign({}, sc, { id:'walk_'+wd.id, derived:true }));
+});
+
+/* Release gates: "l:c:w" (numeric) → status */
+const GATES = {
+ '3:2:1':  { status:'FAIL',    label:'2 unauthorised retrievals in shadow run' },
+ '3:2:0':  { status:'PASS',    label:'0 unauthorised retrievals (10k queries)' },
+ '6:1:4':  { status:'PASS',    label:'unsupported claims = 0 on golden set' },
+ '10:1:1': { status:'WARNING', label:'3 borderline claims flagged for review' },
+ '7:2:1':  { status:'PASS',    label:'100% least-privilege tool calls' },
+ '3:4:0':  { status:'WARNING', label:'p95 780ms > 600ms budget' },
+ '9:2:4':  { status:'PASS',    label:'0 cross-client leakage (canary test)' },
+ '6:0:0':  { status:'PASS',    label:'groundedness 0.91 ≥ 0.90 gate' },
+};
+
+/* Version compare: "layerId:controlId" → metrics */
+const VERSIONS = {
+ 'retrieval:quality':    { metric:'Recall@5',              base:'0.91',  cand:'0.94', up:true  },
+ 'retrieval:latency':    { metric:'p95 latency',           base:'320ms', cand:'780ms', up:false },
+ 'generation:quality':   { metric:'groundedness',          base:'0.88',  cand:'0.91', up:true  },
+ 'tools:quality':        { metric:'tool-selection acc.',   base:'0.93',  cand:'0.93', up:true  },
+ 'validation:quality':   { metric:'citation validity',     base:'0.84',  cand:'0.80', up:true  },
+ 'context:latency':      { metric:'p50 tokens packed',     base:'2400',  cand:'2900', up:false },
+};
+
+/* Generic (unauthored cell) question templates per control id */
+const GENERIC_Q = {
+ quality:       (L,W)=>`How do we know ${L} is performing well for the ${W}?`,
+ hallucination: (L,W)=>`Where can ${L} introduce unsupported or unreliable content for the ${W}?`,
+ security:      (L,W)=>`What can ${L} expose, call, or leak for the ${W} — and what stops it?`,
+ observability: (L,W)=>`What from ${L} must be captured in the trace so a ${W} request can be reconstructed later?`,
+ latency:       (L,W)=>`What is the latency and cost impact of ${L} for the ${W}?`,
+ regression:    (L,W)=>`How would we detect that a change regressed ${L} for the ${W} before it ships?`,
+ human:         (L,W)=>`When should the output of ${L} for the ${W} be escalated to a human before use?`,
+};
+
+/* =====================================================================
+   APP — geometry, state, rendering, interaction. No conceptual content.
+   ===================================================================== */
+
+/* ---------- indexes ---------- */
+const LCN = LAYERS.length, CN = CONTROLS.length, WN = WORKFLOWS.length;
+const G = 0.13; // gap between cells
+const layerIdx = Object.fromEntries(LAYERS.map((d,i)=>[d.id,i]));
+const controlIdx = Object.fromEntries(CONTROLS.map((d,i)=>[d.id,i]));
+const wfIdx = Object.fromEntries(WORKFLOWS.map((d,i)=>[d.id,i]));
+const CELL_INDEX = {};
+for (const k of Object.keys(CELLS)) {
+  const [li,ci,wi] = k.split(':');
+  CELL_INDEX[layerIdx[li]+':'+controlIdx[ci]+':'+wfIdx[wi]] = CELLS[k];
+}
+
+/* ---------- DOM refs ---------- */
+const $ = id => document.getElementById(id);
+const svg = $('scene'), wrap = $('canvas-wrap'), panelEl = $('panel'),
+      tipEl = $('tooltip'), slEl = $('searchlist'), searchEl = $('search'),
+      fpEl = $('filters-pop'), toastEl = $('toast'), annEl = $('announcer'),
+      stageCardEl = $('stage-card'), traceEl = $('trace-panel'),
+      scSelEl = $('scenario-select'), playBtn = $('scenario-play'),
+      resultbarEl = $('resultbar'), legendEl = $('axis-legend'), hintsBtn = $('hints-btn');
+
+/* ---------- geometry ---------- */
+const cam = { yaw:0.52, pitch:0.34, zoom:1 };
+const view = { s:1, ox:0, oy:0 };
+let W = 900, Hh = 560;
+
+function raw(x,y,z){
+  const cy=Math.cos(cam.yaw), sy=Math.sin(cam.yaw);
+  const cp=Math.cos(cam.pitch), sp=Math.sin(cam.pitch);
+  const X = x*cy + z*sy;
+  const Z = -x*sy + z*cy;
+  return { X, Y: y*cp + Z*sp, D: -y*sp + Z*cp };
+}
+function fit(){
+  const pts = [[0,0,0],[LCN,0,0],[0,CN,0],[LCN,CN,0],[0,0,WN],[LCN,0,WN],[0,CN,WN],[LCN,CN,WN],
+               [LCN/2,-2.05,0.45],[LCN,-2.5,0.55],[-3.6,CN/2,0],[-0.45,CN+0.75,5.62]];
+  let aX=1e9,bX=-1e9,aY=1e9,bY=-1e9;
+  for (const p of pts){ const r=raw(p[0],p[1],p[2]);
+    if(r.X<aX)aX=r.X; if(r.X>bX)bX=r.X; if(r.Y<aY)aY=r.Y; if(r.Y>bY)bY=r.Y; }
+  const M = document.body.classList.contains('present') ? 48 : 38;
+  const s=Math.min((W-2*M)/(bX-aX),(Hh-2*M)/(bY-aY))*cam.zoom;
+  view.s=s; view.ox=W/2 - s*(aX+bX)/2; view.oy=Hh/2 + s*(aY+bY)/2;
+}
+function P(x,y,z){ const r=raw(x,y,z); return { x:r.X*view.s+view.ox, y:-r.Y*view.s+view.oy, d:r.D }; }
+function angleZ(){ const a=P(0,0,0), b=P(0,0,1); return Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI; }
+function angleX(){ const a=P(0,0,0), b=P(1,0,0); return Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI; }
+const clamp = (v,a,b)=>Math.max(a,Math.min(b,v));
+
+/* ---------- state ---------- */
+const state = {
+  mode:'intersection', sel:null, hover:null,
+  cursor:{ l:3, c:0, w:0 },
+  ov:{ harness:true, failures:false, evals:false, security:false, trace:false, compare:false, gates:false, coverage:false },
+  filters:{ layers:new Set(), controls:new Set(), workflows:new Set() },
+  search:{ q:'', hits:null },
+  scenario:{ id:'', step:0, playing:false, visited:[] },
+  flash:false, intro:'', hints:true, present:false, legendSig:'', hist:[],
+};
+let lastStage=null, kbFocus=false, lastHoverKey=null, lastPanelSig=null, lastTraceSig=null;
+let scTimer=null, drag=null, dragDist=0, pinchDist=0, camAnim=null;
+const pointers = new Map();
+/* Motion is opt-in: reduced motion snaps the camera and steps the scenario by hand. */
+const REDUCED = (typeof matchMedia === 'function') && matchMedia('(prefers-reduced-motion: reduce)').matches;
+function applyHints(){
+  const hc = $('harness-callout'); if (hc) hc.hidden = !state.hints;
+  if (hintsBtn){ hintsBtn.classList.toggle('active', state.hints); hintsBtn.setAttribute('aria-pressed', String(state.hints)); }
+}
+/* The strip under the cube is a legend bar: it explains whichever overlay is on,
+   and stays out of the way the rest of the time. */
+function legendItem(col,txt){ return `<span class="lg-item"><i style="background:${col}"></i>${esc(txt)}</span>`; }
+function renderLegend(){
+  const o=state.ov;
+  let html='';
+  if (o.coverage){
+    html = '<span class="lg-title">Coverage of the model</span>'
+      + legendItem('#5f92c9','Gate recorded (pass · warn · block)')
+      + legendItem('#a8c6e4','Argument authored, not yet gated')
+      + legendItem('#eaeff6','Generated from layer + control + workflow');
+  } else if (o.gates){
+    html = '<span class="lg-title">Release gates</span>'
+      + legendItem('#3f8f63','PASS — may ship') + legendItem('#d98e04','WARNING — flagged') + legendItem('#c0392b','BLOCK — release gate failed');
+  } else if (o.compare){
+    html = '<span class="lg-title">Candidate vs baseline</span>'
+      + legendItem('#2c7a4b','improved') + legendItem('#c0392b','regressed') + legendItem('#5a6b84','unchanged');
+  } else if (o.failures){
+    html = '<span class="lg-title">Failure modes</span>'
+      + legendItem('#c0392b','blocking severity') + legendItem('#d98e04','warning severity');
+  } else if (o.evals){
+    html = '<span class="lg-title">Evaluations</span>'
+      + legendItem('#3f74ad','headline metric for the layer');
+  } else if (o.security){
+    html = '<span class="lg-title">Security overlay</span>'
+      + legendItem('#7a58c2','the security control plane and its per-layer obligation');
+  } else if (o.harness){
+    html = '<span class="lg-title">Harness</span>'
+      + legendItem('#7a58c2','the six internal control planes that wrap every layer');
+  }
+  const sig = html.replace(/\s+/g,' ');
+  if (sig===state.legendSig) return;
+  state.legendSig=sig;
+  legendEl.innerHTML=html;
+  legendEl.hidden=!html;
+}
+
+/* ---------- palettes ---------- */
+const C_BASE    = { top:'#dfeaf8', front:'#cfe0f3', side:'#b9d0ea', stroke:'#94b4d9' };
+const C_DIM     = { top:'#eef3fa', front:'#e6edf7', side:'#dce5f1', stroke:'#c6d3e6' };
+const C_LAYER   = { top:'#cfe4f9', front:'#b3d2f2', side:'#9ac0ea', stroke:'#6f9fd4' };
+const C_CONTROL = { top:'#e3daf7', front:'#cdbdee', side:'#b7a3e2', stroke:'#8f74cf' };
+const C_WORKFLOW= { top:'#d6ecdd', front:'#b8dfc6', side:'#9ccfab', stroke:'#6cb187' };
+const FLASH     = { top:'#cfe2f5', front:'#b8d4ee', side:'#a9c9e8', stroke:'#8fb2d9' };
+/* scenario path: the active slice hue at two lower strengths (past / next) */
+const C_PAST    = { top:'#dcebf8', front:'#c3daf2', side:'#b0cbe8', stroke:'#8fb2d9', op:.42 };
+const C_NEXT    = { top:'#dcebf8', front:'#c3daf2', side:'#b0cbe8', stroke:'#8fb2d9', op:.16 };
+/* coverage view: how much of the model is authored, gated, or generated */
+const C_COV_AUTH = { top:'#cfe0f2', front:'#a8c6e4', side:'#93b6da', stroke:'#6f9fd4' };
+const C_COV_GATE = { top:'#9dc0e6', front:'#5f92c9', side:'#4c7fb3', stroke:'#2c66aa' };
+const C_COV_GEN  = { top:'#f2f5f9', front:'#eaeff6', side:'#e2e9f3', stroke:'#d5dfeb' };
+const CELL_COLORS = {
+  system:      { top:'#8fbceb', front:'#5f9bd9', side:'#4b88c8', stroke:'#1d5fa8' },
+  reliability: { top:'#b09ce8', front:'#8f74d9', side:'#7c5fcb', stroke:'#5b3fa8' },
+  workflow:    { top:'#8ecfa5', front:'#63b585', side:'#51a373', stroke:'#2c7a4b' },
+  intersection:{ top:'#9aa9ee', front:'#7482dd', side:'#6472d3', stroke:'#3a4fae' },
+};
+function cellColor(){ return CELL_COLORS[state.mode] || CELL_COLORS.intersection; }
+
+/* ---------- helpers ---------- */
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function passFilters(l,c,w){
+  const f=state.filters;
+  return (!f.layers.size||f.layers.has(l)) && (!f.controls.size||f.controls.has(c)) && (!f.workflows.size||f.workflows.has(w));
+}
+const DEFAULT_SCENARIO='mr_share';
+function currentScenarioStep(){
+  const sc=state.scenario;
+  if (!sc.visited.length) return null;
+  const scd=findWalk(sc.id); if(!scd) return null;
+  const st=scd.steps[sc.visited.length-1]; if(!st) return null;
+  return { st, l:layerIdx[st.layer], w:wfIdx[scd.workflow], cs:st.controls.map(cid=>controlIdx[cid]) };
+}
+function nextScenarioLayer(){
+  const sc=state.scenario;
+  if (!sc.visited.length) return null;
+  const scd=findWalk(sc.id);
+  if (!scd) return null;
+  const i=sc.visited.length;
+  if (i>=scd.steps.length) return null;
+  return layerIdx[scd.steps[i].layer];
+}
+function cellState(l,c,w){
+  /* coverage view: make the authored / gated / generated split explicit */
+  if (state.ov.coverage){
+    const k=l+':'+c+':'+w;
+    if (GATES[k]) return 'cov-gate';
+    return CELL_INDEX[k] ? 'cov-auth' : 'cov-gen';
+  }
+  /* while a scenario runs, the cube reads as a path: past faint, current strong, next previewed */
+  const cs=currentScenarioStep();
+  if (cs){
+    if (l===cs.l && w===cs.w && cs.cs.indexOf(c)>=0) return 'cell';   /* active control at this stage */
+    const cur=cs.l;
+    if (l===cur) return 'layer';
+    if (state.scenario.visited.indexOf(l)>=0) return 'past';
+    if (l===nextScenarioLayer()) return 'next';
+    return 'dim';
+  }
+  if (state.search.hits && state.search.hits.size){
+    const H=state.search.hits;
+    if (H.has('cell:'+l+':'+c+':'+w)) return 'hit';
+    if (H.has('layer:'+l)) return 'layer';
+    if (H.has('control:'+c)) return 'control';
+    if (H.has('workflow:'+w)) return 'workflow';
+    return 'dim';
+  }
+  const s=state.sel;
+  if (!s) return passFilters(l,c,w) ? 'base' : 'dim';
+  let rel=false, type='';
+  if (s.type==='cell'){ rel = l===s.l && c===s.c && w===s.w; type='cell'; }
+  else if (s.type==='layer' || s.type==='failure'){ rel = l===s.l; type='layer'; }
+  else if (s.type==='control'){ rel = c===s.c; type='control'; }
+  else if (s.type==='workflow'){ rel = w===s.w; type='workflow'; }
+  if (rel) return type;
+  return 'dim';
+}
+function pal(st){
+  if (state.flash) return st==='dim' ? C_DIM : FLASH;
+  switch(st){
+    case 'base': return C_BASE;
+    case 'dim': return C_DIM;
+    case 'layer': return C_LAYER;
+    case 'control': return C_CONTROL;
+    case 'workflow': return C_WORKFLOW;
+    case 'cell': return cellColor();
+    case 'past': return C_PAST;
+    case 'next': return C_NEXT;
+    case 'cov-gate': return C_COV_GATE;
+    case 'cov-auth': return C_COV_AUTH;
+    case 'cov-gen': return C_COV_GEN;
+    case 'hit': return Object.assign({}, cellColor(), { stroke:'#d98e04', sw:1.1 });
+  }
+  return C_BASE;
+}
+function isSel(type, idx){
+  const s=state.sel; if(!s) return false;
+  if (type==='layer')  return (s.type==='layer'&&s.l===idx)||(s.type==='failure'&&s.l===idx)||(s.type==='cell'&&s.l===idx);
+  if (type==='control') return (s.type==='control'&&s.c===idx)||(s.type==='cell'&&s.c===idx);
+  if (type==='workflow') return (s.type==='workflow'&&s.w===idx)||(s.type==='cell'&&s.w===idx);
+  return false;
+}
+function defaultW(){ return state.sel && state.sel.w!=null ? state.sel.w : 0; }
+
+/* ---------- render ---------- */
+let rafId=0;
+function requestRender(){ if(!rafId) rafId=requestAnimationFrame(()=>{ rafId=0; render(); }); }
+
+const GLOW_FILTERS = Object.entries({ system:'#1d5fa8', reliability:'#5b3fa8', workflow:'#2c7a4b', intersection:'#3a4fae' })
+  .map(([m,col])=>`<filter id="glow-${m}" x="-80%" y="-80%" width="260%" height="260%">`
+    +`<feDropShadow dx="0" dy="1.5" stdDeviation="5.5" flood-color="${col}" flood-opacity="0.5"/></filter>`).join('');
+const DEFS = `<defs>
+<marker id="mBlue" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto"><path d="M0,0 L7.5,3.5 L0,7 Z" fill="#3f74ad"/></marker>
+<marker id="mPurple" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto"><path d="M0,0 L7.5,3.5 L0,7 Z" fill="#7a58c2"/></marker>
+<marker id="mGreen" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto"><path d="M0,0 L7.5,3.5 L0,7 Z" fill="#3f8f63"/></marker>
+${GLOW_FILTERS}
+</defs>`;
+
+function quadPath(pts, close){
+  let d='M';
+  for (const p of pts){ const s=P(p[0],p[1],p[2]); d+=s.x.toFixed(1)+' '+s.y.toFixed(1)+' L'; }
+  d = d.slice(0,-2);
+  return close ? d+' Z' : d;
+}
+function planePath(x0,y,z0,x1,z1,fill,stroke,sw,dash,op){
+  const d=quadPath([[x0,y,z0],[x1,y,z0],[x1,y,z1],[x0,y,z1]], true);
+  return `<path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"${dash?` stroke-dasharray="${dash}"`:''} opacity="${op}" pointer-events="none"/>`;
+}
+function boxOutline(x0,x1,y0,y1,z0,z1,color,extra){
+  let d='';
+  const quads=[[[x0,y0,z0],[x1,y0,z0],[x1,y1,z0],[x0,y1,z0]]];
+  if (cam.yaw>0.001) quads.push([[x1,y0,z0],[x1,y0,z1],[x1,y1,z1],[x1,y1,z0]]);
+  else if (cam.yaw<-0.001) quads.push([[x0,y0,z0],[x0,y0,z1],[x0,y1,z1],[x0,y1,z0]]);
+  if (cam.pitch>0.001) quads.push([[x0,y1,z0],[x1,y1,z0],[x1,y1,z1],[x0,y1,z1]]);
+  for (const q of quads) d+=quadPath(q,true);
+  return `<path d="${d}" fill="none" stroke="${color}" stroke-width="2" ${extra}pointer-events="none"/>`;
+}
+function selectionOutline(){
+  const s=state.sel; if(!s) return '';
+  if (s.type==='cell') return boxOutline(s.l,s.l+1,s.c,s.c+1,s.w,s.w+1, cellColor().stroke, '');
+  if (s.type==='layer' || s.type==='failure') return boxOutline(s.l,s.l+1,0,CN,0,WN, s.type==='failure'?'#d98e04':'#2f6db5', '');
+  if (s.type==='control') return boxOutline(0,LCN,s.c,s.c+1,0,WN,'#5b3fa8','');
+  if (s.type==='workflow') return boxOutline(0,LCN,0,CN,s.w,s.w+1,'#2c7a4b','');
+  return '';
+}
+function scenarioLine(){
+  const sc=state.scenario;
+  if (!sc.id || !sc.visited.length) return '';
+  const scd=findWalk(sc.id); if(!scd) return '';
+  const w=wfIdx[scd.workflow];
+  let s='';
+  if (sc.visited.length>1){
+    const pts=sc.visited.map(l=>P(l+0.5,3.5,w+0.5));
+    s+=`<polyline points="${pts.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' ')}" fill="none" stroke="#3f8f63" stroke-width="2.5" opacity="0.85" stroke-linejoin="round" pointer-events="none"/>`;
+  }
+  for (const l of sc.visited){ const p=P(l+0.5,3.5,w+0.5);
+    s+=`<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3.5" fill="#3f8f63" stroke="#ffffff" stroke-width="1" pointer-events="none"/>`; }
+  const last=sc.visited[sc.visited.length-1]; const lp=P(last+0.5,3.5,w+0.5);
+  s+=`<circle cx="${lp.x.toFixed(1)}" cy="${lp.y.toFixed(1)}" r="6" fill="#2c7a4b" stroke="#ffffff" stroke-width="1.5" pointer-events="none"/>`;
+  return s;
+}
+function axisLinesAndTitles(){
+  let s='';
+  const lineY = cam.pitch>0.6 ? -2.45 : -1.05;
+  const a1=P(0,lineY,0.55), a2=P(LCN,lineY,0.55);
+  s+=`<line x1="${a1.x.toFixed(1)}" y1="${a1.y.toFixed(1)}" x2="${a2.x.toFixed(1)}" y2="${a2.y.toFixed(1)}" stroke="#3f74ad" stroke-width="1.4" marker-end="url(#mBlue)" pointer-events="none"/>`;
+  const c1=P(-0.62,0.35,0), c2=P(-0.62,CN-0.35,0);
+  s+=`<line x1="${c1.x.toFixed(1)}" y1="${c1.y.toFixed(1)}" x2="${c2.x.toFixed(1)}" y2="${c2.y.toFixed(1)}" stroke="#7a58c2" stroke-width="1.4" marker-end="url(#mPurple)" pointer-events="none"/>`;
+  const g1=P(-0.5,CN+0.55,0.4), g2=P(-0.5,CN+0.55,WN-0.25);
+  s+=`<line x1="${g1.x.toFixed(1)}" y1="${g1.y.toFixed(1)}" x2="${g2.x.toFixed(1)}" y2="${g2.y.toFixed(1)}" stroke="#3f8f63" stroke-width="1.4" marker-end="url(#mGreen)" pointer-events="none"/>`;
+  return s;
+}
+/* Axis captions are pinned to the screen (left rail) so they stay clear of
+   projected labels at every camera angle. */
+function screenTitles(){
+  return `<g pointer-events="none">
+    <text class="axis-title" fill="#2c7a4b" x="16" y="24">WORKFLOWS / AGENTS</text>
+    <text class="axis-title" fill="#2c66aa" x="16" y="${Hh-14}">SYSTEM LAYERS</text>
+    <text class="axis-title" fill="#5b3fa8" transform="rotate(-90 19 ${Hh/2})" x="19" y="${Hh/2}" text-anchor="middle">RELIABILITY CONTROLS</text>
+  </g>`;
+}
+function labelParts(){
+  const aZ=angleZ();
+  const aZf=(Math.cos(aZ*Math.PI/180)<0)?aZ+180:aZ; // keep depth labels readable
+  let s='';
+  CONTROLS.forEach((d,c)=>{
+    const p=P(-0.22,c+0.5,0);
+    s+=`<g class="lbl lbl-c${state.mode==='reliability'?' emph':''}${isSel('control',c)?' sel':''}" data-sel="control:${c}" role="button" aria-label="${esc(d.name)} — cross-cutting control, applies across every system layer and workflow">
+      <text x="${p.x.toFixed(1)}" y="${(p.y+3.5).toFixed(1)}" text-anchor="end">${esc(d.name)}</text></g>`;
+  });
+  LAYERS.forEach((d,l)=>{
+    const p=P(l+0.5,-0.7,1.02);
+    s+=`<g class="lbl lbl-l${state.mode==='system'?' emph':''}${isSel('layer',l)?' sel':''}" data-sel="layer:${l}" role="button" aria-label="${esc(d.name)} — system layer, full slice across all controls and workflows">
+      <text transform="rotate(${aZf.toFixed(1)} ${p.x.toFixed(1)} ${p.y.toFixed(1)})" x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle">${esc(d.short)}</text></g>`;
+  });
+  WORKFLOWS.forEach((d,w)=>{
+    const p=P(-0.45,CN+0.28,w+0.62);
+    const tx=p.x-(w%2===0?10:122);
+    s+=`<g class="lbl lbl-w${state.mode==='workflow'?' emph':''}${isSel('workflow',w)?' sel':''}" data-sel="workflow:${w}" role="button" aria-label="${esc(d.name)} — banking workflow, full layer by control matrix">
+      <line x1="${p.x.toFixed(1)}" y1="${p.y.toFixed(1)}" x2="${(tx+5).toFixed(1)}" y2="${(p.y-1).toFixed(1)}" stroke="#84bd97" stroke-width="0.8" opacity="0.7"/>
+      <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="2.2" fill="#3f8f63"/>
+      <text x="${tx.toFixed(1)}" y="${(p.y+3.5).toFixed(1)}" text-anchor="end" font-size="10">${esc(d.short)}</text></g>`;
+  });
+  return s;
+}
+function overlayParts(){
+  let s='';
+  const o=state.ov;
+  // Overlay text sits on cube surfaces, so it is only drawn while that
+  // surface is legible from the current angle; the panels carry the same
+  // information at all times.
+  const secLabelsOk = cam.yaw>-0.35 && cam.yaw<1.0;               // front-face labels
+  if (o.harness){ for(let c=1;c<CN;c++) s+=planePath(0,c,0,LCN,WN,'rgba(122,88,194,0.045)','#7a58c2',0.8,'4 3',0.65); }
+  if (o.security){
+    s+=planePath(0,2,0,LCN,WN,'rgba(122,88,194,0.13)','#7a58c2',1,'',1);
+    if (secLabelsOk){
+      for (const [lid,label] of Object.entries(SEC_OVERLAY)){
+        const l=layerIdx[lid]; const p=P(l+0.5,(l%2===0)?2.45:2.9,0.02);
+        s+=`<text class="seclbl" x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" pointer-events="none">${esc(label)}</text>`;
+      }
+    }
+  }
+  if (o.failures){
+    for (const [lid,arr] of Object.entries(FAILURES)){
+      const l=layerIdx[lid]; const bad=arr.some(f=>f.sev==='fail');
+      const p=P(l+0.5,CN+0.26,0);
+      s+=`<g class="lbl" data-sel="failure:${l}" role="button" aria-label="Failure modes for ${esc(LAYERS[l].name)}: ${esc(arr.map(f=>f.name).join(', '))}">
+        <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="7.5" fill="${bad?'#c0392b':'#d98e04'}" opacity="0.92"/>
+        <text x="${p.x.toFixed(1)}" y="${(p.y+3).toFixed(1)}" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">${arr.length}</text></g>`;
+    }
+  }
+  if (o.evals){
+    // Second floor row, parallel to the layer labels: "layer → its headline eval".
+    const aZ=angleZ();
+    const aZf=(Math.cos(aZ*Math.PI/180)<0)?aZ+180:aZ;
+    LAYERS.forEach((d,l)=>{
+      const p=P(l+0.5,-2.0,0.67);
+      s+=`<text class="evallbl" transform="rotate(${aZf.toFixed(1)} ${p.x.toFixed(1)} ${p.y.toFixed(1)})" x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" pointer-events="none">${esc(d.chips[0])}</text>`;
+    });
+  }
+  if (o.compare){
+    const wf=defaultW();
+    for (const [k,v] of Object.entries(VERSIONS)){
+      const [lid,cid]=k.split(':'); const l=layerIdx[lid], c=controlIdx[cid];
+      const p=P(l+0.5,c+0.5,wf);
+      const nb=parseFloat(v.base), nc=parseFloat(v.cand);
+      const flat=nb===nc, good=flat?null:(v.up? nc>nb : nc<nb);
+      const col=flat?'#5a6b84':(good?'#2c7a4b':'#c0392b');
+      const glyph=flat?'=':(good?'▲':'▼');
+      const wd=182, ht=22;
+      s+=`<g class="lbl" data-sel="cell:${l}:${c}:${wf}" role="button" aria-label="${esc(v.metric)}: baseline ${esc(v.base)}, candidate ${esc(v.cand)}">
+        <rect x="${(p.x-wd/2).toFixed(1)}" y="${(p.y-ht/2).toFixed(1)}" width="${wd}" height="${ht}" rx="5" fill="#ffffff" stroke="${col}" stroke-width="1"/>
+        <text class="vlbl" x="${p.x.toFixed(1)}" y="${(p.y+3.5).toFixed(1)}" text-anchor="middle" fill="#33475f">${esc(v.metric)}: ${esc(v.base)} → ${esc(v.cand)} <tspan fill="${col}" font-weight="700">${glyph}</tspan></text></g>`;
+    }
+  }
+  if (o.gates){
+    for (const [k,g] of Object.entries(GATES)){
+      const [l,c,w]=k.split(':').map(Number);
+      const p=P(l+0.8,c+0.28,w);
+      const col=g.status==='PASS'?'#3f8f63':(g.status==='WARNING'?'#d98e04':'#c0392b');
+      const glyph=g.status==='PASS'?'✓':(g.status==='WARNING'?'!':'✕');
+      s+=`<g class="lbl" data-sel="cell:${l}:${c}:${w}" role="button" aria-label="Release gate ${g.status}: ${esc(g.label)}">
+        <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="7" fill="${col}"/>
+        <text x="${p.x.toFixed(1)}" y="${(p.y+3.2).toFixed(1)}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#ffffff">${glyph}</text></g>`;
+    }
+  }
+  return s;
+}
+function slab(pts, fill){
+  return `<path d="${quadPath(pts,true)}" fill="${fill}" stroke="none" pointer-events="none"/>`;
+}
+function edge(pts, stroke){
+  return `<path d="${quadPath(pts,true)}" fill="none" stroke="${stroke}" stroke-width="1.1" stroke-dasharray="4 3" pointer-events="none"/>`;
+}
+/* The selected intersection is drawn over the whole cube: three translucent slabs make the
+   Layer x Control x Workflow coordinates traceable, and the cell itself carries a saturated
+   fill, a thicker border and a soft glow so it can never be missed. */
+function selectionHighlight(){
+  const s=state.sel;
+  if (!s || s.type!=='cell') return '';
+  const l=s.l, c=s.c, w=s.w;
+  let g='<g class="selguide">';
+  g+=slab([[0,c+0.5,0],[LCN,c+0.5,0],[LCN,c+0.5,WN],[0,c+0.5,WN]],'rgba(122,88,194,0.15)');
+  g+=slab([[l+0.5,0,0],[l+0.5,CN,0],[l+0.5,CN,WN],[l+0.5,0,WN]],'rgba(63,116,173,0.15)');
+  g+=slab([[0,0,w+0.5],[LCN,0,w+0.5],[LCN,CN,w+0.5],[0,CN,w+0.5]],'rgba(63,143,99,0.15)');
+  g+=edge([[0,c+0.5,0],[LCN,c+0.5,0],[LCN,c+0.5,WN],[0,c+0.5,WN]],'rgba(122,88,194,0.55)');
+  g+=edge([[l+0.5,0,0],[l+0.5,CN,0],[l+0.5,CN,WN],[l+0.5,0,WN]],'rgba(63,116,173,0.6)');
+  g+=edge([[0,0,w+0.5],[LCN,0,w+0.5],[LCN,CN,w+0.5],[0,CN,w+0.5]],'rgba(63,143,99,0.6)');
+  g+='</g>';
+  const F=cellColor();
+  const x0=l+G,x1=l+1-G,y0=c+G,y1=c+1-G,z0=w+G,z1=w+1-G;
+  const faces=[{ pts:[[x0,y0,z0],[x1,y0,z0],[x1,y1,z0],[x0,y1,z0]], k:'f' }];
+  if (cam.yaw>0.001) faces.push({ pts:[[x1,y0,z0],[x1,y0,z1],[x1,y1,z1],[x1,y1,z0]], k:'r' });
+  else if (cam.yaw<-0.001) faces.push({ pts:[[x0,y0,z0],[x0,y0,z1],[x0,y1,z1],[x0,y1,z0]], k:'l' });
+  if (cam.pitch>0.001) faces.push({ pts:[[x0,y1,z0],[x1,y1,z0],[x1,y1,z1],[x0,y1,z1]], k:'t' });
+  let cell=`<g class="selcell${state.scenario.playing?' pulse':''}" filter="url(#glow-${state.mode})">`;
+  for (const f of faces){
+    const fill=f.k==='t'?F.top:(f.k==='f'?F.front:F.side);
+    cell+=`<path d="${quadPath(f.pts,true)}" fill="${fill}" stroke="${F.stroke}" stroke-width="3" stroke-linejoin="round"/>`;
+  }
+  cell+='</g>';
+  return g+cell;
+}
+/* while a scenario runs, the active reliability controls are drawn as light bands
+   through the cube so the stage and its controls are read together. */
+function scenarioGuide(){
+  const cs=currentScenarioStep();
+  if (!cs) return '';
+  let g='<g class="selguide">';
+  for (const c of cs.cs) g+=slab([[0,c+0.5,0],[LCN,c+0.5,0],[LCN,c+0.5,WN],[0,c+0.5,WN]],'rgba(122,88,194,0.16)');
+  g+=edge([[cs.l+0.5,0,0],[cs.l+0.5,CN,0],[cs.l+0.5,CN,WN],[cs.l+0.5,0,WN]],'rgba(63,116,173,0.5)');
+  return g+'</g>';
+}
+function render(){
+  fit();
+  const parts=[DEFS, axisLinesAndTitles(), screenTitles()];
+  const list=[];
+  for (let w=0;w<WN;w++) for (let c=0;c<CN;c++) for (let l=0;l<LCN;l++){
+    list.push({ l,c,w, cc:raw(l+0.5,c+0.5,w+0.5).D });
+  }
+  list.sort((a,b)=>b.cc-a.cc);
+  const hov=state.hover;
+  for (const it of list){
+    const st=cellState(it.l,it.c,it.w);
+    const F=pal(st);
+    const x0=it.l+G,x1=it.l+1-G,y0=it.c+G,y1=it.c+1-G,z0=it.w+G,z1=it.w+1-G;
+    const faces=[{ pts:[[x0,y0,z0],[x1,y0,z0],[x1,y1,z0],[x0,y1,z0]], k:'f' }];
+    if (cam.yaw>0.001) faces.push({ pts:[[x1,y0,z0],[x1,y0,z1],[x1,y1,z1],[x1,y1,z0]], k:'r' });
+    else if (cam.yaw<-0.001) faces.push({ pts:[[x0,y0,z0],[x0,y0,z1],[x0,y1,z1],[x0,y1,z0]], k:'l' });
+    if (cam.pitch>0.001) faces.push({ pts:[[x0,y1,z0],[x1,y1,z0],[x1,y1,z1],[x0,y1,z1]], k:'t' });
+    const isHov = hov && hov.type==='cell' && hov.l===it.l && hov.c===it.c && hov.w===it.w;
+    for (const f of faces){
+      const d=quadPath(f.pts,true);
+      const fill=f.k==='t'?F.top:(f.k==='f'?F.front:F.side);
+      const sw=isHov?1.4:(F.sw||0.6);
+      const stroke=isHov?'#16233b':F.stroke;
+      parts.push(`<path class="cell" data-k="${it.l}:${it.c}:${it.w}" d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"${F.op?` opacity="${F.op}"`:''}/>`);
+    }
+  }
+  parts.push(selectionHighlight(), scenarioGuide(), overlayParts(), labelParts(), selectionOutline(), scenarioLine());
+  if (kbFocus){
+    const cu=state.cursor;
+    parts.push(boxOutline(cu.l,cu.l+1,cu.c,cu.c+1,cu.w,cu.w+1,'#16233b','stroke-dasharray="5 3" '));
+  }
+  svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  svg.innerHTML=parts.join('');
+  renderLegend();
+  renderTrace();
+  buildPanel();
+}
+
+/* ---------- selection ---------- */
+function parseSel(str){
+  if(!str) return null;
+  const [t,a,b,c]=str.split(':');
+  if (t==='layer') return { type:'layer', l:+a };
+  if (t==='control') return { type:'control', c:+a };
+  if (t==='workflow') return { type:'workflow', w:+a };
+  if (t==='failure') return { type:'failure', l:+a };
+  if (t==='cell') return { type:'cell', l:+a, c:+b, w:+c };
+  return null;
+}
+function applySelStr(str){ const s=parseSel(str); if(s) select(s); }
+/* --- view history: back to whatever was inspected before (layer → control → cell) --- */
+function viewKey(v){ return v.sel ? [v.sel.type,v.sel.l,v.sel.c,v.sel.w].join(':') : (v.intro||'overview'); }
+function pushHist(){
+  const cur={ sel:state.sel, intro:state.intro };
+  const top=state.hist[state.hist.length-1];
+  if (top && viewKey(top)===viewKey(cur)) return;
+  state.hist.push(cur);
+  if (state.hist.length>30) state.hist.shift();
+}
+function histBack(){
+  const prev=state.hist.pop();
+  stopScenario();
+  if (!prev){ state.sel=null; state.intro=''; requestRender(); announce('Back to the overview.'); return; }
+  state.intro=prev.intro||'';
+  state.sel=prev.sel||null;
+  state.hover=null; lastHoverKey=null;
+  if (state.scenario.id) renderStageCard();
+  requestRender();
+  announce('Back to the previous view.');
+}
+function histHas(){ return state.hist.length>0; }
+function select(sel, noHist){
+  if (!noHist) pushHist();
+  state.sel=sel; state.intro='';
+  stopScenario();
+  hideTooltip();
+  if (state.scenario.id) renderStageCard();
+  requestRender();
+  announce(selAria(sel));
+}
+function clearSelection(){
+  if (!state.sel && state.intro!=='harness') return;
+  pushHist();
+  state.sel=null; state.hover=null; lastHoverKey=null;
+  if (state.intro==='harness') state.intro='';
+  requestRender();
+  announce('Selection cleared. Showing the overview.');
+}
+function selAria(sel){
+  if (!sel) return 'Selection cleared.';
+  if (sel.type==='cell') return `Cell: ${WORKFLOWS[sel.w].name}, ${LAYERS[sel.l].name}, ${CONTROLS[sel.c].name}.`;
+  if (sel.type==='layer') return `Layer slice: ${LAYERS[sel.l].name}, across all controls and workflows.`;
+  if (sel.type==='control') return `Control plane: ${CONTROLS[sel.c].name}, across all layers and workflows.`;
+  if (sel.type==='workflow') return `Workflow plane: ${WORKFLOWS[sel.w].name}.`;
+  if (sel.type==='failure') return `Failure modes for ${LAYERS[sel.l].name}.`;
+  return '';
+}
+function announce(msg){ annEl.textContent=msg; }
+
+/* ---------- tooltip ---------- */
+function cellTip(l,c,w){
+  return `<div class="tt-row"><span class="tt-k">Workflow</span><b>${esc(WORKFLOWS[w].name)}</b></div>
+  <div class="tt-row"><span class="tt-k">System layer</span><b>${esc(LAYERS[l].name)}</b></div>
+  <div class="tt-row"><span class="tt-k">Control</span><b>${esc(CONTROLS[c].name)}</b></div>
+  <div class="tt-hint">Click to inspect this intersection</div>`;
+}
+function labelTip(s){
+  if (s.type==='layer') return `<b>${esc(LAYERS[s.l].name)}</b><div class="tt-hint">System layer — click to highlight the full slice across ${CN} controls and ${WN} workflows.</div>`;
+  if (s.type==='control') return `<b>${esc(CONTROLS[s.c].name)}</b><div class="tt-hint">Cross-cutting control — applies at every layer and in every workflow. Click to see the plane.</div>`;
+  if (s.type==='workflow') return `<b>${esc(WORKFLOWS[s.w].name)}</b><div class="tt-hint">Banking workflow — click to isolate its full layer × control matrix.</div>`;
+  if (s.type==='failure') return `<b>Failure modes — ${esc(LAYERS[s.l].name)}</b><div class="tt-hint">Click to see causes, detection, mitigation and the eval that catches each.</div>`;
+  if (s.type==='cell') return cellTip(s.l,s.c,s.w);
+  return '';
+}
+function showTooltip(html,e){
+  const r=wrap.getBoundingClientRect();
+  let x=e.clientX-r.left+16, y=e.clientY-r.top+18;
+  tipEl.innerHTML=html; tipEl.hidden=false;
+  const twd=tipEl.offsetWidth||260;
+  if (x+twd>r.width-10) x=Math.max(6,e.clientX-r.left-twd-14);
+  if (y+110>r.height) y=Math.max(6,r.height-130);
+  tipEl.style.left=x+'px'; tipEl.style.top=y+'px';
+}
+function hideTooltip(){ tipEl.hidden=true; if(lastHoverKey!==null){ lastHoverKey=null; state.hover=null; requestRender(); } }
+function setHover(h){ state.hover=h; requestRender(); }
+function handleHover(e){
+  const t=e.target;
+  let hov=null, tip='';
+  const k = t && t.dataset ? t.dataset.k : null;
+  const g = t && t.closest ? t.closest('g[data-sel]') : null;
+  if (k){ const [l,c,w]=k.split(':').map(Number); hov={type:'cell',l,c,w}; tip=cellTip(l,c,w); }
+  else if (g){ const s=parseSel(g.dataset.sel); if (s){ hov=s; tip=labelTip(s); } }
+  const key = hov ? JSON.stringify(hov) : '';
+  if (key !== lastHoverKey){ lastHoverKey=key; state.hover=hov; requestRender(); }
+  if (hov && !drag) showTooltip(tip,e);
+  else if (!hov) hideTooltip();
+}
+
+/* ---------- camera / views ---------- */
+const VIEWS = {
+  iso:{ yaw:0.52, pitch:0.34 }, front:{ yaw:0.04, pitch:0.10 },
+  workflow:{ yaw:0.35, pitch:1.05 }, controls:{ yaw:-0.25, pitch:0.42 }, pipeline:{ yaw:0, pitch:0.9 },
+};
+function clearViewActive(){ document.querySelectorAll('input[name="view"]').forEach(i=>{ i.checked=false; }); }
+function setView(name){
+  const v=VIEWS[name]||VIEWS.iso;
+  const from={ yaw:cam.yaw, pitch:cam.pitch, zoom:cam.zoom };
+  const to={ yaw:v.yaw, pitch:v.pitch, zoom:cam.zoom };
+  if (camAnim) cancelAnimationFrame(camAnim);
+  const r=document.querySelector(`input[name="view"][value="${name}"]`);
+  if (r) r.checked=true; else clearViewActive();
+  if (REDUCED){ cam.yaw=to.yaw; cam.pitch=to.pitch; requestRender(); return; }
+  const t0=performance.now();
+  const step=(t)=>{
+    const u=Math.min(1,(t-t0)/450), e=1-Math.pow(1-u,3);
+    cam.yaw=from.yaw+(to.yaw-from.yaw)*e;
+    cam.pitch=from.pitch+(to.pitch-from.pitch)*e;
+    requestRender();
+    if (u<1) camAnim=requestAnimationFrame(step); else camAnim=null;
+  };
+  camAnim=requestAnimationFrame(step);
+}
+
+/* ---------- pointer interaction ---------- */
+const capIds = new Set();
+/* Capture only once the pointer actually moves. Capturing on pointerdown retargets the
+   follow-up click to the wrapper, which kills cell selection and the in-canvas buttons. */
+function grabPointer(e){
+  if (capIds.has(e.pointerId)) return;
+  try{ wrap.setPointerCapture(e.pointerId); capIds.add(e.pointerId); }catch(_){}
+}
+wrap.addEventListener('pointerdown', e=>{
+  kbFocus=false;
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if (pointers.size===1){ drag={sx:e.clientX,sy:e.clientY,yaw:cam.yaw,pitch:cam.pitch}; dragDist=0; wrap.classList.add('dragging'); }
+  else if (pointers.size===2){ drag=null; const p=[...pointers.values()]; pinchDist=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y); }
+});
+wrap.addEventListener('pointermove', e=>{
+  if (pointers.has(e.pointerId)){ grabPointer(e); pointers.set(e.pointerId,{x:e.clientX,y:e.clientY}); }
+  if (pointers.size===2 && pinchDist>0){
+    const p=[...pointers.values()]; const d=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);
+    if (d>0){ cam.zoom=clamp(cam.zoom*d/pinchDist,0.55,2); pinchDist=d; clearViewActive(); requestRender(); }
+    return;
+  }
+  if (drag && pointers.size===1){
+    const dx=e.clientX-drag.sx, dy=e.clientY-drag.sy;
+    dragDist=Math.max(dragDist,Math.hypot(dx,dy));
+    cam.yaw=clamp(drag.yaw+dx*0.006,-1.05,1.0);
+    cam.pitch=clamp(drag.pitch+dy*0.005,0.03,1.2);
+    clearViewActive(); hideTooltip(); requestRender();
+    return;
+  }
+  handleHover(e);
+});
+function endPointer(e){
+  capIds.delete(e.pointerId);
+  pointers.delete(e.pointerId);
+  if (pointers.size<2) pinchDist=0;
+  if (pointers.size===0){ drag=null; wrap.classList.remove('dragging'); }
+}
+wrap.addEventListener('pointerup', e=>{
+  const wasMulti = pointers.size>1 || pinchDist>0;   /* a pinch is not a click */
+  const dist = dragDist;
+  endPointer(e);
+  if (!wasMulti && dist<=5) pickAt(e.clientX, e.clientY);
+});
+wrap.addEventListener('pointercancel', endPointer);
+wrap.addEventListener('pointerleave', ()=>{ if(!drag) hideTooltip(); });
+function pointInQuad(px,py,q){
+  let inside=false;
+  for (let i=0,j=3;i<4;j=i++){
+    const xi=q[i][0], yi=q[i][1], xj=q[j][0], yj=q[j][1];
+    if (((yi>py)!==(yj>py)) && (px < (xj-xi)*(py-yi)/(yj-yi)+xi)) inside=!inside;
+  }
+  return inside;
+}
+/* Blocks are drawn at 74% of their cell, so ~a quarter of the cube is empty gap.
+   When the browser hit-test lands in that gap, pick the nearest block by geometry:
+   walk cells near→far and take the first whose full-cell silhouette contains the point. */
+function pickCellGeom(px,py){
+  const order=[];
+  for (let w=0;w<WN;w++) for (let c=0;c<CN;c++) for (let l=0;l<LCN;l++)
+    order.push({ l, c, w, d:raw(l+0.5,c+0.5,w+0.5).D });
+  order.sort((a,b)=>b.d-a.d);
+  for (const it of order){
+    const x0=it.l, x1=it.l+1, y0=it.c, y1=it.c+1, z0=it.w, z1=it.w+1;
+    const quads=[ [[x0,y0,z0],[x1,y0,z0],[x1,y1,z0],[x0,y1,z0]] ];
+    if (cam.yaw>0.001) quads.push([[x1,y0,z0],[x1,y0,z1],[x1,y1,z1],[x1,y1,z0]]);
+    else if (cam.yaw<-0.001) quads.push([[x0,y0,z0],[x0,y0,z1],[x0,y1,z1],[x0,y1,z0]]);
+    if (cam.pitch>0.001) quads.push([[x0,y1,z0],[x1,y1,z0],[x1,y1,z1],[x0,y1,z1]]);
+    for (const q of quads){
+      const pts=q.map(pt=>{ const s=P(pt[0],pt[1],pt[2]); return [s.x,s.y]; });
+      if (pointInQuad(px,py,pts)) return it;
+    }
+  }
+  return null;
+}
+function pickAt(cx,cy){
+  const r=wrap.getBoundingClientRect();
+  const t=(typeof document.elementFromPoint==='function') ? document.elementFromPoint(cx,cy) : null;
+  if (t && t.closest){
+    const cell=t.closest('.cell[data-k]');
+    if (cell){ const [l,c,w]=cell.dataset.k.split(':').map(Number); state.cursor={l,c,w}; select({type:'cell',l,c,w}); return; }
+    const g=t.closest('g[data-sel]');
+    if (g){ applySelStr(g.dataset.sel); return; }
+  }
+  const near=pickCellGeom(cx-r.left, cy-r.top);
+  if (near){ state.cursor={l:near.l,c:near.c,w:near.w}; select({type:'cell',l:near.l,c:near.c,w:near.w}); }
+}
+wrap.addEventListener('wheel', e=>{
+  e.preventDefault();
+  cam.zoom=clamp(cam.zoom*(1-e.deltaY*0.001),0.55,2);
+  clearViewActive(); requestRender();
+},{ passive:false });
+wrap.addEventListener('dblclick', ()=>setView('iso'));
+
+/* ---------- keyboard ---------- */
+wrap.addEventListener('focus', ()=>{ requestRender(); });
+wrap.addEventListener('blur', ()=>{ kbFocus=false; requestRender(); });
+wrap.addEventListener('keydown', e=>{
+  const k=e.key;
+  const cu=state.cursor;
+  if (!kbFocus){ kbFocus=true; requestRender(); }
+  if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','PageUp','PageDown','Home','Enter',' '].includes(k)) e.preventDefault();
+  if (k==='ArrowLeft') cu.l=Math.max(0,cu.l-1);
+  else if (k==='ArrowRight') cu.l=Math.min(LCN-1,cu.l+1);
+  else if (k==='ArrowUp') cu.c=Math.min(CN-1,cu.c+1);
+  else if (k==='ArrowDown') cu.c=Math.max(0,cu.c-1);
+  else if (k==='PageUp') cu.w=Math.min(WN-1,cu.w+1);
+  else if (k==='PageDown') cu.w=Math.max(0,cu.w-1);
+  else if (k==='Home'){ cu.l=0; cu.c=0; cu.w=0; }
+  else if (k==='Enter' || k===' '){ select({type:'cell',l:cu.l,c:cu.c,w:cu.w}); return; }
+  else if (k==='l' || k==='L'){ select({type:'layer',l:cu.l}); return; }
+  else if (k==='c' || k==='C'){ select({type:'control',c:cu.c}); return; }
+  else if (k==='w' || k==='W'){ select({type:'workflow',w:cu.w}); return; }
+  else return;
+  announce(`${WORKFLOWS[cu.w].name}. ${LAYERS[cu.l].name}. ${CONTROLS[cu.c].name}. Layer ${cu.l+1} of ${LCN}, control ${cu.c+1} of ${CN}, workflow ${cu.w+1} of ${WN}. Press Enter to open the cell, L the layer slice, C the control plane, W the workflow plane.`);
+  requestRender();
+});
+document.addEventListener('keydown', e=>{
+  if (e.key==='Escape'){
+    if (!moreMenu.hidden){ setMore(false); moreBtn.focus(); return; }
+    if (!slEl.hidden){ setSearchOpen(false); searchEl.focus(); return; }   /* overlay first */
+    if (filtersOpen){ closeFilters(true); return; }
+    if (state.search.q){ searchEl.value=''; runSearch(); searchEl.focus(); return; }
+    clearSelection();
+    return;
+  }
+  const tag=(document.activeElement||{}).tagName||'';
+  if (e.key==='/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(tag)){ e.preventDefault(); searchEl.focus(); }
+});
+
+/* ---------- toolbar wiring ---------- */
+function setMode(name){
+  state.mode=name;
+  const r=document.querySelector(`input[name="mode"][value="${name}"]`);
+  if (r) r.checked=true;
+  requestRender();
+}
+document.querySelectorAll('input[name="mode"]').forEach(inp=>inp.addEventListener('change', ()=>setMode(inp.value)));
+function setOv(name,on){
+  state.ov[name]=on;
+  const b=document.querySelector(`.ov-btn[data-ov="${name}"]`);
+  if (b){ b.classList.toggle('active',on); b.setAttribute('aria-pressed',String(on)); }
+  requestRender();
+}
+document.querySelectorAll('.ov-btn[data-ov]').forEach(b=>b.addEventListener('click', ()=>setOv(b.dataset.ov, !state.ov[b.dataset.ov])));
+document.querySelectorAll('input[name="view"]').forEach(inp=>inp.addEventListener('change', ()=>setView(inp.value)));
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click', ()=>setView(b.dataset.view)));
+$('reset-cam').addEventListener('click', ()=>setView('iso'));
+hintsBtn.addEventListener('click', ()=>{ state.hints=!state.hints; applyHints(); });
+
+/* ---------- presentation mode: maximum cube, minimum chrome ---------- */
+const presentBtn=$('present-btn'), moreBtn=$('more-btn'), moreMenu=$('more-menu');
+function setPresent(on){
+  state.present=!!on;
+  document.body.classList.toggle('present', state.present);
+  presentBtn.setAttribute('aria-pressed', String(state.present));
+  presentBtn.textContent = state.present ? 'Exit presentation' : 'Presentation';
+  requestRender();
+}
+presentBtn.addEventListener('click', ()=>setPresent(!state.present));
+/* ---------- More: secondary overlays and guidance stay one click away ---------- */
+function setMore(open){
+  moreMenu.hidden=!open;
+  moreBtn.setAttribute('aria-expanded', open?'true':'false');
+}
+moreBtn.addEventListener('click', e=>{ e.stopPropagation(); setMore(moreMenu.hidden); });
+document.addEventListener('click', e=>{
+  if (!moreMenu.hidden && !moreMenu.contains(e.target) && e.target!==moreBtn) setMore(false);
+});
+document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click', ()=>{
+  const g=b.dataset.goto;
+  if (g==='system'){ setMode('system'); setView('pipeline'); }
+  if (g==='reliability'){ setMode('reliability'); setView('controls'); }
+  if (g==='workflow'){ setMode('workflow'); setView('workflow'); }
+  requestRender();
+}));
+const harnessCO=$('harness-callout');
+function harnessAction(){
+  pushHist();
+  if (!REDUCED){ state.flash=true; setTimeout(()=>{ state.flash=false; requestRender(); },1100); }
+  state.intro='harness'; state.sel=null;
+  requestRender();
+  announce('Reusable platform harness — one framework across components, controls and workflows. The details panel explains it.');
+}
+harnessCO.addEventListener('click', harnessAction);
+
+/* ---------- search ---------- */
+let searchIndex=[], searchTimer=null;
+function buildSearchIndex(){
+  searchIndex=[];
+  LAYERS.forEach((d,l)=>searchIndex.push({ t:'layer', l, text:(d.name+' '+d.short+' '+d.purpose+' '+d.evals+' '+d.security+' '+d.latency+' '+d.failures+' '+d.techniques).toLowerCase() }));
+  CONTROLS.forEach((d,c)=>searchIndex.push({ t:'control', c, text:(d.name+' '+d.short+' '+d.question+' '+d.covers+' '+d.metrics.join(' ')).toLowerCase() }));
+  WORKFLOWS.forEach((d,w)=>searchIndex.push({ t:'workflow', w, text:(d.name+' '+d.short+' '+d.description+' '+d.sample+' '+d.sources.join(' ')+' '+d.risks.join(' ')+' '+d.evals.join(' ')).toLowerCase() }));
+  for (let l=0;l<LCN;l++) for (let c=0;c<CN;c++) for (let w=0;w<WN;w++){
+    const cust=CELL_INDEX[l+':'+c+':'+w];
+    const cid=CONTROLS[c].id;
+    const text=(LAYERS[l].name+' '+CONTROLS[c].name+' '+WORKFLOWS[w].name+' '
+      +(cust ? (cust.q+' '+cust.why+' '+cust.metrics.join(' ')+' '+cust.failures.join(' ')+' '+cust.controls.join(' ')+' '+cust.gate)
+             : (GENERIC_Q[cid] ? GENERIC_Q[cid](LAYERS[l].name, WORKFLOWS[w].name) : ''))).toLowerCase();
+    searchIndex.push({ t:'cell', l,c,w, text });
+  }
+}
+function runSearch(){
+  const q=searchEl.value.trim().toLowerCase();
+  if (q.length<2){
+    state.search={q:'',hits:null};
+    setSearchOpen(false); slEl.innerHTML='';
+    setResultBar('', null);
+    requestRender(); return;
+  }
+  const hits=new Set();
+  const byType={ layer:[], control:[], workflow:[], cell:[] };
+  for (const e of searchIndex){
+    if (e.text.includes(q)){
+      if (e.t==='layer') hits.add('layer:'+e.l);
+      else if (e.t==='control') hits.add('control:'+e.c);
+      else if (e.t==='workflow') hits.add('workflow:'+e.w);
+      else hits.add('cell:'+e.l+':'+e.c+':'+e.w);
+      byType[e.t].push(e);
+    }
+  }
+  state.search={q,hits};
+  let html='';
+  const groups=[['layer','Layers'],['control','Controls'],['workflow','Workflows'],['cell','Cells']];
+  for (const [t,label] of groups){
+    if (!byType[t].length) continue;
+    html+=`<div class="sl-group">${label} · ${byType[t].length}</div>`;
+    const cap = t==='cell'?10:8;
+    for (const e of byType[t].slice(0,cap)){
+      const target = t==='layer'?`layer:${e.l}` : t==='control'?`control:${e.c}` : t==='workflow'?`workflow:${e.w}` : `cell:${e.l}:${e.c}:${e.w}`;
+      const title = t==='layer'?LAYERS[e.l].name : t==='control'?CONTROLS[e.c].name : t==='workflow'?WORKFLOWS[e.w].name
+        : `${LAYERS[e.l].short} × ${CONTROLS[e.c].short} × ${WORKFLOWS[e.w].short}`;
+      html+=`<button class="sl-item" data-sel="${target}">${esc(title)}<small>${label.toLowerCase()}</small></button>`;
+    }
+  }
+  if (!html) html='<div class="sl-item" style="color:var(--muted);cursor:default">No matches for “'+esc(q)+'” — try “retrieval”, “security”, “Recall@K”, “credit”. Clear the search to see the whole matrix again.</div>';
+  slEl.innerHTML=html; setSearchOpen(true);
+  setResultBar(q, byType);
+  requestRender();
+}
+/* The cube dims to its hits, so the count and the way out are always visible. */
+function setSearchOpen(open){
+  slEl.hidden=!open;
+  searchEl.setAttribute('aria-expanded', open?'true':'false');
+}
+function setResultBar(q, byType){
+  if (!q || !byType){ resultbarEl.hidden=true; resultbarEl.innerHTML=''; return; }
+  const words={layer:'layer',control:'control',workflow:'workflow',cell:'intersection'};
+  const parts=[]; let total=0;
+  for (const t of ['layer','control','workflow','cell']){
+    const n=byType[t].length; total+=n;
+    if (n) parts.push(n+' '+words[t]+(n===1?'':'s'));
+  }
+  resultbarEl.hidden=false;
+  resultbarEl.innerHTML='<span><b>'+total+'</b> '+(total===1?'match':'matches')+' for “'+esc(q)+'”'
+    + (total ? ' — '+parts.join(' · ')+'. The cube is dimmed to the matches.' : '. Nothing matched — clear the search to see the whole matrix again.')
+    + '</span><button type="button" data-rb-clear>Clear search</button>';
+  announce(total+' matches for '+q+'. Arrow down into the result list, or press Enter to open the first match.');
+}
+searchEl.addEventListener('input', ()=>{ clearTimeout(searchTimer); searchTimer=setTimeout(runSearch,250); });
+searchEl.addEventListener('focus', ()=>{ if (state.search.hits && state.search.hits.size) setSearchOpen(true); });
+searchEl.addEventListener('keydown', e=>{
+  const items=[...slEl.querySelectorAll('.sl-item[data-sel]')];
+  if (!items.length) return;
+  if (e.key==='ArrowDown'){ e.preventDefault(); items[0].focus(); }
+  else if (e.key==='Enter'){ e.preventDefault(); items[0].click(); }
+});
+slEl.addEventListener('keydown', e=>{
+  const items=[...slEl.querySelectorAll('.sl-item[data-sel]')];
+  const i=items.indexOf(e.target);
+  if (e.key==='ArrowDown'){ e.preventDefault(); (items[i+1]||items[0]).focus(); }
+  else if (e.key==='ArrowUp'){ e.preventDefault(); if (i<=0) searchEl.focus(); else items[i-1].focus(); }
+});
+resultbarEl.addEventListener('click', e=>{
+  if (!e.target.closest('[data-rb-clear]')) return;
+  searchEl.value=''; runSearch(); searchEl.focus();
+});
+slEl.addEventListener('click', e=>{
+  const b=e.target.closest('[data-sel]');
+  if (!b) return;
+  applySelStr(b.dataset.sel);
+  setSearchOpen(false);
+  searchEl.focus();
+});
+document.addEventListener('click', e=>{
+  if (slEl.hidden) return;
+  if (!slEl.contains(e.target) && e.target!==searchEl && !searchEl.contains(e.target)) setSearchOpen(false);
+  if (filtersOpen && !fpEl.contains(e.target) && e.target!==filtersBtn) closeFilters();
+});
+
+/* ---------- filters ---------- */
+let filtersOpen=false;
+const filtersBtn=$('filters-btn');
+function buildFilters(){
+  fpEl.innerHTML=`
+    <div class="fp-col" role="group" aria-labelledby="fp-h-w"><h4 id="fp-h-w">Workflows</h4>${WORKFLOWS.map((d,w)=>`<label><input type="checkbox" data-dim="workflows" data-i="${w}"> ${esc(d.short)}</label>`).join('')}</div>
+    <div class="fp-col" role="group" aria-labelledby="fp-h-c"><h4 id="fp-h-c">Controls</h4>${CONTROLS.map((d,c)=>`<label><input type="checkbox" data-dim="controls" data-i="${c}"> ${esc(d.short)}</label>`).join('')}</div>
+    <div class="fp-col" role="group" aria-labelledby="fp-h-l"><h4 id="fp-h-l">System layers</h4>${LAYERS.map((d,l)=>`<label><input type="checkbox" data-dim="layers" data-i="${l}"> ${esc(d.short)}</label>`).join('')}</div>
+    <div class="fp-col fp-foot"><button id="fp-clear" type="button">Clear all filters</button></div>`;
+  fpEl.querySelectorAll('input').forEach(inp=>inp.addEventListener('change', ()=>{
+    const set=state.filters[inp.dataset.dim];
+    if (inp.checked) set.add(+inp.dataset.i); else set.delete(+inp.dataset.i);
+    requestRender();
+  }));
+  $('fp-clear').addEventListener('click', ()=>{
+    state.filters.layers.clear(); state.filters.controls.clear(); state.filters.workflows.clear();
+    fpEl.querySelectorAll('input').forEach(i=>i.checked=false);
+    requestRender();
+  });
+}
+function openFilters(){
+  const r=filtersBtn.getBoundingClientRect();
+  fpEl.hidden=false;
+  const wi=(typeof window!=='undefined'&&window.innerWidth)||1000;
+  const pw=Math.min(660, wi-20);
+  fpEl.style.width=pw+'px';
+  fpEl.style.insetInlineStart=Math.max(10, Math.min(r.left, wi-pw-10))+'px';
+  fpEl.style.top=(r.bottom+6)+'px';
+  filtersOpen=true;
+  filtersBtn.setAttribute('aria-expanded','true');
+}
+function closeFilters(refocus){
+  fpEl.hidden=true; filtersOpen=false;
+  filtersBtn.setAttribute('aria-expanded','false');
+  if (refocus) filtersBtn.focus();
+}
+filtersBtn.addEventListener('click', ()=>{ filtersOpen?closeFilters(false):openFilters(); });
+
+/* ---------- scenario ---------- */
+function buildScenarioSelect(){
+  /* the landing state ships with the guided entry point already selected */
+  scSelEl.innerHTML='<option value="">Choose a scenario…</option>'+SCENARIOS
+    .filter(s=>!s.derived || !SCENARIOS.some(a=>a.workflow===s.workflow && !a.derived))
+    .map(s=>`<option value="${s.id}"${s.id===DEFAULT_SCENARIO?' selected':''}>${esc(s.title)}</option>`).join('');
+}
+scSelEl.addEventListener('change', ()=>{
+  stopScenario();
+  state.scenario={ id:scSelEl.value, step:0, playing:false, visited:[] };
+  lastStage=null;
+  renderStageCard(); requestRender();
+});
+playBtn.addEventListener('click', ()=>{
+  if (!scSelEl.value){ toast('Choose a scenario first, then press Play.'); return; }
+  playScenario();
+});
+function playScenario(id){
+  const sc=findWalk(id||scSelEl.value);
+  if (!sc) return;
+  const opts=scSelEl.options||[];
+  if (Array.prototype.some.call(opts, o=>o.value===sc.id)) scSelEl.value=sc.id;
+  stopScenario();
+  state.sel=null; state.hover=null; lastHoverKey=null;
+  state.scenario={ id:sc.id, step:0, playing:true, visited:[] };
+  lastStage=null;
+  advanceScenario();
+}
+function advanceScenario(){
+  const sc=findWalk(state.scenario.id);
+  const i=state.scenario.step;
+  if (!sc || i>=sc.steps.length){ finishScenario(); return; }
+  const st=sc.steps[i];
+  const l=layerIdx[st.layer], w=wfIdx[sc.workflow];
+  state.scenario.visited.push(l);
+  lastStage={ ...st, layerName:LAYERS[l].name, i:i+1, total:sc.steps.length, wfName:WORKFLOWS[w].name };
+  state.sel={ type:'layer', l };
+  renderStageCard(); requestRender();
+  announce(`Stage ${i+1} of ${sc.steps.length}: ${LAYERS[l].name}.`);
+  if (state.scenario.playing && !REDUCED) scTimer=setTimeout(()=>{ state.scenario.step++; advanceScenario(); },1600);
+}
+function pauseScenario(){ stopScenario(); renderStageCard(); }
+/* Manual transport. `visited` is the authoritative position: one entry per stage
+   already shown, so Prev pops it and Next replays from there. */
+function resumeScenario(){
+  const sc=findWalk(state.scenario.id); if(!sc) return;
+  state.scenario.playing=true;
+  if (!state.scenario.visited.length){ advanceScenario(); return; }
+  renderStageCard();
+  if (!REDUCED) scTimer=setTimeout(()=>{ state.scenario.step=state.scenario.visited.length; advanceScenario(); },1300);
+}
+function toggleScenario(){
+  const sc=findWalk(state.scenario.id); if(!sc) return;
+  if (state.scenario.playing){ pauseScenario(); return; }
+  if (state.scenario.visited.length>=sc.steps.length){ playScenario(sc.id); return; }   /* replay */
+  resumeScenario();
+}
+function nextStage(){
+  const sc=findWalk(state.scenario.id); if(!sc) return;
+  stopScenario();
+  state.scenario.step=state.scenario.visited.length;
+  advanceScenario();
+  renderStageCard();
+}
+function prevStage(){
+  const sc=findWalk(state.scenario.id); if(!sc || !state.scenario.visited.length) return;
+  stopScenario();
+  state.scenario.visited.pop();
+  const n=state.scenario.visited.length;
+  state.scenario.step=n;
+  if (!n){
+    lastStage=null; state.sel=null;
+    announce('Back to the start of the walk.');
+  } else {
+    const st=sc.steps[n-1], l=layerIdx[st.layer], w=wfIdx[sc.workflow];
+    lastStage={ ...st, layerName:LAYERS[l].name, i:n, total:sc.steps.length, wfName:WORKFLOWS[w].name };
+    state.sel={ type:'layer', l };
+    announce(`Back to stage ${n} of ${sc.steps.length}: ${LAYERS[l].name}.`);
+  }
+  renderStageCard(); requestRender();
+}
+function finishScenario(){
+  state.scenario.playing=false;
+  renderStageCard();
+}
+function stopScenario(){ if (scTimer){ clearTimeout(scTimer); scTimer=null; } state.scenario.playing=false; }
+function clearScenario(){
+  stopScenario();
+  state.scenario={ id:scSelEl.value||state.scenario.id, step:0, playing:false, visited:[] };
+  lastStage=null;
+  renderStageCard(); requestRender();
+}
+function renderStageCard(){
+  const sc=state.scenario;
+  if (!sc.id){ stageCardEl.hidden=true; stageCardEl.innerHTML=''; return; }
+  const scd=findWalk(sc.id);
+  const st=lastStage;
+  const total=scd.steps.length, n=sc.visited.length, curIdx = n ? n-1 : -1;
+  const atStart=n===0, atEnd=n>=total;
+  let actions='';
+  actions += `<button class="mini" data-sc="prev" type="button" aria-label="Previous stage"${atStart?' disabled':''}>Prev</button>`;
+  actions += sc.playing
+    ? '<button class="mini primary is-pause" data-sc="toggle" type="button" aria-label="Pause">Pause</button>'
+    : `<button class="mini primary ${atEnd?'is-replay':'is-play'}" data-sc="toggle" type="button" aria-label="${atEnd?'Replay from the first stage':'Play'}">${atEnd?'Replay':'Play'}</button>`;
+  actions += `<button class="mini" data-sc="next" type="button" aria-label="Next stage"${atEnd?' disabled':''}>Next</button>`;
+  actions += '<button class="mini" data-sc="clear" type="button">Clear</button>';
+  const steps=`<ol class="sc-steps" aria-label="Scenario steps">`+scd.steps.map((st,i)=>{
+    const li=layerIdx[st.layer];
+    const cls = i<curIdx ? 'past' : (i===curIdx ? 'current' : (i===curIdx+1 ? 'next' : ''));
+    return `<li class="sc-step ${cls}"><b>${i+1}</b>${esc(st.chip || LAYERS[li].short)}</li>`;
+  }).join('')+`</ol>`;
+  let html=`<div class="sc-top"><span class="sc-title">${esc(scd.title)}</span><span class="sc-actions">${actions}</span></div>
+  <p class="sc-desc">${esc(scd.desc)}</p>
+  ${steps}`;
+  if (!scd.derived && !scd.composed){
+    const off = LAYERS.map((Ld,i)=>i).filter(i=>!scd.steps.some(st2=>layerIdx[st2.layer]===i));
+    if (off.length){
+      html += `<p class="sc-gap">Covers ${scd.steps.length} of ${LAYERS.length} layers — ${off.map(i=>esc(LAYERS[i].short)).join(' and ')} ${off.length>1?'are':'is'} not on this scenario's path. `
+        + `<span class="chip link" role="button" tabindex="0" data-walk="workflow:${wfIdx[scd.workflow]}">▶ Walk the full pipeline instead</span></p>`;
+    }
+  }
+  if (st){
+    html+=`<div class="sc-stage"><b>Stage ${st.i}/${st.total} · ${esc(st.layerName)}</b>
+      <span class="sc-controls">${st.controls.map(cid=>`<i>${esc(CONTROLS[controlIdx[cid]].name)}</i>`).join('')}</span></div>
+    <p class="sc-note">${esc(st.note)}</p>`;
+  } else if (!sc.visited.length){
+    html+=`<p class="sc-note">Press <b>Play</b> to walk the path through the cube — or step through it yourself with <b>Next</b>. At each stage the active cross-cutting controls are shown.</p>`;
+  } else {
+    html+=`<p class="sc-note"><b>Path complete.</b> The same control stack applied at every stage — reused, with task-specific thresholds. <b>Prev</b> steps back through it, <b>Replay</b> runs it again.</p>`;
+  }
+  stageCardEl.innerHTML=html; stageCardEl.hidden=false;
+}
+stageCardEl.addEventListener('click', e=>{
+  const wk=e.target.closest('[data-walk]');
+  if (wk){ playWalk(wk.dataset.walk); return; }
+  const b=e.target.closest('[data-sc]');
+  if (!b) return;
+  const a=b.dataset.sc;
+  if (a==='prev') prevStage();
+  else if (a==='next') nextStage();
+  else if (a==='toggle') toggleScenario();
+  else if (a==='clear') clearScenario();
+  else if (a==='stop' || a==='pause') pauseScenario();   /* legacy keys */
+  else if (a==='resume') resumeScenario();
+});
+stageCardEl.addEventListener('keydown', e=>{
+  if (e.key!=='Enter' && e.key!==' ') return;
+  const b=e.target.closest('[data-sc],[data-walk]');
+  if (b){ e.preventDefault(); b.click(); }
+});
+/* transport by keyboard while a walk is selected: , back · . forward · p play/pause */
+document.addEventListener('keydown', e=>{
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const t=e.target;
+  if (t && (t.tagName==='INPUT' || t.tagName==='SELECT' || t.tagName==='TEXTAREA' || t.isContentEditable)) return;
+  if (!state.scenario.id || e.key==='Escape') return;
+  if (e.key===','){ e.preventDefault(); prevStage(); }
+  else if (e.key==='.'){ e.preventDefault(); nextStage(); }
+  else if (e.key==='p' || e.key==='P'){ e.preventDefault(); toggleScenario(); }
+});
+
+/* ---------- trace strip ---------- */
+function renderTrace(){
+  const on=state.ov.trace;
+  if (!on && traceEl.hidden) return;
+  const sig='trace:'+on;
+  if (sig===lastTraceSig && !traceEl.hidden) return;
+  lastTraceSig=sig;
+  if (!on){ traceEl.hidden=true; traceEl.innerHTML=''; return; }
+  traceEl.hidden=false;
+  traceEl.innerHTML=`
+    <div class="trace-head"><span class="req">req_8f3a2c</span>one row per request — every field linked end-to-end by the request ID</div>
+    <div class="trace-flow">${TRACE_FIELDS.map((f,i)=>`<span class="tfield">${esc(f)}</span>`+(i<TRACE_FIELDS.length-1?'<span class="tarrow">→</span>':'')).join('')}</div>
+    <p class="trace-note">Every field is recorded with the request ID, so any answer can be reconstructed later: which evidence, which model, which tools, which memory, what it cost. This is what “observability” means at every cell of the matrix.</p>`;
+}
+
+/* ---------- details panel ---------- */
+const QUESTIONS=[
+  { t:'Where can hallucination enter the system?', a:()=>select({type:'control',c:1}) },
+  { t:'How do we evaluate Retrieval specifically?', a:()=>select({type:'layer',l:3}) },
+  { t:'How does Security affect Retrieval?', a:()=>select({type:'cell',l:3,c:2,w:1}) },
+  { t:'What changes for a Credit Analysis Agent?', a:()=>select({type:'workflow',w:1}) },
+  { t:'What controls apply to Memory?', a:()=>select({type:'layer',l:9}) },
+  { t:'Where do latency and cost appear?', a:()=>select({type:'control',c:4}) },
+  { t:'How do tool failures affect the workflow?', a:()=>select({type:'layer',l:7}) },
+  { t:'Which system stages should be traced?', a:()=>{ setOv('trace',true); select({type:'control',c:3}); } },
+  { t:'How do release gates span different agents?', a:()=>{ setOv('gates',true); select({type:'layer',l:10}); } },
+  { t:'How is the same framework reused across the platform?', a:()=>harnessAction() },
+];
+function chips(arr,cls){ return `<span class="chips">${arr.map(m=>`<span class="chip${cls?' '+cls:''}">${esc(m)}</span>`).join('')}</span>`; }
+function versionHTML(v){
+  const nb=parseFloat(v.base), nc=parseFloat(v.cand);
+  const flat=nb===nc, good=flat?null:(v.up? nc>nb : nc<nb);
+  const cls=flat?'flat':(good?'up':'down'), glyph=flat?'=':(good?'▲':'▼');
+  return `<span class="vcmp"><span>${esc(v.metric)}</span><span>baseline <b>${esc(v.base)}</b></span><span>candidate <b>${esc(v.cand)}</b></span><span class="${cls}">${glyph}</span></span>`
+    +(good===false?'<p style="font-size:11.5px;color:var(--muted);margin-top:5px">Improving one dimension can regress another — gates must check both.</p>':'');
+}
+function failuresBlock(lid){
+  const arr=FAILURES[lid]||[];
+  if (!arr.length) return '';
+  return `<h3>Known failure modes</h3>`+arr.map(f=>`
+    <div class="fail-card"><h4>${esc(f.name)} <span class="badge ${f.sev==='fail'?'sev-fail':'sev-warn'}">${f.sev.toUpperCase()}</span></h4>
+    <p><span class="fk">Cause</span> ${esc(f.cause)}</p>
+    <p><span class="fk">Detect</span> ${esc(f.detect)}</p>
+    <p><span class="fk">Mitigate</span> ${esc(f.mitigate)}</p>
+    <p><span class="fk">Eval that catches it</span> ${esc(f.eval)}</p></div>`).join('');
+}
+function scenarioLink(l,c,w){
+  const wid=WORKFLOWS[w].id;
+  const sc=SCENARIOS.find(s=>s.workflow===wid && s.steps.some(st=>layerIdx[st.layer]===l));
+  const chips=[`<span class="chip link" role="button" tabindex="0" data-walk="cell:${w}:${c}">▶ Walk ${esc(CONTROLS[c].short)} through this pipeline</span>`];
+  if (sc) chips.push(`<span class="chip blue link" role="button" tabindex="0" data-action="scenario:${sc.id}">Watch this stage in: ${esc(sc.title)}</span>`);
+  return `<div style="margin-top:14px"><span class="chip green" style="cursor:default">▶</span> ${chips.join(' ')}</div>`;
+}
+function introPanel(){
+  return `<div class="p-kicker">Overview</div>
+  <h2>What this is</h2>
+  <p class="p-lede">A 3D reliability model: 11 system layers × 7 reliability controls × 6 banking workflows under one shared harness.</p>
+  <p class="p-note">Gate results and metrics are illustrative, not production measurements.</p>
+  <div class="mech">
+    <span class="p-lab">How it works</span>
+    <div class="stack">
+      <div class="srow srow-run"><span class="skey">Runtime harness</span><span class="sval">runs the work; every stage emits <b>evidence</b></span></div>
+      <div class="sjoin">one request ID per run ↓</div>
+      <div class="srow srow-eval"><span class="skey">Evaluation harness</span><span class="sval">binds a <b>threshold</b> to it, at every layer</span></div>
+      <div class="sjoin">verdict ↓</div>
+      <div class="srow srow-rel"><span class="skey">Release</span><span class="sval">pass · warning · human review · block</span></div>
+    </div>
+  </div>
+  <div class="start-card">
+    <span class="p-lab">Start here</span>
+    <button type="button" class="btn btn-primary" data-action="scenario:mr_share">▶&nbsp;Play Market Research scenario</button>
+    <p class="start-q">“What explains the recent share-price decline, and what has management said about liquidity?”</p>
+    <div class="try">
+      <span class="p-lab">Try</span>
+      <div class="try-row">
+        <button type="button" class="chip link" data-action="scenario:cr_exposure">Walk the Credit Analysis agent</button>
+        <button type="button" class="chip link" data-action="demo:gates">Release gates across agents</button>
+        <button type="button" class="chip link" data-action="demo:coverage">Authored vs generated coverage</button>
+        <button type="button" class="chip link" data-sel="cell:3:5:0">Where retrieval drift gets caught</button>
+        <button type="button" class="chip link" data-walk="cell:0:2">Walk security through a run</button>
+      </div>
+    </div>
+  </div>
+  <div class="acc-list">
+    <details class="acc" open><summary>Why it exists</summary><div class="acc-body">
+      <p>Agent reliability is a property of the whole path, not of the model. Research, credit, deal and briefing agents run the same path under the same controls; only the thresholds, sources and release gates are task-specific. Every cell of the cube is one place where that contract is written down.</p>
+    </div></details>
+    <details class="acc" open><summary>How to explore</summary><div class="acc-body"><ul>
+      <li>Click a block for its reliability argument · an axis label for the whole plane.</li>
+      <li>Drag to rotate · scroll to zoom · double-click resets.</li>
+      <li>Keyboard: arrows move, Enter opens the block, L / C / W open the layer, control or workflow plane.</li>
+      <li>While a walk is selected: <b>p</b> play or pause, <b>,</b> and <b>.</b> step back and forward.</li>
+    </ul></div></details>
+    <details class="acc"><summary>Questions this map answers</summary><div class="acc-body">
+      <ul class="q-list">${QUESTIONS.map((q,i)=>`<li><button type="button" data-q="${i}">${esc(q.t)}</button></li>`).join('')}</ul>
+    </div></details>
+  </div>`;
+}
+function harnessPanel(){
+  return `<div class="p-kicker">Reusable platform harness</div>
+  <h2>One harness, wrapped around everything</h2>
+  <blockquote class="key">The same evaluation, security, observability, regression, and governance framework can be reused across platform components and banking workflows, while allowing task-specific metrics and thresholds.</blockquote>
+  <p>Each axis is independent, but every point belongs to all three:</p>
+  <ul>
+    <li><b>System layers</b> answer <i>where</i> in the pipeline the issue lives.</li>
+    <li><b>Controls</b> answer <i>what</i> kind of risk or quality property is measured — applied identically at every layer.</li>
+    <li><b>Workflows</b> answer <i>for whom</i> — each banking agent runs the same pipeline under the same controls, with its own thresholds and gates.</li>
+  </ul>
+  <p>A reliable agentic platform is not created by making the LLM better. It is created by controlling and evaluating the entire path — data → retrieval → reasoning → tools → memory → orchestration → output — across quality, security, observability, cost, regression and human oversight, for every agent, task and workflow.</p>
+  <div style="margin-top:14px"><span class="chip link" role="button" tabindex="0" data-action="back">← Back to overview</span></div>`;
+}
+function firstClause(s){
+  const t=String(s).split(/[.;]/)[0].trim();
+  return t.charAt(0).toLowerCase()+t.slice(1);
+}
+/* Release consequence: PASS / WARNING / HUMAN REVIEW / BLOCK where the data supports it. */
+function releaseLine(gate, Cd, cust){
+  if (gate){
+    const human = Cd.id==='human' || /sign-off|sign off|approval|human review/i.test(gate.label);
+    const badge = gate.status==='FAIL' ? 'BLOCK' : (human ? 'HUMAN REVIEW' : gate.status);
+    const cls   = gate.status==='FAIL' ? 'FAIL' : (human ? 'WARNING' : gate.status);
+    return { badge, cls, text: gate.label };
+  }
+  if (Cd.id==='human') return { badge:'HUMAN REVIEW', cls:'WARNING', text:'Output requires recorded human approval before it is used.' };
+  if (cust) return { badge:'GATED', cls:'PASS', text:cust.gate };
+  return { badge:'NOT GATED YET', cls:'NONE', text:'No cell-level gate defined — the layer’s regression checks apply.' };
+}
+function cellPanel(l,c,w){
+  const Ld=LAYERS[l], Cd=CONTROLS[c], Wd=WORKFLOWS[w];
+  const k=l+':'+c+':'+w;
+  const cust=CELL_INDEX[k];
+  const gate=GATES[k];
+  const ver=VERSIONS[Ld.id+':'+Cd.id];
+  const generic=!cust;
+  const fl=(FAILURES[Ld.id]||[])[0];
+  const q=cust?cust.q:(GENERIC_Q[Cd.id]?GENERIC_Q[Cd.id](Ld.name,Wd.name):'');
+  /* the argument, in the order a reviewer reads it */
+  const answer = cust ? cust.line : `${Cd.name} applied to ${Ld.short}, for the ${Wd.name} — ${firstClause(Cd.covers)}.`;
+  const why    = cust ? cust.why : Ld.agentic;
+  const fail   = cust ? cust.failures[0] : (fl ? `${fl.name} — ${fl.cause}` : `${Ld.name} can fail quietly and the error surfaces downstream.`);
+  const mitig  = cust ? chips(cust.controls,'purple') : `<p>${esc(fl?fl.mitigate:Ld.techniques)}</p>`;
+  const evalu  = cust ? chips(cust.metrics) : `<p>${esc(fl?fl.eval:Ld.evals)}</p>`;
+  const trace  = cust ? cust.obs : (fl?`${fl.detect} — recorded per request with the request ID.`:'Reconstructable per request from the trace store.');
+  const rel    = releaseLine(gate, Cd, cust);
+  return `<div class="p-kicker">Selected intersection</div>
+  <h2>${esc(Wd.short)} <span class="op">×</span> ${esc(Ld.short)} <span class="op">×</span> ${esc(Cd.name)}</h2>
+  <p class="p-answer">${esc(answer)}</p>
+  <div class="p-arg">
+    <div class="p-block p-block-why"><span class="p-lab">Why it matters</span><p>${esc(why)}</p></div>
+    <div class="p-block p-block-fail"><span class="p-lab">Failure example</span><p>${esc(fail)}</p></div>
+    <div class="p-block p-block-ctrl"><span class="p-lab">Control / mitigation</span>${mitig}</div>
+  </div>
+  <div class="p-meta">
+    <div class="p-row"><span class="p-lab">Evaluation</span><div>${evalu}</div></div>
+    <div class="p-row"><span class="p-lab">Trace</span><div><p>${esc(trace)}</p></div></div>
+    <div class="p-row"><span class="p-lab">Release</span><div><p><span class="badge ${rel.cls}">${rel.badge}</span> ${esc(rel.text)}${gate?' <span class="ill">illustrative</span>':''}</p></div></div>
+  </div>
+  <div class="p-coords">
+    <span class="p-lab">Coordinates</span>
+    <span class="tag tag-workflow"><i>Workflow</i><b>${esc(Wd.name)}</b></span>
+    <span class="tag tag-layer"><i>Layer</i><b>${esc(Ld.name)}</b></span>
+    <span class="tag tag-control"><i>Control</i><b>${esc(Cd.name)}</b></span>
+  </div>
+  <div class="acc-list">
+    <details class="acc"><summary>The question this intersection answers</summary><div class="acc-body"><p>${esc(q)}</p></div></details>
+    ${ver?`<details class="acc"><summary>Version compare</summary><div class="acc-body">${versionHTML(ver)}<p class="ill" style="margin-top:8px">Illustrative baseline → candidate values.</p></div></details>`:''}
+  </div>
+  ${generic?`<div class="generic-note"><b>Composed, not authored.</b> This intersection is not yet defined in detail, so the panel above is derived deterministically from the same three sources every other cell uses: <b>why</b> from the layer's role, <b>failure</b> from its known failure modes, <b>control</b> and <b>evaluation</b> from the control's published coverage and metrics.</div>`:''}
+  ${scenarioLink(l,c,w)}`;
+}
+function layerPanel(l){
+  const d=LAYERS[l];
+  return `<div class="p-kicker">System layer — full slice</div>
+  <h2>${esc(d.name)}</h2>
+  <p class="p-lede">Layer ${l+1} of ${LCN} — highlighted across all ${CN} reliability controls and all ${WN} workflows.</p>
+  <div style="margin:10px 0 2px"><span class="chip link" role="button" tabindex="0" data-walk="layer:${l}:${defaultW()}">▶ Walk all ${CN} controls at this layer</span></div>
+  <div class="p-tags"><span class="tag tag-layer"><i>Layer</i><b>${esc(d.name)}</b></span></div>
+  <div class="acc-list">
+    <details class="acc" open><summary>Purpose &amp; techniques</summary><div class="acc-body">
+      <p>${esc(d.purpose)}</p><p>${esc(d.techniques)}</p></div></details>
+    <details class="acc"><summary>Failure modes</summary><div class="acc-body"><p>${esc(d.failures)}</p></div></details>
+    <details class="acc"><summary>Evaluation</summary><div class="acc-body"><p>${esc(d.evals)}</p></div></details>
+    <details class="acc"><summary>Security &amp; permissions</summary><div class="acc-body"><p>${esc(d.security)}</p></div></details>
+    <details class="acc"><summary>Latency &amp; cost</summary><div class="acc-body"><p>${esc(d.latency)}</p></div></details>
+    <details class="acc"><summary>Agentic view</summary><div class="acc-body"><p>${esc(d.agentic)}</p></div></details>
+  </div>
+  <h3>Inspect a control at this layer</h3>
+  <span class="chips">${CONTROLS.map((c,ci)=>`<span class="chip purple link" role="button" tabindex="0" data-sel="cell:${l}:${ci}:${defaultW()}">${esc(c.short)}</span>`).join('')}</span>
+  ${failuresBlock(d.id)}`;
+}
+function controlPanel(c){
+  const d=CONTROLS[c];
+  return `<div class="p-kicker">Reliability control — full plane</div>
+  <h2>${esc(d.name)}</h2>
+  <p class="p-lede">${esc(d.question)}</p>
+  <div style="margin:10px 0 2px"><span class="chip link" role="button" tabindex="0" data-walk="cell:${defaultW()}:${c}">▶ Walk this control through the pipeline</span></div>
+  <div class="p-tags"><span class="tag tag-control"><i>Control</i><b>${esc(d.name)}</b><br><i>Applies to</i><b>all ${LCN} layers · all ${WN} workflows</b></span></div>
+  <div class="acc-list">
+    <details class="acc" open><summary>What it covers</summary><div class="acc-body"><p>${esc(d.covers)}</p></div></details>
+    <details class="acc"><summary>Example metrics</summary><div class="acc-body">${chips(d.metrics,'purple')}</div></details>
+    <details class="acc"><summary>Applies at every layer</summary><div class="acc-body">
+      <span class="chips">${LAYERS.map((d2,li)=>`<span class="chip blue link" role="button" tabindex="0" data-sel="cell:${li}:${c}:${defaultW()}">${esc(d2.short)}</span>`).join('')}</span>
+      <p style="margin-top:11px;color:var(--muted)">This plane is the point of the harness: the control is not a module you add at the end — it is a property enforced at every stage of every workflow.</p>
+    </div></details>
+  </div>`;
+}
+function workflowPanel(w){
+  const d=WORKFLOWS[w];
+  const scs=SCENARIOS.filter(s=>s.workflow===d.id);
+  return `<div class="p-kicker">Banking workflow — depth plane</div>
+  <h2>${esc(d.name)}</h2>
+  <p class="p-lede">${esc(d.description)}</p>
+  <div style="margin:10px 0 2px"><span class="chip link" role="button" tabindex="0" data-walk="workflow:${w}">▶ Walk this agent's pipeline</span></div>
+  <div class="p-tags"><span class="tag tag-workflow"><i>Workflow</i><b>${esc(d.name)}</b></span></div>
+  <div class="acc-list">
+    <details class="acc" open><summary>Example question</summary><div class="acc-body"><p>${esc(d.sample)}</p></div></details>
+    <details class="acc"><summary>Sources</summary><div class="acc-body">${chips(d.sources,'green')}</div></details>
+    <details class="acc"><summary>Key risks</summary><div class="acc-body"><span class="chips">${d.risks.map(r=>`<span class="chip warn">${esc(r)}</span>`).join('')}</span></div></details>
+    <details class="acc"><summary>Key evaluations</summary><div class="acc-body">${chips(d.evals,'blue')}</div></details>
+    <details class="acc"><summary>This agent’s path through the pipeline</summary><div class="acc-body">
+      <span class="chips">${LAYERS.map((d2,li)=>`<span class="chip blue link" role="button" tabindex="0" data-sel="cell:${li}:0:${w}">${esc(d2.short)}</span>`).join('')}</span>
+      <p style="margin-top:11px;color:var(--muted)">The same ${LCN} layers and all ${CN} controls apply — only the thresholds, sources and gates are task-specific. That is “platform thinking” in practice.</p>
+    </div></details>
+    ${scs.length?`<details class="acc"><summary>Scenario paths</summary><div class="acc-body">${scs.map(s=>`<p><span class="chip link" role="button" tabindex="0" data-action="scenario:${s.id}">▶ Play: ${esc(s.title)}</span></p>`).join('')}</div></details>`:''}
+  </div>`;
+}
+function failurePanel(l){
+  const d=LAYERS[l]; const arr=FAILURES[d.id]||[];
+  return `<div class="p-kicker">Failure modes — ${esc(d.name)}</div>
+  <h2>Where this layer breaks</h2>
+  ${arr.length?arr.map(f=>`
+    <div class="fail-card"><h4>${esc(f.name)} <span class="badge ${f.sev==='fail'?'sev-fail':'sev-warn'}">${f.sev.toUpperCase()}</span></h4>
+    <p><span class="fk">Cause</span> ${esc(f.cause)}</p>
+    <p><span class="fk">Detect</span> ${esc(f.detect)}</p>
+    <p><span class="fk">Mitigate</span> ${esc(f.mitigate)}</p>
+    <p><span class="fk">Eval that catches it</span> ${esc(f.eval)}</p></div>`).join(''):'<p>No failure modes catalogued for this layer yet.</p>'}`;
+}
+function buildPanel(){
+  const s=state.sel;
+  const sig=JSON.stringify([ s?[s.type,s.l,s.c,s.w]:null, state.intro, !!state.ov.gates, !!state.ov.compare ]);
+  if (sig===lastPanelSig) return;
+  lastPanelSig=sig;
+  let html='';
+  if (!s) html = state.intro==='harness' ? harnessPanel() : introPanel();
+  else if (s.type==='cell') html=cellPanel(s.l,s.c,s.w);
+  else if (s.type==='layer' || s.type==='failure') html=layerPanel(s.l);
+  else if (s.type==='control') html=controlPanel(s.c);
+  else if (s.type==='workflow') html=workflowPanel(s.w);
+  panelEl.innerHTML=((s || state.intro==='harness') ? panelBar(s) : '') + html;
+}
+function panelBar(s){
+  const sep='<span class="crumb-sep" aria-hidden="true">→</span>';
+  const crumb=(cls,label,sel,current)=> current
+    ? `<span class="crumb ${cls} current">${esc(label)}</span>`
+    : `<button type="button" class="crumb ${cls}" data-sel="${sel}" title="Highlights the whole ${cls==='crumb-wf'?'workflow':cls==='crumb-layer'?'system layer':'control'} plane">${esc(label)}</button>`;
+  let trail='';
+  if (!s){ trail=''; }
+  else if (s.type==='cell'){
+    trail = crumb('crumb-wf', WORKFLOWS[s.w].short, 'workflow:'+s.w, false) + sep
+          + crumb('crumb-layer', LAYERS[s.l].short, 'layer:'+s.l, false) + sep
+          + crumb('crumb-ctrl', CONTROLS[s.c].name, '', true);
+  } else if (s.type==='workflow')  trail = crumb('crumb-wf', WORKFLOWS[s.w].name, '', true);
+  else if (s.type==='layer' || s.type==='failure') trail = crumb('crumb-layer', LAYERS[s.l].name, '', true);
+  else if (s.type==='control')     trail = crumb('crumb-ctrl', CONTROLS[s.c].name, '', true);
+  return `<div class="panel-bar"><nav class="crumbs" aria-label="Selection path">${trail}</nav>`
+    + `<span class="panel-nav">`
+    + (histHas() ? `<button type="button" class="panel-back" data-action="hist-back" aria-label="Back to the previous view">← Back</button>` : '')
+    + `<button type="button" class="panel-clear" data-action="clear-sel">Back to full harness</button></span></div>`;
+}
+panelEl.addEventListener('click', e=>{
+  const b=e.target.closest('[data-sel],[data-q],[data-action],[data-walk]');
+  if (!b) return;
+  if (b.dataset.walk){ playWalk(b.dataset.walk); return; }
+  if (b.dataset.sel) applySelStr(b.dataset.sel);
+  else if (b.dataset.q!=null && QUESTIONS[+b.dataset.q]) QUESTIONS[+b.dataset.q].a();
+  else if (b.dataset.action){
+    const a=b.dataset.action;
+    if (a==='back'){ state.intro=''; requestRender(); }
+    else if (a==='clear-sel'){ clearSelection(); }
+    else if (a==='hist-back'){ histBack(); }
+    else if (a==='demo:coverage'){ clearSelection(); setOv('coverage', true); }
+    else if (a==='demo:gates'){ setOv('gates', true); setOv('coverage', false); select({type:'cell',l:3,c:2,w:1}); }
+    else if (a==='harness') harnessAction();
+    else if (a.indexOf('scenario:')===0){
+      playScenario(a.slice(9));
+    }
+  }
+});
+panelEl.addEventListener('keydown', e=>{
+  if (e.key!=='Enter' && e.key!==' ') return;
+  const b=e.target.closest('[data-sel],[data-q],[data-action],[data-walk]');
+  if (b){ e.preventDefault(); b.click(); }
+});
+
+/* ---------- toast ---------- */
+let toastTimer=null;
+function toast(msg){
+  toastEl.textContent=msg;
+  toastEl.hidden=false;
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>{ toastEl.hidden=true; },4200);
+}
+
+/* ---------- init ---------- */
+function syncSize(){
+  W=Math.max(320, wrap.clientWidth||900);
+  Hh=Math.max(280, wrap.clientHeight||560);
+  svg.setAttribute('width',W);
+  svg.setAttribute('height',Hh);
+}
+function init(){
+  syncSize();
+  buildSearchIndex();
+  buildFilters();
+  buildScenarioSelect();
+  applyHints();
+  render();
+  announce('3D reliability matrix loaded. Use arrow keys to move the cursor and Enter to open a cell.');
+}
+if (typeof ResizeObserver!=='undefined'){
+  new ResizeObserver(()=>{ syncSize(); requestRender(); }).observe(wrap);
+}
+init();
+
+</script>
+</body>
+</html>

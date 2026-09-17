@@ -38,6 +38,16 @@ reads `TYPESAFE_API_KEY` (Jev tool-use tabs) and `DEEPSEEK_API_KEY` (DSPy tabs) 
 environment or a local `.env`; without them it still starts and the remaining tabs work.
 Full detail: [How to Run](#how-to-run).
 
+## Harness Matrix (interactive)
+
+**▶ [Open Harness Matrix](https://aminrezaei-img.github.io/Market-Platform-DSPy-vs-Jev/)** — the platform-level
+reliability model as a 3D matrix: 11 system layers × 7 reliability controls × 6 banking agents, with one shared
+harness applied at every intersection. Every intersection opens its own argument (why it matters, failure example,
+control, evaluation, trace, release consequence), a route can be walked stage by stage, and one toggle shows
+which intersections carry an authored argument, a gate result, or generated content.
+
+One self-contained HTML file (`docs/index.html`) — no dependencies, no network calls, works offline.
+
 ## Roadmap
 
 ```
@@ -591,6 +601,7 @@ financial-agent-reliability/
 ├── README.md
 ├── pyproject.toml
 ├── .env.example
+├── docs/index.html          # Harness Matrix — interactive 3D reliability model (GitHub Pages)
 ├── configs/
 │   ├── models.yaml
 │   ├── prompts/
