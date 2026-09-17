@@ -1,0 +1,26 @@
+retrieval:
+  top_k: 5
+  configs:
+    bm25:
+      enabled: true
+      k1: 1.5
+      b: 0.75
+    dense:
+      enabled: true
+      embedding_model: "all-MiniLM-L6-v2"
+      similarity: "cosine"
+    hybrid:
+      enabled: true
+      bm25_weight: 0.5
+      dense_weight: 0.5
+      fusion: "rrf"
+      rrf_k: 60
+    reranker:
+      enabled: false  # enable after baseline works
+      model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+      top_n: 5
+
+corpus:
+  name: "finagent_sec_subset"
+  chunk_size: 512
+  chunk_overlap: 50

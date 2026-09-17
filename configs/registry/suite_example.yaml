@@ -1,0 +1,33 @@
+suite:
+  id: markets_pre_meeting_release
+  version: "3.0.0"
+
+  datasets:
+    - golden_reliability@1.0.0
+    - finagent_1_1_1@1.0.0
+    - dspy_control_holdout@1.0.0
+
+  metrics:
+    - financial_correctness
+    - evidence_recall
+    - tool_accuracy
+    - abstention
+    - grounding
+    - workflow_success
+    - escalation
+
+  slices:
+    - adversarial
+    - numerical
+    - missing_data
+    - conflict
+    - high_risk
+    - tool-required
+    - human-review
+
+  lifecycle_policy:
+    p0_max: 0
+    p1_max: 0
+
+  description: Full release suite with FinAgent and DSPy holdout
+  evidence_type: measured

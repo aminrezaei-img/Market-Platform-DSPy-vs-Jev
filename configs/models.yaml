@@ -1,0 +1,45 @@
+# Model provider configuration
+# Phase 1: mock and frontier supervisors via common interface
+# Phase 2: LFM supervisors will be added without changing orchestration
+
+supervisor_provider: "frontier"  # options: rule_based, frontier, mock, lfm_1_2b (phase2)
+
+providers:
+  mock:
+    type: "mock"
+    model_name: "mock-supervisor-v1"
+    latency_ms: 50
+  rule_based:
+    type: "rule_based"
+    model_name: "rule-based-v1"
+  frontier:
+    type: "frontier"
+    provider: "anthropic"  # or openai, bedrock, local
+    model_name: "claude-3-5-sonnet-20241022"
+    prompt_version: "supervisor-v1"
+    temperature: 0.0
+    max_tokens: 1024
+
+  # Phase 2 placeholders - not implemented in Phase 1
+  lfm_1_2b:
+    type: "lfm"
+    model_name: "LFM2.5-1.2B-FinAgent-LoRA"
+    base_model: "LiquidAI/LFM2.5-1.2B-Instruct"
+    prompt_version: "lfm-supervisor-v1"
+
+generation_agents:
+  internal_data:
+    provider: "mock"
+    model_name: "mock-internal-v1"
+  research:
+    provider: "mock"
+    model_name: "mock-research-v1"
+  analysis:
+    provider: "mock"
+    model_name: "mock-analysis-v1"
+  verifier:
+    provider: "mock"
+    model_name: "mock-verifier-v1"
+  synthesiser:
+    provider: "mock"
+    model_name: "mock-synthesiser-v1"

@@ -1,0 +1,46 @@
+agent:
+  id: markets.pre_meeting_brief
+  version: 1.2.0
+  owner: markets-ai
+
+  description: Pre-meeting brief v1.2 - cautious frontier
+
+  capabilities:
+    - corporate_research
+    - internal_relationship_lookup
+    - financial_analysis
+
+  workflow: pre_meeting_brief_v3
+  workflow_id: pre_meeting_brief
+  workflow_version: "3"
+
+  model_policy:
+    supervisor: anthropic.claude-3-5-sonnet@1.0.0
+    verifier: frontier-verifier@1
+
+  tool_policy:
+    allow:
+      - client_lookup
+      - credit_snapshot
+      - trade_activity
+      - document_search
+      - calculator
+      - table_extractor
+
+  memory_policy:
+    short_term: engagement
+    long_term: preferences_only
+
+  evaluation:
+    required_suite: markets_pre_meeting_release@3.0.0
+
+  input_contract:
+    request: string
+    client_id: string
+
+  output_contract:
+    brief: string
+    citations: array
+    conflicts: array
+
+  evidence_type: measured
