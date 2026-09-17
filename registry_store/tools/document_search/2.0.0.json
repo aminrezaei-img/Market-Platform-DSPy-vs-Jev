@@ -1,0 +1,25 @@
+{
+  "id": "document_search",
+  "version": "2.0.0",
+  "created_at": "2026-09-17T07:42:24.617389+00:00",
+  "updated_at": "2026-09-17T07:42:24.618065+00:00",
+  "owner": "research-team",
+  "description": "Search SEC filings and external docs",
+  "tags": [],
+  "metadata": {},
+  "input_schema": {
+    "query": "string"
+  },
+  "output_schema": {
+    "documents": "array"
+  },
+  "authorisation_policy": {
+    "allow_all": true
+  },
+  "authoritative": false,
+  "state_mutating": false,
+  "timeout_ms": 5000,
+  "retry_policy": {},
+  "data_classification": "public",
+  "status": "active"
+}

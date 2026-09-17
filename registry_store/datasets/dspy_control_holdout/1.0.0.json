@@ -1,0 +1,24 @@
+{
+  "id": "dspy_control_holdout",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.619524+00:00",
+  "updated_at": "2026-09-17T07:42:24.620222+00:00",
+  "owner": "platform",
+  "description": "DSPy control holdout 20%",
+  "tags": [],
+  "metadata": {},
+  "source": "synthetic",
+  "licence": "internal",
+  "task_count": 12,
+  "task_families": [
+    "credit_lookup",
+    "ambiguous",
+    "external_research",
+    "conflict_check"
+  ],
+  "intended_use": "evaluation",
+  "training_allowed": false,
+  "evaluation_only": true,
+  "content_hash": "dspy_holdout_v1",
+  "path": "data/dspy_optimization.json"
+}

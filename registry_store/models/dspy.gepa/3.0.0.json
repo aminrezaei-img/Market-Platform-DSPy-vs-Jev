@@ -1,0 +1,25 @@
+{
+  "id": "dspy.gepa",
+  "version": "3.0.0",
+  "created_at": "2026-09-17T07:42:24.614369+00:00",
+  "updated_at": "2026-09-17T07:42:24.615391+00:00",
+  "owner": "platform",
+  "description": "DSPy GEPA optimized program",
+  "tags": [],
+  "metadata": {},
+  "provider": "dspy",
+  "model_id": "query_planner_gepa",
+  "model_family": "dspy",
+  "context_window": 8192,
+  "deployment": "local",
+  "cost_metadata": {
+    "input_per_1k": 0.0,
+    "output_per_1k": 0.0
+  },
+  "capabilities": [
+    "routing",
+    "tool_selection",
+    "optimized"
+  ],
+  "status": "active"
+}

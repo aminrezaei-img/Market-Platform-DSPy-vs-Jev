@@ -1,0 +1,15 @@
+{
+  "id": "AGENT.WRONG_ROUTE",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.629472+00:00",
+  "updated_at": "2026-09-17T07:42:24.630498+00:00",
+  "owner": "platform",
+  "description": "Wrong agent routing",
+  "tags": [],
+  "metadata": {},
+  "category": "agent",
+  "severity": "P2",
+  "blocking_policy": "WARNING",
+  "detection_method": "",
+  "remediation": ""
+}

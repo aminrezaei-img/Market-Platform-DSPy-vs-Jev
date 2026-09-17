@@ -1,0 +1,64 @@
+{
+  "planner": {
+    "traces": [],
+    "train": [],
+    "demos": [],
+    "signature": {
+      "instructions": "Decompose a banker request into bounded information and action requirements.\nPreserve original request intent. Generate subqueries as derived search/action plans.\nFocus on banking reliability: answerability, risk, human review, tool selection.",
+      "fields": [
+        {
+          "prefix": "Request:",
+          "description": "Original banker request, e.g., Prepare brief for Nordic Industrial A/S"
+        },
+        {
+          "prefix": "Memory Context:",
+          "description": "Safe namespaced memory context, e.g., user prefers concise briefs"
+        },
+        {
+          "prefix": "Available Sources:",
+          "description": "Available data sources: synthetic_crm, synthetic_credit, sec_filings, trading, etc."
+        },
+        {
+          "prefix": "Available Tools:",
+          "description": "Available tools: client_lookup, credit_snapshot, document_search, etc."
+        },
+        {
+          "prefix": "Task Type:",
+          "description": "One of: pre_meeting_brief, credit_lookup, relationship_lookup, trading_lookup, false_premise, unanswerable, conflict_check"
+        },
+        {
+          "prefix": "Answerability:",
+          "description": "One of: answerable, requires_internal_data, requires_external_data, insufficient_evidence, incorrect_premise, conflict_detected, tool_unavailable, policy_blocked"
+        },
+        {
+          "prefix": "Required Specialists:",
+          "description": "List subset of: internal, research, analysis"
+        },
+        {
+          "prefix": "Required Tools:",
+          "description": "List of required tool names from available_tools"
+        },
+        {
+          "prefix": "Research Questions:",
+          "description": "Derived research subqueries for external retrieval, 2-4 focused questions"
+        },
+        {
+          "prefix": "Risk Level:",
+          "description": "One of: low, medium, high, critical"
+        },
+        {
+          "prefix": "Needs Human Review:",
+          "description": "True if conflict, missing authoritative data, false premise, or high risk"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.13",
+      "dspy": "3.3.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}

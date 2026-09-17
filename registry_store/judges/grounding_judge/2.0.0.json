@@ -1,0 +1,26 @@
+{
+  "id": "grounding_judge",
+  "version": "2.0.0",
+  "created_at": "2026-09-17T07:42:24.628418+00:00",
+  "updated_at": "2026-09-17T07:42:24.628439+00:00",
+  "owner": "platform",
+  "description": "Grounding judge v2",
+  "tags": [
+    "grounding",
+    "calibrated"
+  ],
+  "metadata": {},
+  "model": "anthropic.claude-3-5-sonnet@1.0.0",
+  "prompt": "Check if claim is supported by evidence...",
+  "rubric": "Supported, Partially Supported, Unsupported",
+  "calibration": {
+    "agreement": 0.88,
+    "precision": 0.85,
+    "recall": 0.9,
+    "cohens_kappa": 0.79,
+    "validated_on": 40,
+    "calibration_dataset": "grounding_human_labels@1",
+    "last_calibrated": "2026-09-15"
+  },
+  "status": "active"
+}

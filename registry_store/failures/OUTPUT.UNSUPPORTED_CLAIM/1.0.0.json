@@ -1,0 +1,15 @@
+{
+  "id": "OUTPUT.UNSUPPORTED_CLAIM",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.629478+00:00",
+  "updated_at": "2026-09-17T07:42:24.630679+00:00",
+  "owner": "platform",
+  "description": "Unsupported financial claim",
+  "tags": [],
+  "metadata": {},
+  "category": "output",
+  "severity": "P1",
+  "blocking_policy": "BLOCK",
+  "detection_method": "citation support scorer",
+  "remediation": ""
+}

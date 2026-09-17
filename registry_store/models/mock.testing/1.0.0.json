@@ -1,0 +1,23 @@
+{
+  "id": "mock.testing",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.614320+00:00",
+  "updated_at": "2026-09-17T07:42:24.614376+00:00",
+  "owner": "platform",
+  "description": "Mock model for testing",
+  "tags": [],
+  "metadata": {},
+  "provider": "mock",
+  "model_id": "mock-supervisor-v1",
+  "model_family": "mock",
+  "context_window": 8192,
+  "deployment": "local",
+  "cost_metadata": {
+    "input_per_1k": 0.0,
+    "output_per_1k": 0.0
+  },
+  "capabilities": [
+    "tool_use"
+  ],
+  "status": "active"
+}

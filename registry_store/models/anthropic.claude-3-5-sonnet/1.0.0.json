@@ -1,0 +1,25 @@
+{
+  "id": "anthropic.claude-3-5-sonnet",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.614335+00:00",
+  "updated_at": "2026-09-17T07:42:24.614560+00:00",
+  "owner": "platform",
+  "description": "Claude 3.5 Sonnet",
+  "tags": [],
+  "metadata": {},
+  "provider": "anthropic",
+  "model_id": "claude-3-5-sonnet-20241022",
+  "model_family": "claude",
+  "context_window": 200000,
+  "deployment": "bedrock",
+  "cost_metadata": {
+    "input_per_1k": 0.003,
+    "output_per_1k": 0.015
+  },
+  "capabilities": [
+    "reasoning",
+    "tool_use",
+    "vision"
+  ],
+  "status": "active"
+}

@@ -1,0 +1,34 @@
+{
+  "evidence_pack_id": "evp_20260917_074142",
+  "candidate_identity": "test.agent@1.1.0",
+  "baseline_identity": "test.agent@1.0.0",
+  "timestamp": "2026-09-17T07:41:42.377513+00:00",
+  "code_version": "local",
+  "model_versions": {},
+  "program_versions": {},
+  "prompt_versions": {},
+  "tool_versions": {},
+  "datasets_used": [],
+  "scorer_versions": [],
+  "judge_validation": {},
+  "quality_metrics": {
+    "accuracy": 0.85
+  },
+  "latency": {},
+  "cost": {},
+  "slice_analysis": {},
+  "p0_failures": 0,
+  "p1_failures": 1,
+  "failure_details": [],
+  "red_team_results": {},
+  "regression_diff": {},
+  "human_review_metrics": {},
+  "known_limitations": [
+    "Synthetic data only",
+    "Mock LM for some results"
+  ],
+  "lifecycle_decision": "BLOCK",
+  "decision_reason": "P1 failures=1 > 0",
+  "evidence_type": "measured",
+  "artifacts": {}
+}

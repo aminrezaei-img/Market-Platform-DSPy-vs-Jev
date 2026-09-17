@@ -1,0 +1,22 @@
+{
+  "id": "tau_control_future",
+  "version": "0.1.0",
+  "created_at": "2026-09-17T07:42:24.619549+00:00",
+  "updated_at": "2026-09-17T07:42:24.620731+00:00",
+  "owner": "platform",
+  "description": "Future Tau control - not yet implemented",
+  "tags": [
+    "future",
+    "phase2"
+  ],
+  "metadata": {},
+  "source": "tau",
+  "licence": "internal",
+  "task_count": 0,
+  "task_families": [],
+  "intended_use": "training",
+  "training_allowed": true,
+  "evaluation_only": false,
+  "content_hash": "future",
+  "path": ""
+}

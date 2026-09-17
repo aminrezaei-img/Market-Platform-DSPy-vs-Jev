@@ -1,0 +1,119 @@
+{
+  "id": "pre_meeting_brief",
+  "version": "3",
+  "created_at": "2026-09-17T07:42:24.612794+00:00",
+  "updated_at": "2026-09-17T07:42:24.613113+00:00",
+  "owner": "markets-ai",
+  "description": "Pre-meeting brief v3 - parallel branches, DSPy programs",
+  "tags": [],
+  "metadata": {},
+  "nodes": [
+    {
+      "id": "supervisor",
+      "type": "router",
+      "agent_version": "dspy.gepa@3",
+      "tool_requirements": [],
+      "config": {}
+    },
+    {
+      "id": "internal_data",
+      "type": "agent",
+      "agent_version": "internal@v2",
+      "tool_requirements": [
+        "client_lookup",
+        "credit_snapshot",
+        "trade_activity"
+      ],
+      "config": {}
+    },
+    {
+      "id": "research",
+      "type": "agent",
+      "agent_version": "research@v2",
+      "tool_requirements": [
+        "document_search",
+        "document_fetch"
+      ],
+      "config": {}
+    },
+    {
+      "id": "analysis",
+      "type": "agent",
+      "agent_version": "analysis@v1",
+      "tool_requirements": [
+        "calculator",
+        "table_extractor"
+      ],
+      "config": {}
+    },
+    {
+      "id": "verifier",
+      "type": "verifier",
+      "agent_version": "verifier@v2",
+      "tool_requirements": [],
+      "config": {}
+    },
+    {
+      "id": "synthesiser",
+      "type": "synthesiser",
+      "agent_version": "synthesiser@v2",
+      "tool_requirements": [],
+      "config": {}
+    }
+  ],
+  "edges": [
+    {
+      "from_node": "supervisor",
+      "to_node": "internal_data",
+      "condition": null
+    },
+    {
+      "from_node": "supervisor",
+      "to_node": "research",
+      "condition": null
+    },
+    {
+      "from_node": "internal_data",
+      "to_node": "analysis",
+      "condition": null
+    },
+    {
+      "from_node": "research",
+      "to_node": "analysis",
+      "condition": null
+    },
+    {
+      "from_node": "analysis",
+      "to_node": "verifier",
+      "condition": null
+    },
+    {
+      "from_node": "verifier",
+      "to_node": "synthesiser",
+      "condition": null
+    }
+  ],
+  "parallel_branches": [
+    [
+      "internal_data",
+      "research"
+    ]
+  ],
+  "agent_versions": {},
+  "tool_requirements": [
+    "client_lookup",
+    "credit_snapshot",
+    "trade_activity",
+    "document_search",
+    "calculator"
+  ],
+  "memory_requirements": {
+    "short_term": "engagement",
+    "long_term": "preferences_only"
+  },
+  "failure_policy": "fail_closed",
+  "entry_node": "supervisor",
+  "exit_node": "synthesiser",
+  "framework": "langgraph",
+  "status": "active"
+}

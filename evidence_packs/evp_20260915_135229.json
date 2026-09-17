@@ -1,0 +1,59 @@
+{
+  "evidence_pack_id": "evp_20260915_135229",
+  "candidate_identity": "markets.pre_meeting_brief@1.3.0",
+  "baseline_identity": "markets.pre_meeting_brief@1.2.0",
+  "timestamp": "2026-09-15T13:52:29.862002+00:00",
+  "code_version": "local",
+  "model_versions": {},
+  "program_versions": {},
+  "prompt_versions": {},
+  "tool_versions": {},
+  "datasets_used": [],
+  "scorer_versions": [],
+  "judge_validation": {},
+  "quality_metrics": {
+    "avg_score": 0.0,
+    "tool_f1": 0.0,
+    "answerability": 0.0,
+    "workflow_success": 0.0
+  },
+  "latency": {},
+  "cost": {},
+  "slice_analysis": {
+    "adversarial": {
+      "accuracy": 0.62
+    },
+    "numerical": {
+      "accuracy": 0.75
+    },
+    "missing_data": {
+      "accuracy": 0.7
+    },
+    "conflict": {
+      "accuracy": 0.62
+    },
+    "high_risk": {
+      "accuracy": 0.85
+    },
+    "tool-required": {
+      "accuracy": 0.85
+    },
+    "human-review": {
+      "accuracy": 0.85
+    }
+  },
+  "p0_failures": 0,
+  "p1_failures": 0,
+  "failure_details": [],
+  "red_team_results": {},
+  "regression_diff": {},
+  "human_review_metrics": {},
+  "known_limitations": [
+    "Synthetic data only",
+    "Mock LM for some results"
+  ],
+  "lifecycle_decision": "HUMAN_REVIEW",
+  "decision_reason": "Critical slice adversarial low: {'accuracy': 0.62}",
+  "evidence_type": "simulated",
+  "artifacts": {}
+}

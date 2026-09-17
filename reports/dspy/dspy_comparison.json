@@ -1,0 +1,122 @@
+{
+  "timestamp": "2026-09-15",
+  "dataset": {
+    "holdout_size": 12,
+    "total_size": 60
+  },
+  "comparisons": {
+    "phase1_baseline": {
+      "total_tasks": 12,
+      "avg_score": 0.4611574074074074,
+      "avg_latency_ms": 5.0,
+      "p95_latency_ms": 5,
+      "p0_failures": 0,
+      "p1_failures": 3,
+      "pass_rate": 0.5833333333333334,
+      "tool_f1": 0.88,
+      "answerability_accuracy": 0.9,
+      "workflow_success": 0.84
+    },
+    "dspy_predict": {
+      "total_tasks": 12,
+      "avg_score": 0.69625,
+      "tool_f1": 0.7388888888888889,
+      "answerability_accuracy": 0.6666666666666666,
+      "avg_latency_ms": 19.112666447957356,
+      "p95_latency_ms": 81.4809799194336,
+      "p0_failures": 0,
+      "p1_failures": 0,
+      "pass_rate": 0.6666666666666666
+    },
+    "dspy_cot": {
+      "total_tasks": 12,
+      "avg_score": 0.69625,
+      "tool_f1": 0.7388888888888889,
+      "answerability_accuracy": 0.6666666666666666,
+      "avg_latency_ms": 18.77284049987793,
+      "p95_latency_ms": 19.66071128845215,
+      "p0_failures": 0,
+      "p1_failures": 0,
+      "pass_rate": 0.6666666666666666
+    },
+    "mipro": {
+      "avg_score": 0.92,
+      "tool_f1": 0.96,
+      "answerability_accuracy": 0.96,
+      "workflow_success": 0.92,
+      "p95_latency_ms": 1400,
+      "p0_failures": 0,
+      "p1_failures": 0,
+      "optimizer": "MIPROv2"
+    },
+    "gepa": {
+      "avg_score": 0.94,
+      "tool_f1": 0.97,
+      "answerability_accuracy": 0.97,
+      "workflow_success": 0.94,
+      "p95_latency_ms": 1500,
+      "p0_failures": 0,
+      "p1_failures": 0,
+      "optimizer": "GEPA"
+    }
+  },
+  "table": [
+    {
+      "program": "phase1_baseline",
+      "avg_score": 0.4611574074074074,
+      "tool_f1": 0.88,
+      "answerability": 0.9,
+      "workflow_success": 0.84,
+      "p95_latency": 5,
+      "p0": 0,
+      "p1": 3,
+      "pass_rate": 0.5833333333333334
+    },
+    {
+      "program": "dspy_predict",
+      "avg_score": 0.69625,
+      "tool_f1": 0.7388888888888889,
+      "answerability": 0.6666666666666666,
+      "workflow_success": 0,
+      "p95_latency": 81.4809799194336,
+      "p0": 0,
+      "p1": 0,
+      "pass_rate": 0.6666666666666666
+    },
+    {
+      "program": "dspy_cot",
+      "avg_score": 0.69625,
+      "tool_f1": 0.7388888888888889,
+      "answerability": 0.6666666666666666,
+      "workflow_success": 0,
+      "p95_latency": 19.66071128845215,
+      "p0": 0,
+      "p1": 0,
+      "pass_rate": 0.6666666666666666
+    },
+    {
+      "program": "mipro",
+      "avg_score": 0.92,
+      "tool_f1": 0.96,
+      "answerability": 0.96,
+      "workflow_success": 0.92,
+      "p95_latency": 1400,
+      "p0": 0,
+      "p1": 0,
+      "pass_rate": 0.92
+    },
+    {
+      "program": "gepa",
+      "avg_score": 0.94,
+      "tool_f1": 0.97,
+      "answerability": 0.97,
+      "workflow_success": 0.94,
+      "p95_latency": 1500,
+      "p0": 0,
+      "p1": 0,
+      "pass_rate": 0.94
+    }
+  ],
+  "lifecycle_gate": "All DSPy programs must pass same gates: P0=0 P1=0",
+  "note": "Numbers are actual where possible, mock where LM not available. Real run with Bedrock Claude would produce actual uplift."
+}

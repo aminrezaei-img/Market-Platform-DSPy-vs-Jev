@@ -1,0 +1,15 @@
+{
+  "id": "DATA.MISSING.AUTHORITATIVE",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.629453+00:00",
+  "updated_at": "2026-09-17T07:42:24.629867+00:00",
+  "owner": "platform",
+  "description": "Missing authoritative data treated as zero",
+  "tags": [],
+  "metadata": {},
+  "category": "data",
+  "severity": "P1",
+  "blocking_policy": "BLOCK",
+  "detection_method": "check SOURCE_UNAVAILABLE transformed to 0",
+  "remediation": "Surface as unavailable"
+}

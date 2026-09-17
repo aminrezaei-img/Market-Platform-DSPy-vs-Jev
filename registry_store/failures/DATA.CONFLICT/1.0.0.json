@@ -1,0 +1,15 @@
+{
+  "id": "DATA.CONFLICT",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.629461+00:00",
+  "updated_at": "2026-09-17T07:42:24.630097+00:00",
+  "owner": "platform",
+  "description": "Conflicting sources not detected",
+  "tags": [],
+  "metadata": {},
+  "category": "data",
+  "severity": "P1",
+  "blocking_policy": "BLOCK",
+  "detection_method": "conflict check",
+  "remediation": "Surface conflict and require human review"
+}

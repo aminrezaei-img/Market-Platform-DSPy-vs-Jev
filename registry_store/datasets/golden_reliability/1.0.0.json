@@ -1,0 +1,26 @@
+{
+  "id": "golden_reliability",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.619491+00:00",
+  "updated_at": "2026-09-17T07:42:24.619560+00:00",
+  "owner": "platform",
+  "description": "6 canonical R01-R06 + 12 additional",
+  "tags": [],
+  "metadata": {},
+  "source": "internal",
+  "licence": "internal",
+  "task_count": 18,
+  "task_families": [
+    "false_premise",
+    "missing_data",
+    "conflict",
+    "timeout",
+    "injection",
+    "privacy"
+  ],
+  "intended_use": "evaluation",
+  "training_allowed": false,
+  "evaluation_only": true,
+  "content_hash": "golden_v1_hash",
+  "path": "data/golden_suite/"
+}

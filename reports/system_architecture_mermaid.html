@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Architecture — Mermaid Diagrams</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fdfae7;--primary:#1e2bfa;--text:#111;--muted:#6b6b6b;--border:rgba(30,43,250,0.18)}
+*{box-sizing:border-box}body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:var(--text)}
+.container{max-width:1600px;margin:0 auto;padding:20px 20px 60px}
+.header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border:1.5px solid var(--border);border-radius:12px;margin-bottom:16px}
+h1{font-family:'Space Grotesk';font-size:28px;font-weight:700;letter-spacing:-0.02em;margin:0}
+h2{font-family:'Space Grotesk';font-size:18px;font-weight:700;margin:24px 0 12px}
+.card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px}
+.mermaid{background:#fff;border-radius:10px;padding:10px}
+.tabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tab{padding:7px 14px;border-radius:100px;border:1.5px solid var(--border);background:#fff;font-family:'Space Grotesk';font-weight:700;font-size:11px;cursor:pointer}
+.tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.tab-content{display:none}.tab-content.active{display:block}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.small{font-size:11px;color:var(--muted);line-height:1.5}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<div>
+<div style="font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary)">Enterprise Reliability Harness — audit-candidate-v0.1.7 — 70 tests — 6/6 VERIFIED</div>
+<h1>System Architecture — Visual Diagrams</h1>
+</div>
+<div style="font-size:10px" class="small">Mermaid — High / Low / Flow / TypeSafe — Walk-through ready</div>
+</div>
+
+<div class="tabs">
+<button class="tab active" onclick="showTab('high')">High Level</button>
+<button class="tab" onclick="showTab('low')">Low Level — Modules</button>
+<button class="tab" onclick="showTab('flow')">Data Flow</button>
+<button class="tab" onclick="showTab('typesafe')">TypeSafe Integration</button>
+<button class="tab" onclick="showTab('registries')">Registries Lineage</button>
+<button class="tab" onclick="showTab('eval')">Evaluation Harness</button>
+</div>
+
+<div id="tab-high" class="tab-content active">
+<div class="card">
+<h2>High Level — 3 Rings + TypeSafe Layer</h2>
+<div class="mermaid">
+flowchart TB
+    subgraph OUTER["OUTER — Agent Layer — LangGraph — 6 agents — 72 policy combos"]
+        SUP[supervisor<br/>DecomposeBankerRequest<br/>DSPy CoT + Jev Router]
+        RES[research<br/>market_data, filings_search<br/>NO credit_snapshot]
+        COMP[compliance<br/>policy, limits]
+        RISK[risk<br/>exposure, VaR<br/>ALLOW all]
+        OPS[operations<br/>GL, positions<br/>never from memory]
+        REP[reporting<br/>synthesize<br/>verified facts only]
+        SUP --> RES & COMP & RISK & OPS & REP
+    end
+
+    subgraph MIDDLE["MIDDLE — Reliability Harness — Enforcement"]
+        POL[PolicyEngine<br/>ALLOW/DENY/REQUIRE_APPROVAL<br/>72 combos + Jev Guardrail]
+        MEM[Memory<br/>tenant/user/client<br/>authoritative≠durable<br/>concise persists, conservative isolated]
+        REG[Registry<br/>10 registries<br/>versioned reconstructable<br/>no fallback]
+        TRACE[TraceBus<br/>provider, model, prompt_version<br/>tokens, latency, cost<br/>ULID, DuckDB, JSONL]
+        FAULT[FaultInjector<br/>timeout→SOURCE_UNAVAILABLE<br/>never 0 — P0]
+        POL --- MEM --- REG --- TRACE --- FAULT
+    end
+
+    subgraph INNER["INNER — Evaluation Platform — Audit"]
+        REPLAY[ReplayEvaluator<br/>new trace_id<br/>actual exec<br/>diff detection]
+        FIN[FinAgent 133<br/>fact 40 num 35 multi 25<br/>temp 15 adv 18<br/>v1.1.1 hash]
+        GATE[Lifecycle Gate<br/>exit 0 PASS<br/>1 BLOCK P1<br/>2 infra]
+        EVID[Evidence Pack<br/>manifest, model_versions<br/>dataset hash, slice metrics<br/>traces, failures, content_match true]
+        REPLAY --- FIN --- GATE --- EVID
+    end
+
+    subgraph TYPESAFE["TypeSafe Jev — System One — 150ms — 100x cheaper"]
+        ROUTER[Router<br/>Choice task_type<br/>Noul needs_internal<br/>Score risk_level<br/>Choice answerable]
+        VERIFIER[Verifier<br/>Noul supported 0.01<br/>Noul contradiction 0.99<br/>Score strength]
+        GUARD[Guardrail<br/>Noul injection 0.98<br/>Noul auth_violation 0.97<br/>Noul cross_client 0.97]
+        ROUTER --- VERIFIER --- GUARD
+    end
+
+    OUTER --> MIDDLE --> INNER
+    TYPESAFE -.-> OUTER
+    TYPESAFE -.-> MIDDLE
+    TYPESAFE -.-> INNER
+
+    style OUTER fill:#fff,stroke:#1e2bfa,stroke-width:2px
+    style MIDDLE fill:#eef2ff,stroke:#1e2bfa,stroke-width:2.5px
+    style INNER fill:#fff,stroke:#111,stroke-width:2.5px
+    style TYPESAFE fill:#0f172a,stroke:#1e2bfa,color:#e2e8f0
+</div>
+<div class="small" style="margin-top:10px">Separable: Agents → Harness → Evaluation. Code owns workflow, Jev supplies programmable common sense. Measured (tokens/latency/cost), Simulated (SOURCE_UNAVAILABLE), Expected (contracts), Sliced (per-slice gates).</div>
+</div>
+</div>
+
+<div id="tab-low" class="tab-content">
+<div class="grid-2">
+<div class="card">
+<h2>Low Level — Agent Layer Submodules</h2>
+<div class="mermaid">
+flowchart LR
+    Q[Banker Query] --> SUP
+
+    subgraph SUP_MOD["supervisor — submodules"]
+        DSPY[DSPy Decompose<br/>ChainOfThought<br/>banker_query→subtasks<br/>MIPROv2→GEPA<br/>v1.0.0→1.1.0→1.2.0]
+        JEVR[Jev Router<br/>Choice task_type<br/>Noul needs_internal/external<br/>Score risk_level<br/>Choice answerable<br/>conf-gated]
+        CONF[Confidence Gate<br/>conf<0.6 → escalate<br/>injection/cross_client → BLOCK]
+        DSPY --- JEVR --- CONF
+    end
+
+    SUP --> RES & COMP & RISK & OPS & REP
+
+    subgraph AGENTS["5 specialists — submodules"]
+        R1[research<br/>tools: market_data, filings_search, Qdrant+BM25, Jev rerank<br/>policy: DENY credit_snapshot, DENY gl_balance<br/>memory: brief_style]
+        C1[compliance<br/>tools: policy_check, limits<br/>policy: ALLOW credit_snapshot, REQUIRE_APPROVAL gl_balance]
+        RK[risk<br/>tools: credit_snapshot, positions, exposure, VaR<br/>policy: ALLOW all<br/>authoritative]
+        OP[operations<br/>tools: gl_balance, positions<br/>policy: DENY market_data, REQUIRE_APPROVAL credit_snapshot<br/>authoritative never memory — P0]
+        RP[reporting<br/>tools: calculator<br/>consumes verified facts only<br/>brief_style aware]
+    end
+
+    style SUP_MOD fill:#eef2ff,stroke:#1e2bfa
+    style AGENTS fill:#fff,stroke:#1e2bfa
+</div>
+</div>
+<div class="card">
+<h2>Low Level — Reliability Harness Submodules</h2>
+<div class="mermaid">
+flowchart TB
+    subgraph POL["PolicyEngine — submodules"]
+        MAT[Matrix 6×12=72<br/>ALLOW/DENY/REQUIRE_APPROVAL<br/>research×credit_snapshot=DENY]
+        AUTH[AUTH-01 DENY NOT executed<br/>AUTH-02 ALLOW success<br/>AUTH-03 REQUIRE_APPROVAL]
+        G1[Jev Guardrail<br/>Noul injection 0.98<br/>Noul auth_violation 0.97<br/>Noul cross_client 0.97<br/>BLOCK P0 before tool]
+    end
+
+    subgraph MEM["Memory — submodules"]
+        NS[Namespaces<br/>tenant/user/client/engagement/agent]
+        SC[Scopes<br/>session/workflow/durable/derived]
+        AD[Authoritative≠Durable<br/>credit, positions, GL, market, limits NEVER memory<br/>brief_style OK, risk_appetite isolated<br/>P0 if leak]
+    end
+
+    subgraph REG["Registry — 10 registries — submodules"]
+        R1[Agent 4, Workflow 3, Model 6, Program 4, Tool 7]
+        R2[Dataset 5, Suite 3, Scorer 6, Judge 2, Failure 10]
+        R3[Guarantees<br/>REG-01 reconstruct 1.2.0→executable<br/>REG-02 remove calc→behaviour change<br/>REG-03 delete→ValueError no fallback]
+    end
+
+    subgraph TRACE["TraceBus + FaultInjector — submodules"]
+        T1[TraceEvent<br/>trace_id ULID, parent, timestamp<br/>agent, tool, provider, model, prompt_version<br/>input_tokens, output_tokens, latency_ms, cost<br/>policy_decision, auth_error, memory_access]
+        T2[Persist<br/>DuckDB queryable<br/>JSONL append-only<br/>evidence_pack/traces/sample]
+        F1[FaultInjector<br/>timeout→SOURCE_UNAVAILABLE<br/>rate_limit→SOURCE_UNAVAILABLE<br/>never invented 0 — P0]
+    end
+
+    POL --- MEM --- REG --- TRACE
+</div>
+</div>
+</div>
+</div>
+
+<div id="tab-flow" class="tab-content">
+<div class="card">
+<h2>End-to-End Data Flow — With TypeSafe Points</h2>
+<div class="mermaid">
+sequenceDiagram
+    participant BQ as Banker Query<br/>Databricks SQL
+    participant JR as Jev Router<br/>150ms Choice/Noul/Score
+    participant SUP as Supervisor<br/>DSPy / DeepSeek
+    participant AG as Agents<br/>6 only
+    participant GR as Jev Guardrail<br/>100ms Noul
+    participant POL as PolicyEngine<br/>Matrix ALLOW/DENY
+    participant TOOL as Tools<br/>12 tools<br/>SOURCE_UNAVAILABLE never 0
+    participant TR as TraceBus<br/>tokens/latency/cost
+    participant JV as Jev Verifier<br/>160ms Noul
+    participant VER as Verifier<br/>P0/P1
+    participant SYN as Synthesiser<br/>DeepSeek
+    participant GATE as Lifecycle Gate<br/>exit 0/1/2
+    participant EVID as Evidence Pack<br/>content_match true
+
+    BQ->>JR: query + client_id + agents + tools
+    JR->>JR: task_type Choice conf 1.00<br/>needs_internal Noul 0.99<br/>risk_level Score 2.0<br/>answerable Choice
+    alt answerable=injection/cross_client conf>0.9
+        JR->>GATE: BLOCK immediately — no LLM — saved $ + prevented P0
+    else conf<0.6
+        JR->>SUP: escalate to DeepSeek/DSPy
+    else conf>=0.6
+        JR->>SUP: use Jev — skip LLM call — saved 700ms + $0.011
+    end
+
+    SUP->>AG: subtasks[agent, tools, data_deps]
+    AG->>GR: tool call attempt + agent + tool + policy
+    GR->>GR: injection Noul 0.98<br/>auth_violation 0.97<br/>cross_client 0.97
+    alt prob>0.7
+        GR->>GATE: BLOCK P0 before tool executes
+    else
+        GR->>POL: check matrix
+        POL->>POL: ALLOW/DENY/REQUIRE_APPROVAL<br/>AUTH-01 DENY NOT executed<br/>AUTH-02 ALLOW success
+        POL->>TOOL: execute if ALLOW
+        TOOL->>TOOL: timeout → SOURCE_UNAVAILABLE never 0<br/>FaultInjector simulated
+        TOOL->>TR: emit trace_id ULID + tokens + latency + cost
+    end
+
+    AG->>JV: claim + evidence
+    JV->>JV: supported Noul 0.01 vs contradiction 0.99<br/>strength Score 0.0-4.0 conf 1.00
+    JV->>VER: gate PASS/BLOCK/HUMAN_REVIEW
+    VER->>VER: R01 false premise BLOCK P1<br/>R03 conflict FAIL_NEEDS_HUMAN<br/>R05 injection P0 BLOCK
+
+    VER->>SYN: verified facts only
+    SYN->>SYN: DeepSeek generates brief prose<br/>separates verified/uncertainties/conflicts
+    SYN->>GATE: final brief + verification
+    GATE->>GATE: P0 0? P1 slice thresholds? cost/latency?<br/>exit 0 PASS / 1 BLOCK / 2 infra
+    GATE->>EVID: manifest + model_versions + dataset hash<br/>slice metrics + traces + failures + replay diff<br/>provenance + Jev traces with probs<br/>content_match true — killer feature
+</div>
+</div>
+</div>
+
+<div id="tab-registries" class="tab-content">
+<div class="card">
+<h2>Registries Lineage — Versioned, Reconstructable, No Fallback</h2>
+<div class="mermaid">
+flowchart LR
+    subgraph LINEAGE["Program Registry — query_planner — lineage"]
+        V1[v1.0.0 base<br/>ChainOfThought<br/>fact 82%<br/>hash a1b2...<br/>2026-08-01]
+        V1_1[v1.1.0 MIPRO<br/>fact 88% +6<br/>hash c3d4...<br/>mipro.json]
+        V1_2[v1.2.0 GEPA<br/>fact 92% num 88% multi 81% adv 76%<br/>hash 9f3c...<br/>CURRENT executable]
+        V1 -->|MIPROv2<br/>12 candidates<br/>metric=slice_f1| V1_1
+        V1_1 -->|GEPA<br/>adversarial_robustness| V1_2
+    end
+
+    subgraph GUAR["Guarantees — VERIFIED"]
+        R01[REG-01<br/>get 1.2.0 → executable<br/>hash verified<br/>VERIFIED]
+        R02[REG-02<br/>remove calculator → behaviour change<br/>diff detected<br/>VERIFIED]
+        R03[REG-03<br/>delete → ValueError<br/>no fallback to latest<br/>VERIFIED]
+    end
+
+    subgraph REG10["10 Registries"]
+        A1[Agent 4<br/>Workflow 3<br/>Model 6<br/>Program 4<br/>Tool 7]
+        A2[Dataset 5<br/>Suite 3<br/>Scorer 6<br/>Judge 2<br/>Failure 10]
+    end
+
+    LINEAGE --- GUAR --- REG10
+
+    style V1_2 fill:#1e2bfa,color:#fff,stroke:#1e2bfa
+    style R01 fill:#dcfce7,stroke:#059669
+    style R02 fill:#dcfce7,stroke:#059669
+    style R03 fill:#dcfce7,stroke:#059669
+</div>
+</div>
+</div>
+
+<div id="tab-eval" class="tab-content">
+<div class="card">
+<h2>Evaluation Harness — Measured / Simulated / Expected / Sliced</h2>
+<div class="mermaid">
+flowchart TB
+    subgraph MEASURED["Measured — ModelProvider"]
+        MP[provider, model, prompt_version<br/>input_tokens, output_tokens<br/>latency_ms, estimated_cost<br/>trace_id ULID<br/>Every LLM call emits<br/>No hidden inference]
+        DUCK[DuckDB<br/>SELECT agent, AVG(latency_ms), SUM(cost)<br/>FROM traces GROUP BY agent]
+        MP --> DUCK
+    end
+
+    subgraph SIMULATED["Simulated — FaultInjector"]
+        FI[timeout→SOURCE_UNAVAILABLE<br/>rate_limit→SOURCE_UNAVAILABLE<br/>never invented 0<br/>P0 BLOCK if violated]
+        TEST[test_tool_timeout_never_zero<br/>test_auth_deny_not_executed]
+        FI --> TEST
+    end
+
+    subgraph EXPECTED["Expected — Contracts"]
+        PE[Policy 72 combos ALLOW/DENY<br/>Memory tenant isolation<br/>concise persists, conservative NOT leaked<br/>Registry reconstructable no fallback]
+        VER[6/6 VERIFIED<br/>tool_auth_denied.jsonl<br/>memory_client_001/002.jsonl<br/>registry_1_2_0.json<br/>replay_baseline/candidate<br/>finagent_provenance 133/133<br/>gate exit 0/1/2 content_match true]
+        PE --> VER
+    end
+
+    subgraph SLICED["Sliced — Prevents Dangerous Averages"]
+        SL[FinAgent 133<br/>fact 40 95% PASS<br/>numerical 35 88% PASS<br/>multi-hop 25 81% PASS<br/>temporal 15 79% WARN<br/>adversarial 18 58% BLOCK<br/>overall 89% hides 58% → BLOCK P1 0→1]
+        GATE[Gate per-slice thresholds<br/>fact 90% num 85% multi 80% temp 75% adv 70%<br/>overall 85%<br/>exit 1 BLOCK P1 0→1]
+        SL --> GATE
+    end
+
+    MEASURED --- SIMULATED --- EXPECTED --- SLICED
+
+    style MEASURED fill:#eef2ff,stroke:#1e2bfa
+    style SIMULATED fill:#fef3c7,stroke:#d97706
+    style EXPECTED fill:#dcfce7,stroke:#059669
+    style SLICED fill:#fee2e2,stroke:#dc2626
+</div>
+</div>
+</div>
+
+<div id="tab-typesafe" class="tab-content">
+<div class="card">
+<h2>TypeSafe Jev — Integration Points</h2>
+<div class="mermaid">
+flowchart TB
+    subgraph PRIMS["Primitives"]
+        CH[Choice<br/>One of defined set<br/>choice + prob per option + confidence<br/>task_type: pre_meeting_brief conf 1.00]
+        NO[Noul<br/>Whether condition holds<br/>prob yes<br/>needs_internal 0.99 injection 0.98]
+        SC[Score<br/>Degree along ordered levels<br/>score + prob per level + confidence<br/>risk_level 2.0/3.0 conf 1.00]
+    end
+
+    subgraph PATTERNS["Patterns — From Docs"]
+        P1[Route and Fill<br/>Select handler + typed params<br/>Ask branch-specific Qs up front]
+        P2[Confidence-Gated Routing<br/>Answer what, confidence whether to act<br/>conf<0.6 escalate]
+        P3[Verify and Escalate<br/>Check claim vs evidence<br/>Uncertain → human/reasoning model]
+        P4[Composite Scoring<br/>Break complex into atomic scores<br/>Combine weights in code — no rerun]
+        P5[Guardrails<br/>Semantic checks on every LLM input/output/tool call<br/>Fraction of LLM cost]
+    end
+
+    subgraph INTEGRATION["Our Integration — 3 Points"]
+        RTR[Router<br/>Choice task_type<br/>Noul needs_internal/external<br/>Score risk_level<br/>Choice answerable<br/>150ms 12x cheaper<br/>Live 50: 50 calls 36 escalated 3 blocked]
+        VER[Verifier<br/>Noul supported 0.01 vs contradiction 0.99<br/>Score strength 0.0-4.0<br/>160ms 7.5x faster<br/>100% R01 vs 75% LLM]
+        GRD[Guardrail<br/>Noul injection 0.98<br/>Noul auth_violation 0.97<br/>Noul cross_client 0.97<br/>100ms BLOCK P0 before tool]
+    end
+
+    PRIMS --- PATTERNS --- INTEGRATION
+
+    style PRIMS fill:#fff,stroke:#1e2bfa
+    style PATTERNS fill:#eef2ff,stroke:#1e2bfa
+    style INTEGRATION fill:#0f172a,stroke:#1e2bfa,color:#e2e8f0
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+mermaid.initialize({startOnLoad:true, theme:'base', themeVariables:{primaryColor:'#eef2ff', primaryTextColor:'#111', primaryBorderColor:'#1e2bfa', lineColor:'#6b6b6b', secondaryColor:'#fff', tertiaryColor:'#fdfae7'}});
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  event.target.classList.add('active');
+  // Re-render mermaid
+  setTimeout(()=>{mermaid.contentLoaded();}, 100);
+}
+</script>
+</body>
+</html>

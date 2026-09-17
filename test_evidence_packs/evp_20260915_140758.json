@@ -1,0 +1,40 @@
+{
+  "evidence_pack_id": "evp_20260915_140758",
+  "candidate_identity": "test@1.0.0",
+  "baseline_identity": "test@0.9.0",
+  "timestamp": "2026-09-15T14:07:58.534898+00:00",
+  "code_version": "local",
+  "model_versions": {
+    "supervisor": "test@1"
+  },
+  "program_versions": {},
+  "prompt_versions": {},
+  "tool_versions": {},
+  "datasets_used": [
+    "golden@1"
+  ],
+  "scorer_versions": [
+    "test@1"
+  ],
+  "judge_validation": {},
+  "quality_metrics": {
+    "accuracy": 0.85
+  },
+  "latency": {},
+  "cost": {},
+  "slice_analysis": {},
+  "p0_failures": 0,
+  "p1_failures": 0,
+  "failure_details": [],
+  "red_team_results": {},
+  "regression_diff": {},
+  "human_review_metrics": {},
+  "known_limitations": [
+    "Synthetic data only",
+    "Mock LM for some results"
+  ],
+  "lifecycle_decision": "PASS",
+  "decision_reason": "All gates passed",
+  "evidence_type": "measured",
+  "artifacts": {}
+}

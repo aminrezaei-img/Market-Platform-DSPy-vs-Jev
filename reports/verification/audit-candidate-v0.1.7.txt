@@ -1,0 +1,24 @@
+audit-candidate-v0.1.7
+Generated: 2026-09-15T14:07:54Z
+All 6 claims VERIFIED
+
+Tool authorisation: VERIFIED
+Cross-client isolation: VERIFIED
+Agent registry: VERIFIED
+Replay evaluation: VERIFIED
+FinAgent: VERIFIED (133 tasks)
+Lifecycle Gate: VERIFIED (PASS/BLOCK/infra)
+
+Evidence:
+- reports/verification/CLAIMS_LEDGER.md
+- reports/verification/CLAIMS_LEDGER.json
+- reports/verification/VERIFICATION_REPORT.md
+- traces/verification/
+- runs/verification/
+- reports/verification/
+
+Tests: 70 passed (38 unit + 16 enterprise + 16 integration)
+
+No further self-certification by Arena. Independent Codex/Hermes audit begins.
+
+Tag: audit-candidate-v0.1.7

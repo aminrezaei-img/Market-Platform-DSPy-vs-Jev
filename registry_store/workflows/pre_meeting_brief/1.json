@@ -1,0 +1,90 @@
+{
+  "id": "pre_meeting_brief",
+  "version": "1",
+  "created_at": "2026-09-17T07:42:24.612758+00:00",
+  "updated_at": "2026-09-17T07:42:24.612825+00:00",
+  "owner": "markets-ai",
+  "description": "Pre-meeting brief v1 - simple sequential",
+  "tags": [],
+  "metadata": {},
+  "nodes": [
+    {
+      "id": "supervisor",
+      "type": "router",
+      "agent_version": "rule_based@v1",
+      "tool_requirements": [],
+      "config": {}
+    },
+    {
+      "id": "internal_data",
+      "type": "agent",
+      "agent_version": "internal@v1",
+      "tool_requirements": [
+        "client_lookup",
+        "credit_snapshot"
+      ],
+      "config": {}
+    },
+    {
+      "id": "research",
+      "type": "agent",
+      "agent_version": "research@v1",
+      "tool_requirements": [
+        "document_search"
+      ],
+      "config": {}
+    },
+    {
+      "id": "verifier",
+      "type": "verifier",
+      "agent_version": "verifier@v1",
+      "tool_requirements": [],
+      "config": {}
+    },
+    {
+      "id": "synthesiser",
+      "type": "synthesiser",
+      "agent_version": "synthesiser@v1",
+      "tool_requirements": [],
+      "config": {}
+    }
+  ],
+  "edges": [
+    {
+      "from_node": "supervisor",
+      "to_node": "internal_data",
+      "condition": null
+    },
+    {
+      "from_node": "internal_data",
+      "to_node": "research",
+      "condition": null
+    },
+    {
+      "from_node": "research",
+      "to_node": "verifier",
+      "condition": null
+    },
+    {
+      "from_node": "verifier",
+      "to_node": "synthesiser",
+      "condition": null
+    }
+  ],
+  "parallel_branches": [],
+  "agent_versions": {},
+  "tool_requirements": [
+    "client_lookup",
+    "credit_snapshot",
+    "document_search"
+  ],
+  "memory_requirements": {
+    "short_term": "engagement",
+    "long_term": "preferences_only"
+  },
+  "failure_policy": "fail_closed",
+  "entry_node": "supervisor",
+  "exit_node": "synthesiser",
+  "framework": "langgraph",
+  "status": "active"
+}

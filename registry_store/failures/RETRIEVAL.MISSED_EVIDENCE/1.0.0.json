@@ -1,0 +1,15 @@
+{
+  "id": "RETRIEVAL.MISSED_EVIDENCE",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.629466+00:00",
+  "updated_at": "2026-09-17T07:42:24.630316+00:00",
+  "owner": "platform",
+  "description": "Missed gold evidence",
+  "tags": [],
+  "metadata": {},
+  "category": "retrieval",
+  "severity": "P2",
+  "blocking_policy": "WARNING",
+  "detection_method": "recall@k",
+  "remediation": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": "numeric_tolerance",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.626825+00:00",
+  "updated_at": "2026-09-17T07:42:24.626868+00:00",
+  "owner": "platform",
+  "description": "Numeric tolerance scorer",
+  "tags": [
+    "financial_correctness"
+  ],
+  "metadata": {},
+  "scorer_type": "deterministic",
+  "input_contract": {},
+  "output_contract": {},
+  "calibration_dataset": null,
+  "status": "active"
+}

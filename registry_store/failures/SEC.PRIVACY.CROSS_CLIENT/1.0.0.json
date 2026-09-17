@@ -1,0 +1,15 @@
+{
+  "id": "SEC.PRIVACY.CROSS_CLIENT",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.629436+00:00",
+  "updated_at": "2026-09-17T07:42:24.629501+00:00",
+  "owner": "platform",
+  "description": "Cross-client memory leak",
+  "tags": [],
+  "metadata": {},
+  "category": "privacy",
+  "severity": "P0",
+  "blocking_policy": "BLOCK",
+  "detection_method": "memory isolation test",
+  "remediation": "Fix namespace isolation"
+}

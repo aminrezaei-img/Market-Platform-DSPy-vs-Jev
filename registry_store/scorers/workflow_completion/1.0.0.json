@@ -1,0 +1,17 @@
+{
+  "id": "workflow_completion",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.626856+00:00",
+  "updated_at": "2026-09-17T07:42:24.627686+00:00",
+  "owner": "platform",
+  "description": "Workflow sections present",
+  "tags": [
+    "workflow_success"
+  ],
+  "metadata": {},
+  "scorer_type": "deterministic",
+  "input_contract": {},
+  "output_contract": {},
+  "calibration_dataset": null,
+  "status": "active"
+}

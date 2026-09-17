@@ -1,0 +1,17 @@
+{
+  "program_type": "predict",
+  "optimizer": "none",
+  "dspy_version": "3.3.1",
+  "signature": "DecomposeBankerRequest",
+  "module": "predict",
+  "compile_run_id": "predict_baseline",
+  "trace_fields": [
+    "module",
+    "signature",
+    "program_version",
+    "optimizer_provenance",
+    "latency",
+    "tokens",
+    "cost"
+  ]
+}

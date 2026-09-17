@@ -1,0 +1,52 @@
+{
+  "id": "markets.pre_meeting_brief",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.610953+00:00",
+  "updated_at": "2026-09-17T07:42:24.611006+00:00",
+  "owner": "markets-ai",
+  "description": "Pre-meeting brief v1 - rule-based supervisor",
+  "tags": [
+    "baseline",
+    "rule_based",
+    "measured"
+  ],
+  "metadata": {},
+  "capabilities": [
+    "corporate_research",
+    "internal_relationship_lookup",
+    "financial_analysis"
+  ],
+  "workflow_id": "pre_meeting_brief",
+  "workflow_version": "1",
+  "input_contract": {
+    "request": "string",
+    "client_id": "string"
+  },
+  "output_contract": {
+    "brief": "string",
+    "citations": "array",
+    "conflicts": "array"
+  },
+  "model_policy": {
+    "supervisor": "rule_based@v1",
+    "verifier": "mock@v1"
+  },
+  "tool_policy": {
+    "allow": [
+      "client_lookup",
+      "relationship_summary",
+      "credit_snapshot",
+      "trade_activity",
+      "document_search",
+      "calculator"
+    ]
+  },
+  "memory_policy": {
+    "short_term": "engagement",
+    "long_term": "preferences_only"
+  },
+  "eval_policy": {
+    "required_suite": "markets_pre_meeting_release@1"
+  },
+  "status": "active"
+}

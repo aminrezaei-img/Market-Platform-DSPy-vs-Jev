@@ -1,0 +1,31 @@
+{
+  "id": "query_planner",
+  "version": "2.1.0",
+  "created_at": "2026-09-17T07:42:24.615986+00:00",
+  "updated_at": "2026-09-17T07:42:24.616404+00:00",
+  "owner": "platform",
+  "description": "MIPROv2 optimized",
+  "tags": [],
+  "metadata": {},
+  "dspy_signature": "DecomposeBankerRequest",
+  "dspy_module": "Predict",
+  "optimizer": "MIPROv2",
+  "optimizer_run": "mipro_run_018",
+  "parent_program": "query_planner@1.0.0",
+  "training_dataset": "dspy_control_train@1",
+  "metric": "control_metric",
+  "artifact_path": "artifacts/dspy/mipro/query_planner_predict_mipro.json",
+  "compile_run_id": null,
+  "optimizer_provenance": {
+    "auto": "light",
+    "num_trials": 5,
+    "train_size": 36
+  },
+  "dspy_version": "3.3.1",
+  "lm_model": "mock.testing@1.0.0",
+  "evidence_type": "simulated",
+  "status": "active",
+  "lineage": [
+    "query_planner@1.0.0"
+  ]
+}

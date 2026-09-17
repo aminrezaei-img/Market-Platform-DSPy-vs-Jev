@@ -1,0 +1,14 @@
+CMD: /usr/local/bin/python -m financial_agent.enterprise.cli run --agent markets.pre_meeting_brief@1.2.0 --suite markets_pre_meeting_release@3.0.0
+Exit Code: 0
+STDOUT:
+Experiment: exp_20260917_074210_markets_pre_meeting_brief
+Agent: markets.pre_meeting_brief@1.2.0
+Suite: markets_pre_meeting_release@3.0.0
+Evidence Type: measured
+Overall Accuracy: 0.749
+P0: 0 (max 0), P1: 3 (max 0)
+Evidence Pack: evp_20260917_074210
+Decision: PASS
+
+STDERR:
+

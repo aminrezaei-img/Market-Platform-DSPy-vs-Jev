@@ -1,0 +1,15 @@
+{
+  "program_type": "predict",
+  "optimizer": "GEPA",
+  "auto": "light",
+  "train_size": 36,
+  "dev_size": 12,
+  "dspy_version": "3.3.1",
+  "lm_model": "mock",
+  "reflection_lm": "mock",
+  "parent_program": "predict",
+  "compile_run_id": "gepa_predict_light",
+  "note": "Mock optimization due to: GEPA metric must accept five arguments: (gold, pred, trace, pred_name, pred_trace). See https://dspy.ai/api/optimizers/GEPA for details.",
+  "mock_improvement": "Tool F1 +5%, Answerability +4%, HITL Recall +6% (simulated)",
+  "feedback_example": "Failed because model treated missing credit exposure as zero rather than unavailable."
+}

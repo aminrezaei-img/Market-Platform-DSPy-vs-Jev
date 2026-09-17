@@ -1,0 +1,24 @@
+{
+  "id": "finagent_1_1_1",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.619512+00:00",
+  "updated_at": "2026-09-17T07:42:24.619837+00:00",
+  "owner": "platform",
+  "description": "FinAgent mock subset, never for fine-tuning",
+  "tags": [],
+  "metadata": {},
+  "source": "finagent",
+  "licence": "mit",
+  "task_count": 20,
+  "task_families": [
+    "numerical",
+    "adversarial",
+    "false_premise",
+    "unanswerable"
+  ],
+  "intended_use": "evaluation",
+  "training_allowed": false,
+  "evaluation_only": true,
+  "content_hash": "finagent_1_1_1_hash",
+  "path": "data/finagent/"
+}

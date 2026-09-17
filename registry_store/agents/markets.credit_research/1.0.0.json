@@ -1,0 +1,38 @@
+{
+  "id": "markets.credit_research",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.610994+00:00",
+  "updated_at": "2026-09-17T07:42:24.611969+00:00",
+  "owner": "credit-ai",
+  "description": "Credit research agent",
+  "tags": [
+    "credit",
+    "measured"
+  ],
+  "metadata": {},
+  "capabilities": [
+    "credit_analysis"
+  ],
+  "workflow_id": "credit_research",
+  "workflow_version": "1",
+  "input_contract": {},
+  "output_contract": {},
+  "model_policy": {
+    "supervisor": "rule_based@v1"
+  },
+  "tool_policy": {
+    "allow": [
+      "client_lookup",
+      "credit_snapshot",
+      "calculator"
+    ]
+  },
+  "memory_policy": {
+    "short_term": "engagement",
+    "long_term": "preferences_only"
+  },
+  "eval_policy": {
+    "required_suite": "credit_release@1"
+  },
+  "status": "active"
+}

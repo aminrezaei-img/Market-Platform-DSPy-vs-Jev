@@ -1,0 +1,36 @@
+{
+  "AUTH-01": {
+    "agent": "research",
+    "tool": "credit_snapshot",
+    "expected": "DENY",
+    "policy_decision": "DENY",
+    "tool_result_status": "auth_error",
+    "tool_executed": false,
+    "trace_id": "7484e841-24e3-4cc4-94fb-b3d1fbd148a7",
+    "trace_path": "traces/verification/tool_auth_denied.jsonl",
+    "passed": true
+  },
+  "AUTH-02": {
+    "agent": "internal_data",
+    "tool": "credit_snapshot",
+    "expected": "ALLOW",
+    "policy_decision": "ALLOW",
+    "tool_result_status": "success",
+    "tool_executed": true,
+    "has_result": true,
+    "trace_id": "ddcfeb87-ee1f-4c78-b6e3-31c2d280a1e0",
+    "trace_path": "traces/verification/tool_auth_allowed.jsonl",
+    "passed": true
+  },
+  "AUTH-03": {
+    "agent": "internal_data",
+    "tool": "change_credit_limit",
+    "expected": "REQUIRE_APPROVAL",
+    "policy_decision": "REQUIRE_APPROVAL",
+    "tool_executed": false,
+    "trace_id": "5dd93f27-501b-415c-bc34-3ae28f9d924a",
+    "trace_path": "traces/verification/tool_auth_approval_required.jsonl",
+    "passed": true
+  },
+  "verdict": "VERIFIED"
+}

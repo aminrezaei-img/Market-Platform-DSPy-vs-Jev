@@ -1,0 +1,9 @@
+CMD: python reports/verification/cli_block_script.py
+Exit Code: 1
+STDOUT:
+Decision: BLOCK
+P1 increased 0 -> 1
+
+STDERR:
+
+Evidence Pack: evp_20260917_074210 - BLOCK

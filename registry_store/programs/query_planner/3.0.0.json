@@ -1,0 +1,31 @@
+{
+  "id": "query_planner",
+  "version": "3.0.0",
+  "created_at": "2026-09-17T07:42:24.615996+00:00",
+  "updated_at": "2026-09-17T07:42:24.616608+00:00",
+  "owner": "platform",
+  "description": "GEPA optimized with feedback",
+  "tags": [],
+  "metadata": {},
+  "dspy_signature": "DecomposeBankerRequest",
+  "dspy_module": "Predict",
+  "optimizer": "GEPA",
+  "optimizer_run": "gepa_run_027",
+  "parent_program": "query_planner@2.1.0",
+  "training_dataset": "dspy_control_train@1",
+  "metric": "control_metric",
+  "artifact_path": "artifacts/dspy/gepa/query_planner_predict_gepa.json",
+  "compile_run_id": null,
+  "optimizer_provenance": {
+    "auto": "light",
+    "feedback": "treated missing as zero rather than unavailable"
+  },
+  "dspy_version": "3.3.1",
+  "lm_model": "mock.testing@1.0.0",
+  "evidence_type": "simulated",
+  "status": "active",
+  "lineage": [
+    "query_planner@1.0.0",
+    "query_planner@2.1.0"
+  ]
+}

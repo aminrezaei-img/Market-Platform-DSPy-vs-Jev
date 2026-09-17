@@ -1,0 +1,37 @@
+{
+  "evidence_pack_id": "evp_20260917_074224",
+  "candidate_identity": "markets.pre_meeting_brief@1.2.0",
+  "baseline_identity": "markets_pre_meeting_release_baseline@1.0.0",
+  "timestamp": "2026-09-17T07:42:24.871366+00:00",
+  "code_version": "local",
+  "model_versions": {},
+  "program_versions": {},
+  "prompt_versions": {},
+  "tool_versions": {},
+  "datasets_used": [],
+  "scorer_versions": [],
+  "judge_validation": {},
+  "quality_metrics": {
+    "avg_score": 0.0,
+    "tool_f1": 0.0,
+    "answerability": 0.0,
+    "workflow_success": 0.0
+  },
+  "latency": {},
+  "cost": {},
+  "slice_analysis": {},
+  "p0_failures": 0,
+  "p1_failures": 0,
+  "failure_details": [],
+  "red_team_results": {},
+  "regression_diff": {},
+  "human_review_metrics": {},
+  "known_limitations": [
+    "Synthetic data only",
+    "Mock LM for some results"
+  ],
+  "lifecycle_decision": "PASS",
+  "decision_reason": "All gates passed",
+  "evidence_type": "measured",
+  "artifacts": {}
+}

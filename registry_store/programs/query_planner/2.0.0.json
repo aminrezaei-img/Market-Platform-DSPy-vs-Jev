@@ -1,0 +1,27 @@
+{
+  "id": "query_planner",
+  "version": "2.0.0",
+  "created_at": "2026-09-17T07:42:24.615976+00:00",
+  "updated_at": "2026-09-17T07:42:24.616187+00:00",
+  "owner": "platform",
+  "description": "ChainOfThought",
+  "tags": [],
+  "metadata": {},
+  "dspy_signature": "DecomposeBankerRequest",
+  "dspy_module": "ChainOfThought",
+  "optimizer": "none",
+  "optimizer_run": null,
+  "parent_program": "query_planner@1.0.0",
+  "training_dataset": null,
+  "metric": "control_metric",
+  "artifact_path": "artifacts/dspy/cot/query_planner_cot.json",
+  "compile_run_id": null,
+  "optimizer_provenance": {},
+  "dspy_version": "3.3.1",
+  "lm_model": "mock.testing@1.0.0",
+  "evidence_type": "measured",
+  "status": "active",
+  "lineage": [
+    "query_planner@1.0.0"
+  ]
+}

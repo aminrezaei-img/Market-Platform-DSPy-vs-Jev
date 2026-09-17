@@ -1,0 +1,7 @@
+CMD: bash -c PYTHONPATH=src /usr/local/bin/python -m financial_agent.enterprise.cli run --agent unknown.agent@9.9.9 --suite unknown.suite@9.9.9
+Exit Code: 2
+STDOUT:
+
+STDERR:
+Agent unknown.agent@9.9.9 not found
+

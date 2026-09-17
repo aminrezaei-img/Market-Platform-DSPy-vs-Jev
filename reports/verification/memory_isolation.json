@@ -1,0 +1,49 @@
+{
+  "session_a": {
+    "client": "client_001",
+    "stored": [
+      "risk_appetite=conservative",
+      "brief_style=concise"
+    ],
+    "trace_path": "traces/verification/memory_client_001.jsonl",
+    "tracer_path": "traces/verification/memory_client_001_tracer.jsonl"
+  },
+  "session_b": {
+    "client": "client_002",
+    "retrieved": [
+      {
+        "memory_id": "mem_a88a9f55",
+        "scope": "durable_preference",
+        "namespace": {
+          "tenant": "tenant_001",
+          "user": "banker_001",
+          "client": null,
+          "engagement": null,
+          "agent": null
+        },
+        "source": "user",
+        "content": {
+          "brief_style": "concise"
+        },
+        "created_at": "2026-09-17T07:42:10.509556+00:00",
+        "expires_at": null,
+        "authoritative": false,
+        "is_authoritative": false,
+        "tags": []
+      }
+    ],
+    "safe_context": "durable_preference: {'brief_style': 'concise'}",
+    "has_conservative": false,
+    "has_concise": true,
+    "has_leak_in_output": false,
+    "trace_path": "traces/verification/memory_client_002.jsonl",
+    "tracer_path": "traces/verification/memory_client_002_tracer.jsonl"
+  },
+  "checks": {
+    "concise_available": true,
+    "conservative_not_leaked": true,
+    "no_leak_in_output": true,
+    "namespace_isolation": true
+  },
+  "verdict": "VERIFIED"
+}

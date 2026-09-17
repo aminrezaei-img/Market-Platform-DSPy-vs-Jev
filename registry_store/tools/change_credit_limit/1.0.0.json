@@ -1,0 +1,28 @@
+{
+  "id": "change_credit_limit",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.617411+00:00",
+  "updated_at": "2026-09-17T07:42:24.618664+00:00",
+  "owner": "credit-team",
+  "description": "Change credit limit - requires approval",
+  "tags": [],
+  "metadata": {},
+  "input_schema": {
+    "client_id": "string",
+    "new_limit": "number"
+  },
+  "output_schema": {
+    "status": "string"
+  },
+  "authorisation_policy": {
+    "allowed_capabilities": [
+      "credit_admin"
+    ]
+  },
+  "authoritative": false,
+  "state_mutating": true,
+  "timeout_ms": 5000,
+  "retry_policy": {},
+  "data_classification": "restricted",
+  "status": "active"
+}

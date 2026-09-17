@@ -1,0 +1,63 @@
+{
+  "id": "credit_research",
+  "version": "1",
+  "created_at": "2026-09-17T07:42:24.612814+00:00",
+  "updated_at": "2026-09-17T07:42:24.613492+00:00",
+  "owner": "credit-ai",
+  "description": "Credit research workflow",
+  "tags": [],
+  "metadata": {},
+  "nodes": [
+    {
+      "id": "supervisor",
+      "type": "router",
+      "agent_version": null,
+      "tool_requirements": [],
+      "config": {}
+    },
+    {
+      "id": "credit_agent",
+      "type": "agent",
+      "agent_version": null,
+      "tool_requirements": [
+        "credit_snapshot",
+        "client_lookup"
+      ],
+      "config": {}
+    },
+    {
+      "id": "analysis",
+      "type": "agent",
+      "agent_version": null,
+      "tool_requirements": [
+        "calculator"
+      ],
+      "config": {}
+    }
+  ],
+  "edges": [
+    {
+      "from_node": "supervisor",
+      "to_node": "credit_agent",
+      "condition": null
+    },
+    {
+      "from_node": "credit_agent",
+      "to_node": "analysis",
+      "condition": null
+    }
+  ],
+  "parallel_branches": [],
+  "agent_versions": {},
+  "tool_requirements": [
+    "credit_snapshot",
+    "client_lookup",
+    "calculator"
+  ],
+  "memory_requirements": {},
+  "failure_policy": "fail_closed",
+  "entry_node": "supervisor",
+  "exit_node": "synthesiser",
+  "framework": "langgraph",
+  "status": "active"
+}

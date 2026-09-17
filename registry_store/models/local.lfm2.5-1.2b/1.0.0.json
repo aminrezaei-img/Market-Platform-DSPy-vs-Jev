@@ -1,0 +1,23 @@
+{
+  "id": "local.lfm2.5-1.2b",
+  "version": "1.0.0",
+  "created_at": "2026-09-17T07:42:24.614354+00:00",
+  "updated_at": "2026-09-17T07:42:24.614945+00:00",
+  "owner": "platform",
+  "description": "LFM2.5 1.2B - Phase 2 placeholder",
+  "tags": [],
+  "metadata": {},
+  "provider": "local",
+  "model_id": "LFM2.5-1.2B-Instruct",
+  "model_family": "lfm",
+  "context_window": 8192,
+  "deployment": "local",
+  "cost_metadata": {
+    "input_per_1k": 0.0001,
+    "output_per_1k": 0.0001
+  },
+  "capabilities": [
+    "tool_use"
+  ],
+  "status": "active"
+}
