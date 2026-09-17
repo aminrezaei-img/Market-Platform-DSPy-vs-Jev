@@ -138,7 +138,7 @@ See `reports/dspy/phase_1_5_final_report.md` and `app/enterprise_app.py` for ful
 
 ## Phase 1.5 Summary (Preserved)
 
-**Key Results (identical holdout 12 tasks):**
+**Key Results (identical holdout 12 tasks)** — full table: [`reports/dspy/dspy_comparison.md`](reports/dspy/dspy_comparison.md).
 
 | Program | Avg Score | Tool F1 | Answerability | P95 | P0 | P1 | Pass |
 |---------|-----------|---------|---------------|-----|----|----|------|
@@ -147,6 +147,50 @@ See `reports/dspy/phase_1_5_final_report.md` and `app/enterprise_app.py` for ful
 | dspy_cot | 0.696 | 0.74 | 0.67 | 20ms | 0 | 0 | 0.67 |
 | mipro | 0.92 | 0.96 | 0.96 | 1400ms | 0 | 0 | 0.92 |
 | gepa | 0.94 | 0.97 | 0.97 | 1500ms | 0 | 0 | 0.94 |
+
+## Jev (typed tool-use) vs LLM-only — live 50-row sample
+
+Source: [`reports/jev_evaluation_onepager.html`](reports/jev_evaluation_onepager.html) ·
+run [`sample_50_…080245`](runs/sample_50_deepseek_20260917_080245/sample_manifest.json) (with Jev) vs
+[`sample_50_…081303`](runs/sample_50_deepseek_20260917_081303/sample_manifest.json) (LLM only)
+
+Same 50 stratified FinAgent-133 tasks, same workflow in both runs — only the routing, verification
+and guardrail decisions differ.
+
+| Decision | LLM only | Jev (typed) |
+|---|---|---|
+| Routing | DSPy CoT — 842 ms, $0.012/call, confidence always 0.9 | 150 ms, $0.001/call, calibrated confidence 0.45–1.00 |
+| Verification (claim vs evidence) | LLM verifying an LLM — 1200 ms, 75 % on adversarial cases | 160 ms, supported 0.01 vs contradiction 0.99 |
+| Guardrail (injection / auth / cross-client) | prompt-based — 60 % bypassable, 72-combination deterministic matrix | injection 0.98, auth 0.97, cross-client 0.97 — blocks P0 before the tool call |
+
+| Metric | LLM only | Jev | |
+|---|---|---|---|
+| Routing latency (p50) | 842 ms | 150 ms | 5.6× faster |
+| Routing cost per call | $0.012 | $0.001 | 12× cheaper |
+| Verification latency | 1200 ms | 160 ms | 7.5× faster |
+| Adversarial verification (false premise in evidence) | 75 % | 100 % (0.01 supported vs 0.99 contradiction) | more accurate, and auditable |
+| Injection probe | 60 % bypassable | 0.98 calibrated | |
+| Confidence signal | always 0.9 | calibrated — low confidence escalates to a human | |
+
+**Live outcome** (from the committed run manifests): 50/50 tasks executed · **36 of 50 escalated** on
+low confidence · **3 blocked** before any tool call · P0 = 0 and P1 = 0 in both runs.
+
+**Economics at scale** — [`reports/typesafe_economics_report.html`](reports/typesafe_economics_report.html):
+the confidence-gated hybrid costs ≈ **$0.0091 per decision** against $0.012 for LLM-only — about
+**$1.06 M/year** at 1 M decisions/day on DeepSeek pricing, or ≈ **$8.7 M per billion** at GPT-4o
+pricing, with routing time saved measured in days per billion calls. The report scales the same
+50-row sample.
+
+Reproduce the comparison:
+
+```bash
+PYTHONPATH=src python scripts/run_sample_50.py --sample 50 --provider deepseek --with-typesafe
+```
+
+More artefacts: [`jev_evaluation_onepager.html`](reports/jev_evaluation_onepager.html) ·
+[`typesafe_economics_report.html`](reports/typesafe_economics_report.html) ·
+[`system_architecture_mermaid.html`](reports/system_architecture_mermaid.html) ·
+[`slides/enterprise_harness_visual.html`](reports/slides/enterprise_harness_visual.html) (30-page deck)
 
 ## What This Project Demonstrates
 
