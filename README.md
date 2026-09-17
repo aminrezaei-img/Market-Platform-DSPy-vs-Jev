@@ -82,6 +82,10 @@ Phase 2: LFM small-model specialisation (DEFERRED)
 
 ### Agent Harness (40%)
 
+![Agent harness — routing, delegation, parallelisation and guardrails: Jev router with confidence-gated escalation to LLM + DSPy, tool gateway with per-tool authorisation, RAG pipeline, permission isolation matrix and failure-injection toggles](assets/agent-harness.png)
+
+*The agent harness in operation — the Jev router (150 ms, $0.001) escalating to LLM + DSPy above the confidence threshold, the tool gateway with per-tool authorisation, the RAG pipeline with measured timings, and the failure-injection toggles used to test it. ([full-size PNG](assets/agent-harness.png))*
+
 - **Agent Registry:** id, version, owner, capabilities, input/output contracts, model/tool/memory/eval policies - reconstructable from registry state
 - **Workflow Registry:** nodes, edges, parallel branches, tool requirements - framework-neutral, LangGraph runtime
 - **Model Registry:** provider, model_id, family, version, context, cost, capabilities - LFM variants later same interface
