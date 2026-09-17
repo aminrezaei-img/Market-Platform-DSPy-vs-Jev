@@ -139,6 +139,7 @@ See `reports/dspy/phase_1_5_final_report.md` and `app/enterprise_app.py` for ful
 ## Phase 1.5 Summary (Preserved)
 
 **Key Results (identical holdout 12 tasks)** — full table: [`reports/dspy/dspy_comparison.md`](reports/dspy/dspy_comparison.md).
+🏆 Best score **gepa 0.94** · ⚡ Lowest latency **phase1_baseline 5 ms** · 🎯 Both clear P0/P1 (mipro, gepa).
 
 | Program | Avg Score | Tool F1 | Answerability | P95 | P0 | P1 | Pass |
 |---------|-----------|---------|---------------|-----|----|----|------|
@@ -148,35 +149,40 @@ See `reports/dspy/phase_1_5_final_report.md` and `app/enterprise_app.py` for ful
 | mipro | 0.92 | 0.96 | 0.96 | 1400ms | 0 | 0 | 0.92 |
 | gepa | 0.94 | 0.97 | 0.97 | 1500ms | 0 | 0 | 0.94 |
 
-## Jev (typed tool-use) vs LLM-only — live 50-row sample
+## Jev hybrid vs LLM + DSPy — live 50-row sample
+
+Both arms run the same DeepSeek chat model and the same DSPy programs; they differ in **where the
+decisions come from**. The baseline asks DSPy (ChainOfThought) for routing and uses the LLM verifier.
+The Jev arm is a **hybrid**: Jev decides first at 150 ms and only escalates to the DSPy/LLM path when
+its confidence is low — and hard-blocks injection or cross-client requests before any LLM call.
 
 Source: [`reports/jev_evaluation_onepager.html`](reports/jev_evaluation_onepager.html) ·
-run [`sample_50_…080245`](runs/sample_50_deepseek_20260917_080245/sample_manifest.json) (with Jev) vs
-[`sample_50_…081303`](runs/sample_50_deepseek_20260917_081303/sample_manifest.json) (LLM only)
+run [`sample_50_…080245`](runs/sample_50_deepseek_20260917_080245/sample_manifest.json) (Jev hybrid) vs
+[`sample_50_…081303`](runs/sample_50_deepseek_20260917_081303/sample_manifest.json) (DSPy path, no Jev)
 
-Same 50 stratified FinAgent-133 tasks, same workflow in both runs — only the routing, verification
-and guardrail decisions differ.
+Same 50 stratified FinAgent-133 tasks, same workflow in both runs.
 
-| Decision | LLM only | Jev (typed) |
+| Decision | LLM + DSPy | Jev hybrid (Jev → DSPy) |
 |---|---|---|
-| Routing | DSPy CoT — 842 ms, $0.012/call, confidence always 0.9 | 150 ms, $0.001/call, calibrated confidence 0.45–1.00 |
-| Verification (claim vs evidence) | LLM verifying an LLM — 1200 ms, 75 % on adversarial cases | 160 ms, supported 0.01 vs contradiction 0.99 |
-| Guardrail (injection / auth / cross-client) | prompt-based — 60 % bypassable, 72-combination deterministic matrix | injection 0.98, auth 0.97, cross-client 0.97 — blocks P0 before the tool call |
+| Routing | DSPy CoT — 842 ms, $0.012/call, confidence always 0.9 | 🧭 150 ms, $0.001/call, calibrated confidence 0.45–1.00 |
+| Verification (claim vs evidence) | LLM verifying an LLM — 1200 ms, 75 % on adversarial cases | 🎯 160 ms, supported 0.01 vs contradiction 0.99 |
+| Guardrail (injection / auth / cross-client) | prompt-based — 60 % bypassable, 72-combination deterministic matrix | 🛡️ injection 0.98, auth 0.97, cross-client 0.97 — blocks P0 before the tool call |
 
-| Metric | LLM only | Jev | |
+| Metric | LLM + DSPy | Jev hybrid | Difference |
 |---|---|---|---|
-| Routing latency (p50) | 842 ms | 150 ms | 5.6× faster |
-| Routing cost per call | $0.012 | $0.001 | 12× cheaper |
-| Verification latency | 1200 ms | 160 ms | 7.5× faster |
-| Adversarial verification (false premise in evidence) | 75 % | 100 % (0.01 supported vs 0.99 contradiction) | more accurate, and auditable |
-| Injection probe | 60 % bypassable | 0.98 calibrated | |
-| Confidence signal | always 0.9 | calibrated — low confidence escalates to a human | |
+| Routing latency (p50) | 842 ms | ⚡ **150 ms** | 5.6× faster |
+| Routing cost per call | $0.012 | 💰 **$0.001** | 12× cheaper |
+| Verification latency | 1200 ms | ⚡ **160 ms** | 7.5× faster |
+| Adversarial verification (false premise in evidence) | 75 % | 🎯 **100 %** (0.01 supported vs 0.99 contradiction) | more accurate, auditable |
+| Injection probe | 60 % bypassable | 🛡️ **0.98 calibrated** | fails closed |
+| Confidence signal | always 0.9 | ✅ **calibrated 0.45–1.00** — low confidence escalates | no silent false confidence |
 
-**Live outcome** (from the committed run manifests): 50/50 tasks executed · **36 of 50 escalated** on
-low confidence · **3 blocked** before any tool call · P0 = 0 and P1 = 0 in both runs.
+**Live outcome** (from the committed run manifests): 50/50 tasks executed · **36 of 50 escalated from
+Jev to the DSPy path** on low confidence · **3 hard-blocked** before any tool call · P0 = 0 and P1 = 0
+in both arms.
 
 **Economics at scale** — [`reports/typesafe_economics_report.html`](reports/typesafe_economics_report.html):
-the confidence-gated hybrid costs ≈ **$0.0091 per decision** against $0.012 for LLM-only — about
+the confidence-gated hybrid costs ≈ **$0.0091 per decision** against $0.012 for the DSPy path — about
 **$1.06 M/year** at 1 M decisions/day on DeepSeek pricing, or ≈ **$8.7 M per billion** at GPT-4o
 pricing, with routing time saved measured in days per billion calls. The report scales the same
 50-row sample.
@@ -184,7 +190,10 @@ pricing, with routing time saved measured in days per billion calls. The report 
 Reproduce the comparison:
 
 ```bash
+# hybrid arm (Jev → DSPy escalation)
 PYTHONPATH=src python scripts/run_sample_50.py --sample 50 --provider deepseek --with-typesafe
+# baseline arm (same tasks, DSPy routing, no Jev)
+PYTHONPATH=src python scripts/run_sample_50.py --sample 50 --provider deepseek
 ```
 
 More artefacts: [`jev_evaluation_onepager.html`](reports/jev_evaluation_onepager.html) ·
