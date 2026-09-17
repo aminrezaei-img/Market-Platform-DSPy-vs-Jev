@@ -1,0 +1,43 @@
+{
+  "decision_id": "ld_20260915_125410",
+  "baseline_run_id": "none",
+  "candidate_run_id": "full_eval_all_v1",
+  "outcome": "BLOCK",
+  "reason": "BLOCKED: P1 failures 3 > 0",
+  "blocking_gates_violated": [
+    "P1 failures 3 > 0"
+  ],
+  "warnings": [],
+  "comparison": {
+    "baseline_run_id": "none",
+    "candidate_run_id": "full_eval_all_v1",
+    "baseline_metrics": {},
+    "candidate_metrics": {
+      "total_tasks": 38,
+      "p0_failures": 0,
+      "p1_failures": 3,
+      "p2_failures": 0,
+      "blocking_failures": 3,
+      "pass_rate": 0.9210526315789473,
+      "metrics": {
+        "financial_correct": 0.045454545454545456,
+        "tool_selection_em": 0.0,
+        "grounding_score": 1.0,
+        "abstention_correct": 0.7894736842105263,
+        "workflow_success": 0.8947368421052632,
+        "escalation_correct": 0.07894736842105263,
+        "reliability_pass_rate": 1.0,
+        "recall_at_5": 0.07407407407407407,
+        "avg_latency_ms": 0.0
+      }
+    },
+    "deltas": {},
+    "regressions": [],
+    "improvements": [],
+    "blocking_failures": [
+      "P1 failures 3 > 0"
+    ]
+  },
+  "timestamp": "2026-09-15 12:54:10.834369",
+  "evaluator_version": "lifecycle-gate-v1"
+}

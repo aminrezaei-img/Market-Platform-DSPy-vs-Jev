@@ -438,9 +438,11 @@ PYTHONPATH=src python -m streamlit run app/typesafe_demo_app.py --server.port 85
 # open http://localhost:8503
 ```
 
-Generated run output (`runs/`) is gitignored; the committed `evidence_packs/` and
-`reports/` are examples of what the harness produces. `pip install -e ".[dev]"` is the
-only install step — no other setup is needed.
+`runs/` ships with example run output (`baseline_cautious`, `candidate_aggressive`,
+`full_eval_all_v1`, `verification/finagent_oracle_133` …) so the evaluation results,
+traces and lifecycle decisions can be read without running anything. Running the scripts
+above writes new runs into the same directory. `evidence_packs/` and `reports/` are the
+curated bundles built from them. `pip install -e ".[dev]"` is the only install step.
 
 ## How to Run Evals
 

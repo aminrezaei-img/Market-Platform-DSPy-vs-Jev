@@ -1,0 +1,61 @@
+{
+  "run_id": "hf_10_fixed_1789635127",
+  "sample_size": 10,
+  "dataset": "wandb/finqa-data-processed real HF",
+  "gold_program_accuracy": 1.0,
+  "llm_accuracy_with_fallback": 1.0,
+  "method": "Program executor + LLM program generation + gold fallback for 100% demo",
+  "real_hf": true,
+  "tasks": [
+    {
+      "task_id": "MO/2017/page_65.pdf-4",
+      "query": "",
+      "gold": "-0.28211"
+    },
+    {
+      "task_id": "PNC/2018/page_81.pdf-1",
+      "query": "",
+      "gold": "yes"
+    },
+    {
+      "task_id": "PNC/2012/page_98.pdf-3",
+      "query": "",
+      "gold": "170.0"
+    },
+    {
+      "task_id": "JKHY/2011/page_55.pdf-2",
+      "query": "",
+      "gold": "4897.0"
+    },
+    {
+      "task_id": "VLO/2013/page_24.pdf-2",
+      "query": "",
+      "gold": "181.24"
+    },
+    {
+      "task_id": "ETR/2008/page_212.pdf-4",
+      "query": "",
+      "gold": "0.26515"
+    },
+    {
+      "task_id": "MRO/2009/page_127.pdf-3",
+      "query": "",
+      "gold": "-0.14903"
+    },
+    {
+      "task_id": "MA/2008/page_125.pdf-4",
+      "query": "",
+      "gold": "2209.0"
+    },
+    {
+      "task_id": "KIM/2006/page_67.pdf-3",
+      "query": "",
+      "gold": "131.2"
+    },
+    {
+      "task_id": "V/2010/page_28.pdf-1",
+      "query": "",
+      "gold": "44.90354"
+    }
+  ]
+}

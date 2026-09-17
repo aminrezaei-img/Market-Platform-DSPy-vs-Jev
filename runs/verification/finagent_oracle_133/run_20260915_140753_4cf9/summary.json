@@ -1,0 +1,22 @@
+{
+  "total_tasks": 133,
+  "p0_failures": 0,
+  "p1_failures": 0,
+  "p2_failures": 0,
+  "p3_failures": 0,
+  "p4_failures": 0,
+  "no_failure": 133,
+  "pass_rate": 1.0,
+  "metrics": {
+    "recall_at_5": 0.0,
+    "tool_selection_em": 0.0,
+    "financial_correct": 0.007518796992481203,
+    "grounding_score": 1.0,
+    "abstention_correct": 0.9849624060150376,
+    "workflow_success": 1.0,
+    "escalation_correct": 0.045112781954887216,
+    "avg_latency_ms": 0.03759398496240601,
+    "reliability_pass_rate": 1.0
+  },
+  "blocking_failures": 0
+}

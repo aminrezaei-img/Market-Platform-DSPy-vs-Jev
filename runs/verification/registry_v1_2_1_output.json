@@ -1,0 +1,16 @@
+{
+  "agent_id": "markets.pre_meeting_brief@1.2.1-verification",
+  "tool_policy": {
+    "allow": [
+      "client_lookup",
+      "relationship_summary",
+      "credit_snapshot",
+      "trade_activity",
+      "document_search",
+      "table_extractor"
+    ]
+  },
+  "has_calculator_in_policy": false,
+  "query": "Calculate utilization for Nordic Industrial A/S",
+  "has_brief": true
+}

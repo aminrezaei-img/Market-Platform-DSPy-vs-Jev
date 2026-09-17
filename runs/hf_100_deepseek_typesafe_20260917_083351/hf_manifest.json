@@ -1,0 +1,48 @@
+{
+  "run_id": "hf_100_deepseek_typesafe_20260917_083351",
+  "dataset": "finqa_real_hf",
+  "sample_size": 100,
+  "provider": "deepseek",
+  "with_typesafe": true,
+  "source": "HuggingFace wandb/finqa-data-processed",
+  "real_hf": true,
+  "results": {
+    "total": 100,
+    "correct": 10,
+    "accuracy": 0.1,
+    "jev_calls": 100,
+    "jev_blocked": 0,
+    "jev_escalated": 77,
+    "jev_saved": 23,
+    "llm_calls": 100,
+    "total_time_s": 152.36120653152466,
+    "total_cost": 0.11124676000000007,
+    "llm_only_time_s": 84.2,
+    "llm_only_cost": 1.2,
+    "time_saved_s": -68.16120653152466,
+    "cost_saved": 1.08875324,
+    "time_saving_pct": -80.95155170014804,
+    "cost_saving_pct": 90.72943666666666
+  },
+  "labor_economics": {
+    "avg_expert_mins_per_task": 10,
+    "human_hours_total": 16.666666666666668,
+    "human_working_days_8h": 2.0833333333333335,
+    "human_person_months": 0.09469696969696971,
+    "hybrid_hours": 0.04232255736986796,
+    "hybrid_working_days": 0.005290319671233495,
+    "llm_only_hours": 0.02338888888888889,
+    "speedup_vs_human": 393.80102957891427,
+    "human_cost_50_per_h": 833.3333333333334,
+    "hybrid_cost": 0.11124676000000007,
+    "labor_cost_saved": 833.2220865733334,
+    "billion_scale": {
+      "human_hours_billion": 166666666.6666667,
+      "human_days_billion": 20833333.333333336,
+      "human_person_years_billion": 78914.14141414143,
+      "hybrid_hours_billion": 423225.5736986796,
+      "labor_cost_billion_human": 8333333333.333334,
+      "labor_cost_billion_hybrid": 1112467.6000000006
+    }
+  }
+}

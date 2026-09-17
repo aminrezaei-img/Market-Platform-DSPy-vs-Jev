@@ -1,0 +1,35 @@
+{
+  "run_id": "sample_10_deepseek_20260917_080226",
+  "sample_size": 10,
+  "provider": "deepseek",
+  "with_typesafe": true,
+  "tasks": [
+    "FIN_052",
+    "FIN_038",
+    "FIN_001",
+    "FIN_109",
+    "FIN_081",
+    "FIN_041",
+    "FIN_077",
+    "FIN_039",
+    "FIN_007",
+    "FIN_062"
+  ],
+  "distribution": {
+    "temporal": 1,
+    "fact_extraction": 4,
+    "multi_hop": 2,
+    "numerical": 3
+  },
+  "results_summary": {
+    "total": 10,
+    "p0": 0,
+    "p1": 0,
+    "pass_rate": 0.0
+  },
+  "typesafe_stats": {
+    "jev": 10,
+    "escalated": 6,
+    "blocked": 1
+  }
+}

@@ -10,8 +10,7 @@ venv/
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Data and runs
-runs/
+# Data and indexes rebuilt at runtime (the example run output under runs/ IS committed)
 data/qdrant/
 *.db
 *.sqlite

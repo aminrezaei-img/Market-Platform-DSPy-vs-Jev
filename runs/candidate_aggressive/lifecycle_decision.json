@@ -1,0 +1,43 @@
+{
+  "decision_id": "ld_20260915_125405",
+  "baseline_run_id": "none",
+  "candidate_run_id": "candidate_aggressive",
+  "outcome": "BLOCK",
+  "reason": "BLOCKED: P1 failures 1 > 0",
+  "blocking_gates_violated": [
+    "P1 failures 1 > 0"
+  ],
+  "warnings": [],
+  "comparison": {
+    "baseline_run_id": "none",
+    "candidate_run_id": "candidate_aggressive",
+    "baseline_metrics": {},
+    "candidate_metrics": {
+      "total_tasks": 18,
+      "p0_failures": 0,
+      "p1_failures": 1,
+      "p2_failures": 0,
+      "blocking_failures": 1,
+      "pass_rate": 0.9444444444444444,
+      "metrics": {
+        "financial_correct": 0.0,
+        "tool_selection_em": 0.0,
+        "grounding_score": 1.0,
+        "abstention_correct": 0.7222222222222222,
+        "workflow_success": 1.0,
+        "escalation_correct": 0.6111111111111112,
+        "reliability_pass_rate": 0.9444444444444444,
+        "recall_at_5": 0.09090909090909091,
+        "avg_latency_ms": 0.0
+      }
+    },
+    "deltas": {},
+    "regressions": [],
+    "improvements": [],
+    "blocking_failures": [
+      "P1 failures 1 > 0"
+    ]
+  },
+  "timestamp": "2026-09-15 12:54:05.888691",
+  "evaluator_version": "lifecycle-gate-v1"
+}

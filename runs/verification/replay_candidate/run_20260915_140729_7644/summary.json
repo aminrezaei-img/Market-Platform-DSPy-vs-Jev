@@ -1,0 +1,22 @@
+{
+  "total_tasks": 2,
+  "p0_failures": 0,
+  "p1_failures": 1,
+  "p2_failures": 0,
+  "p3_failures": 0,
+  "p4_failures": 0,
+  "no_failure": 1,
+  "pass_rate": 0.5,
+  "metrics": {
+    "recall_at_5": 0.5,
+    "tool_selection_em": 0.0,
+    "financial_correct": null,
+    "grounding_score": 1.0,
+    "abstention_correct": 1.0,
+    "workflow_success": 1.0,
+    "escalation_correct": 0.5,
+    "avg_latency_ms": 0.5,
+    "reliability_pass_rate": 0.5
+  },
+  "blocking_failures": 1
+}

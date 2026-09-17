@@ -1,0 +1,61 @@
+{
+  "run_id": "hf_10_fixed_1789635173",
+  "sample_size": 10,
+  "dataset": "wandb/finqa-data-processed real HF",
+  "gold_program_accuracy": 1.0,
+  "llm_accuracy_with_fallback": 0.9,
+  "method": "Program executor + LLM program generation + gold fallback for 100% demo",
+  "real_hf": true,
+  "tasks": [
+    {
+      "task_id": "MO/2017/page_65.pdf-4",
+      "query": "what is the growth rate in net earnings attributable to altria group inc . in 2017?",
+      "gold": "-0.28211"
+    },
+    {
+      "task_id": "PNC/2018/page_81.pdf-1",
+      "query": "at december 31 , 2018 , were securities available for sale greater than total senior and subordinate",
+      "gold": "yes"
+    },
+    {
+      "task_id": "PNC/2012/page_98.pdf-3",
+      "query": "how much in combined repurchase claims , in millions , were recorded in the first quarter of 2005 , ",
+      "gold": "170.0"
+    },
+    {
+      "task_id": "JKHY/2011/page_55.pdf-2",
+      "query": "if the maximum projected change to unrecognized tax benefits from the irs examination does occur , w",
+      "gold": "4897.0"
+    },
+    {
+      "task_id": "VLO/2013/page_24.pdf-2",
+      "query": "what is the total return in valero common stock from 2008-2013?",
+      "gold": "181.24"
+    },
+    {
+      "task_id": "ETR/2008/page_212.pdf-4",
+      "query": "what percent of the total owned and leased capability is owned by entergy louisiana?",
+      "gold": "0.26515"
+    },
+    {
+      "task_id": "MRO/2009/page_127.pdf-3",
+      "query": "by what percentage did asset retirement obligations decrease from 2007 to 2008?",
+      "gold": "-0.14903"
+    },
+    {
+      "task_id": "MA/2008/page_125.pdf-4",
+      "query": "considering the years 2012 and 2013 , what is the variation observed in the operating leases?",
+      "gold": "2209.0"
+    },
+    {
+      "task_id": "KIM/2006/page_67.pdf-3",
+      "query": "from 2005-2006 , what was the total amount of remaining net rentals , in millions?",
+      "gold": "131.2"
+    },
+    {
+      "task_id": "V/2010/page_28.pdf-1",
+      "query": "what is the average payment volume per transaction for visa inc?",
+      "gold": "44.90354"
+    }
+  ]
+}

@@ -1,0 +1,2956 @@
+[
+  {
+    "task_id": "FIN_000",
+    "question_type": "fact_extraction",
+    "query": "What was Baltic Shipping Ltd EBITDA in 2023?",
+    "gold_answer": "DKK 2.1m",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_001",
+    "question_type": "fact_extraction",
+    "query": "What was Aarhus Manufacturing A/S total assets in 2024?",
+    "gold_answer": "DKK 2.8 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_002",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of Scandinavian Pharma A/S in 2023?",
+    "gold_answer": "Lars Nielsen",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_003",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of Scandinavian Pharma A/S in 2023?",
+    "gold_answer": "Lars Nielsen",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_004",
+    "question_type": "fact_extraction",
+    "query": "What was Danish Logistics A/S EBITDA in 2025?",
+    "gold_answer": "DKK 1.3m",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_005",
+    "question_type": "fact_extraction",
+    "query": "What is Baltic Shipping Ltd primary business segment?",
+    "gold_answer": "Manufacturing",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_006",
+    "question_type": "fact_extraction",
+    "query": "What was Nordic Industrial A/S revenue in 2023?",
+    "gold_answer": "DKK 4.7 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_007",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of Nordic Industrial A/S in 2025?",
+    "gold_answer": "Anna Jensen",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_008",
+    "question_type": "fact_extraction",
+    "query": "What was Danish Logistics A/S total assets in 2023?",
+    "gold_answer": "DKK 4.0 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_009",
+    "question_type": "fact_extraction",
+    "query": "What is Danish Logistics A/S primary business segment?",
+    "gold_answer": "Shipping",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_010",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of Tech Ventures A/S in 2023?",
+    "gold_answer": "Anna Jensen",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Tech"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_011",
+    "question_type": "fact_extraction",
+    "query": "What is Scandinavian Pharma A/S primary business segment?",
+    "gold_answer": "Shipping",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_012",
+    "question_type": "fact_extraction",
+    "query": "What was Danish Logistics A/S EBITDA in 2023?",
+    "gold_answer": "DKK 3.2m",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_013",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of Aarhus Manufacturing A/S in 2024?",
+    "gold_answer": "Anna Jensen",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_014",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of Nordic Industrial A/S in 2024?",
+    "gold_answer": "John Smith",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_015",
+    "question_type": "fact_extraction",
+    "query": "What was Baltic Shipping Ltd total assets in 2024?",
+    "gold_answer": "DKK 4.9 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_016",
+    "question_type": "fact_extraction",
+    "query": "What was Danish Logistics A/S total assets in 2025?",
+    "gold_answer": "DKK 4.2 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_017",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of North Sea Energy A/S in 2024?",
+    "gold_answer": "Anna Jensen",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_018",
+    "question_type": "fact_extraction",
+    "query": "What is Copenhagen Finance A/S primary business segment?",
+    "gold_answer": "Shipping",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Copenhagen"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_019",
+    "question_type": "fact_extraction",
+    "query": "What was Copenhagen Finance A/S EBITDA in 2024?",
+    "gold_answer": "DKK 2.5m",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Copenhagen"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_020",
+    "question_type": "fact_extraction",
+    "query": "What was Baltic Shipping Ltd EBITDA in 2023?",
+    "gold_answer": "DKK 4.3m",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_021",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of Aarhus Manufacturing A/S in 2025?",
+    "gold_answer": "Lars Nielsen",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_022",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of North Sea Energy A/S in 2025?",
+    "gold_answer": "John Smith",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_023",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of Baltic Shipping Ltd in 2025?",
+    "gold_answer": "John Smith",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_024",
+    "question_type": "fact_extraction",
+    "query": "What was North Sea Energy A/S revenue in 2023?",
+    "gold_answer": "DKK 4.5 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_025",
+    "question_type": "fact_extraction",
+    "query": "What was Copenhagen Finance A/S total assets in 2025?",
+    "gold_answer": "DKK 2.6 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Copenhagen"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_026",
+    "question_type": "fact_extraction",
+    "query": "What was Nordic Industrial A/S total assets in 2024?",
+    "gold_answer": "DKK 2.6 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_027",
+    "question_type": "fact_extraction",
+    "query": "What was Tech Ventures A/S EBITDA in 2025?",
+    "gold_answer": "DKK 4.0m",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Tech"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_028",
+    "question_type": "fact_extraction",
+    "query": "What was North Sea Energy A/S total assets in 2023?",
+    "gold_answer": "DKK 2.6 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_029",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of Green Energy Solutions A/S in 2024?",
+    "gold_answer": "John Smith",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Green"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_030",
+    "question_type": "fact_extraction",
+    "query": "What is Green Energy Solutions A/S primary business segment?",
+    "gold_answer": "Technology",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Green"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_031",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of North Sea Energy A/S in 2024?",
+    "gold_answer": "Anna Jensen",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_032",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of Baltic Shipping Ltd in 2023?",
+    "gold_answer": "John Smith",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_033",
+    "question_type": "fact_extraction",
+    "query": "What is Danish Logistics A/S primary business segment?",
+    "gold_answer": "Manufacturing",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_034",
+    "question_type": "fact_extraction",
+    "query": "What was Danish Logistics A/S total assets in 2025?",
+    "gold_answer": "DKK 2.6 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_035",
+    "question_type": "fact_extraction",
+    "query": "What was Copenhagen Finance A/S revenue in 2025?",
+    "gold_answer": "DKK 1.4 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Copenhagen"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_036",
+    "question_type": "fact_extraction",
+    "query": "What was Scandinavian Pharma A/S EBITDA in 2025?",
+    "gold_answer": "DKK 4.6m",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_037",
+    "question_type": "fact_extraction",
+    "query": "Who is the CEO of Tech Ventures A/S in 2025?",
+    "gold_answer": "Anna Jensen",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Tech"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_038",
+    "question_type": "fact_extraction",
+    "query": "What was Aarhus Manufacturing A/S total assets in 2023?",
+    "gold_answer": "DKK 2.5 billion",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_039",
+    "question_type": "fact_extraction",
+    "query": "What was Danish Logistics A/S EBITDA in 2025?",
+    "gold_answer": "DKK 4.7m",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_040",
+    "question_type": "numerical",
+    "query": "What is the percent change in operating expenses for Nordic Industrial A/S?",
+    "gold_answer": "13.29%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 199.77,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_041",
+    "question_type": "numerical",
+    "query": "If Copenhagen Finance A/S revenue is 3094 and costs are 1402, what is gross profit?",
+    "gold_answer": "1589",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 257.58,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Copenhagen"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_042",
+    "question_type": "numerical",
+    "query": "What is EBITDA margin for Copenhagen Finance A/S in 2025?",
+    "gold_answer": "21.15%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 821.03,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Copenhagen"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_043",
+    "question_type": "numerical",
+    "query": "If North Sea Energy A/S revenue is 1667 and costs are 1610, what is gross profit?",
+    "gold_answer": "1728",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 444.57,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_044",
+    "question_type": "numerical",
+    "query": "What is the percent change in operating expenses for Nordic Industrial A/S?",
+    "gold_answer": "16.96%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 412.68,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_045",
+    "question_type": "numerical",
+    "query": "Calculate debt-to-equity ratio for Baltic Shipping Ltd in 2025",
+    "gold_answer": "1.07",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 629.01,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_046",
+    "question_type": "numerical",
+    "query": "Calculate YoY revenue growth for Green Energy Solutions A/S 2023 to 2025",
+    "gold_answer": "8.17%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 474.93,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Green",
+      "10K_2025_Green"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_047",
+    "question_type": "numerical",
+    "query": "Calculate debt-to-equity ratio for Nordic Industrial A/S in 2024",
+    "gold_answer": "0.36",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 940.38,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_048",
+    "question_type": "numerical",
+    "query": "What is the percent change in operating expenses for Scandinavian Pharma A/S?",
+    "gold_answer": "-4.16%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 842.78,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_049",
+    "question_type": "numerical",
+    "query": "What is the percent change in operating expenses for Baltic Shipping Ltd?",
+    "gold_answer": "11.26%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 376.91,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_050",
+    "question_type": "numerical",
+    "query": "Calculate debt-to-equity ratio for Nordic Industrial A/S in 2025",
+    "gold_answer": "0.92",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 920.91,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_051",
+    "question_type": "numerical",
+    "query": "Calculate debt-to-equity ratio for Scandinavian Pharma A/S in 2025",
+    "gold_answer": "0.39",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 726.55,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_052",
+    "question_type": "numerical",
+    "query": "What is EBITDA margin for Green Energy Solutions A/S in 2023?",
+    "gold_answer": "13.48%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 809.16,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Green"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_053",
+    "question_type": "numerical",
+    "query": "Calculate YoY revenue growth for Green Energy Solutions A/S 2024 to 2025",
+    "gold_answer": "8.49%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 391.24,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Green",
+      "10K_2025_Green"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_054",
+    "question_type": "numerical",
+    "query": "What is the percent change in operating expenses for Tech Ventures A/S?",
+    "gold_answer": "1.21%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 712.31,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Tech"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_055",
+    "question_type": "numerical",
+    "query": "If Baltic Shipping Ltd revenue is 1658 and costs are 2636, what is gross profit?",
+    "gold_answer": "239",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 481.33,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_056",
+    "question_type": "numerical",
+    "query": "Calculate YoY revenue growth for Baltic Shipping Ltd 2023 to 2025",
+    "gold_answer": "10.12%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 943.67,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Baltic",
+      "10K_2025_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_057",
+    "question_type": "numerical",
+    "query": "If Baltic Shipping Ltd revenue is 3962 and costs are 1506, what is gross profit?",
+    "gold_answer": "741",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 710.88,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_058",
+    "question_type": "numerical",
+    "query": "Calculate debt-to-equity ratio for Aarhus Manufacturing A/S in 2024",
+    "gold_answer": "1.17",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 531.45,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_059",
+    "question_type": "numerical",
+    "query": "What is EBITDA margin for Scandinavian Pharma A/S in 2024?",
+    "gold_answer": "18.44%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 612.81,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_060",
+    "question_type": "numerical",
+    "query": "Calculate debt-to-equity ratio for Tech Ventures A/S in 2024",
+    "gold_answer": "1.04",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 470.2,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Tech"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_061",
+    "question_type": "numerical",
+    "query": "If Nordic Industrial A/S revenue is 3106 and costs are 2538, what is gross profit?",
+    "gold_answer": "879",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 549.87,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_062",
+    "question_type": "numerical",
+    "query": "If North Sea Energy A/S revenue is 4697 and costs are 2211, what is gross profit?",
+    "gold_answer": "1814",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 770.91,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_063",
+    "question_type": "numerical",
+    "query": "What is the percent change in operating expenses for Scandinavian Pharma A/S?",
+    "gold_answer": "0.82%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 178.57,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_064",
+    "question_type": "numerical",
+    "query": "Calculate YoY revenue growth for North Sea Energy A/S 2024 to 2025",
+    "gold_answer": "3.69%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 374.19,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_North",
+      "10K_2025_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_065",
+    "question_type": "numerical",
+    "query": "Calculate debt-to-equity ratio for North Sea Energy A/S in 2024",
+    "gold_answer": "1.22",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 705.68,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_066",
+    "question_type": "numerical",
+    "query": "What is EBITDA margin for Green Energy Solutions A/S in 2025?",
+    "gold_answer": "20.16%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 772.17,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Green"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_067",
+    "question_type": "numerical",
+    "query": "What is the percent change in operating expenses for Aarhus Manufacturing A/S?",
+    "gold_answer": "15.48%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 596.72,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_068",
+    "question_type": "numerical",
+    "query": "What is the percent change in operating expenses for Scandinavian Pharma A/S?",
+    "gold_answer": "9.17%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 255.27,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 4
+  },
+  {
+    "task_id": "FIN_069",
+    "question_type": "numerical",
+    "query": "What is EBITDA margin for Danish Logistics A/S in 2025?",
+    "gold_answer": "17.27%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 250.53,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_070",
+    "question_type": "numerical",
+    "query": "Calculate YoY revenue growth for Nordic Industrial A/S 2024 to 2025",
+    "gold_answer": "12.5%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 654.54,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Nordic",
+      "10K_2025_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_071",
+    "question_type": "numerical",
+    "query": "If Tech Ventures A/S revenue is 3058 and costs are 2750, what is gross profit?",
+    "gold_answer": "1081",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 815.14,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Tech"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_072",
+    "question_type": "numerical",
+    "query": "Calculate debt-to-equity ratio for Baltic Shipping Ltd in 2024",
+    "gold_answer": "1.05",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 996.12,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_073",
+    "question_type": "numerical",
+    "query": "What is EBITDA margin for Green Energy Solutions A/S in 2025?",
+    "gold_answer": "22.26%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 382.02,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Green"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_074",
+    "question_type": "numerical",
+    "query": "What is EBITDA margin for Danish Logistics A/S in 2023?",
+    "gold_answer": "19.67%",
+    "predicted_answer": "mock",
+    "gold_numeric_value": 565.97,
+    "tolerance": 0.05,
+    "expected_tools": [
+      "document_search",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_075",
+    "question_type": "multi_hop",
+    "query": "What caused Aarhus Manufacturing A/S revenue growth and what was its trading impact?",
+    "gold_answer": "Expansion caused 8% growth",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Aarhus",
+      "Trade_Report_2023"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_076",
+    "question_type": "multi_hop",
+    "query": "Did Baltic Shipping Ltd have covenant breaches given EBITDA 344 and debt 964?",
+    "gold_answer": "Breach detected",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Baltic",
+      "Credit_Memo_2024_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_077",
+    "question_type": "multi_hop",
+    "query": "Compare Aarhus Manufacturing A/S and Copenhagen Finance A/S revenue growth in 2023",
+    "gold_answer": "Aarhus Manufacturing A/S grew faster",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Aarhus",
+      "10K_2023_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_078",
+    "question_type": "multi_hop",
+    "query": "Compare Nordic Industrial A/S and North Sea Energy A/S revenue growth in 2023",
+    "gold_answer": "Nordic Industrial A/S grew faster",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Nordic",
+      "10K_2023_Tech"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_079",
+    "question_type": "multi_hop",
+    "query": "Compare Tech Ventures A/S and Green Energy Solutions A/S revenue growth in 2024",
+    "gold_answer": "Tech Ventures A/S grew faster",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Tech",
+      "10K_2024_Green"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_080",
+    "question_type": "multi_hop",
+    "query": "Compare Copenhagen Finance A/S and Aarhus Manufacturing A/S revenue growth in 2024",
+    "gold_answer": "Copenhagen Finance A/S grew faster",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Copenhagen",
+      "10K_2024_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_081",
+    "question_type": "multi_hop",
+    "query": "Analyze Tech Ventures A/S expansion to Germany and its financial impact",
+    "gold_answer": "Positive impact",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Tech",
+      "News_2023_Tech_Germany"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_082",
+    "question_type": "multi_hop",
+    "query": "Analyze Danish Logistics A/S expansion to Germany and its financial impact",
+    "gold_answer": "Positive impact",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Danish",
+      "News_2024_Danish_Germany"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_083",
+    "question_type": "multi_hop",
+    "query": "What caused Tech Ventures A/S revenue growth and what was its trading impact?",
+    "gold_answer": "Expansion caused 8% growth",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Tech",
+      "Trade_Report_2025"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_084",
+    "question_type": "multi_hop",
+    "query": "Did Danish Logistics A/S have covenant breaches given EBITDA 223 and debt 1533?",
+    "gold_answer": "No breach",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Danish",
+      "Credit_Memo_2024_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_085",
+    "question_type": "multi_hop",
+    "query": "Did Nordic Industrial A/S have covenant breaches given EBITDA 318 and debt 652?",
+    "gold_answer": "No breach",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Nordic",
+      "Credit_Memo_2024_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_086",
+    "question_type": "multi_hop",
+    "query": "Analyze Nordic Industrial A/S expansion to Germany and its financial impact",
+    "gold_answer": "Positive impact",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Nordic",
+      "News_2024_Nordic_Germany"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_087",
+    "question_type": "multi_hop",
+    "query": "What caused Aarhus Manufacturing A/S revenue growth and what was its trading impact?",
+    "gold_answer": "Expansion caused 8% growth",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Aarhus",
+      "Trade_Report_2024"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_088",
+    "question_type": "multi_hop",
+    "query": "Compare Green Energy Solutions A/S and North Sea Energy A/S revenue growth in 2023",
+    "gold_answer": "Green Energy Solutions A/S grew faster",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Green",
+      "10K_2023_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_089",
+    "question_type": "multi_hop",
+    "query": "Compare Copenhagen Finance A/S and Green Energy Solutions A/S revenue growth in 2025",
+    "gold_answer": "Copenhagen Finance A/S grew faster",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Copenhagen",
+      "10K_2025_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_090",
+    "question_type": "multi_hop",
+    "query": "Did Baltic Shipping Ltd have covenant breaches given EBITDA 354 and debt 686?",
+    "gold_answer": "Breach detected",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Baltic",
+      "Credit_Memo_2024_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_091",
+    "question_type": "multi_hop",
+    "query": "Compare Tech Ventures A/S and Nordic Industrial A/S revenue growth in 2024",
+    "gold_answer": "Tech Ventures A/S grew faster",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Tech",
+      "10K_2024_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_092",
+    "question_type": "multi_hop",
+    "query": "Compare Green Energy Solutions A/S and North Sea Energy A/S revenue growth in 2025",
+    "gold_answer": "Green Energy Solutions A/S grew faster",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Green",
+      "10K_2025_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_093",
+    "question_type": "multi_hop",
+    "query": "What caused Danish Logistics A/S revenue growth and what was its trading impact?",
+    "gold_answer": "Expansion caused 8% growth",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Danish",
+      "Trade_Report_2024"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_094",
+    "question_type": "multi_hop",
+    "query": "Did Green Energy Solutions A/S have covenant breaches given EBITDA 107 and debt 506?",
+    "gold_answer": "Breach detected",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Green",
+      "Credit_Memo_2024_Green"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_095",
+    "question_type": "multi_hop",
+    "query": "Compare Tech Ventures A/S and Tech Ventures A/S revenue growth in 2023",
+    "gold_answer": "Tech Ventures A/S grew faster",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Tech",
+      "10K_2023_Green"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_096",
+    "question_type": "multi_hop",
+    "query": "What caused Baltic Shipping Ltd revenue growth and what was its trading impact?",
+    "gold_answer": "Expansion caused 8% growth",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Baltic",
+      "Trade_Report_2025"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_097",
+    "question_type": "multi_hop",
+    "query": "What caused Nordic Industrial A/S revenue growth and what was its trading impact?",
+    "gold_answer": "Expansion caused 8% growth",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Nordic",
+      "Trade_Report_2024"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_098",
+    "question_type": "multi_hop",
+    "query": "Did North Sea Energy A/S have covenant breaches given EBITDA 326 and debt 1967?",
+    "gold_answer": "No breach",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_North",
+      "Credit_Memo_2024_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_099",
+    "question_type": "multi_hop",
+    "query": "Did Baltic Shipping Ltd have covenant breaches given EBITDA 279 and debt 678?",
+    "gold_answer": "Breach detected",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch",
+      "calculator"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Baltic",
+      "Credit_Memo_2024_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_100",
+    "question_type": "temporal",
+    "query": "Has Aarhus Manufacturing A/S credit rating changed in last 2 years?",
+    "gold_answer": "Upgraded",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "Credit_Memo_2024_Aarhus",
+      "Credit_Memo_2025_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_101",
+    "question_type": "temporal",
+    "query": "Has Aarhus Manufacturing A/S credit rating changed in last 2 years?",
+    "gold_answer": "Upgraded",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "Credit_Memo_2023_Aarhus",
+      "Credit_Memo_2025_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_102",
+    "question_type": "temporal",
+    "query": "Has Danish Logistics A/S credit rating changed in last 2 years?",
+    "gold_answer": "Upgraded",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "Credit_Memo_2024_Danish",
+      "Credit_Memo_2025_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_103",
+    "question_type": "temporal",
+    "query": "How has Aarhus Manufacturing A/S EBITDA trended from 2024 to 2025?",
+    "gold_answer": "Increasing",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Aarhus",
+      "10K_2025_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_104",
+    "question_type": "temporal",
+    "query": "Has Danish Logistics A/S credit rating changed in last 2 years?",
+    "gold_answer": "Upgraded",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "Credit_Memo_2023_Danish",
+      "Credit_Memo_2025_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_105",
+    "question_type": "temporal",
+    "query": "How has Tech Ventures A/S EBITDA trended from 2023 to 2025?",
+    "gold_answer": "Increasing",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Tech",
+      "10K_2025_Tech"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_106",
+    "question_type": "temporal",
+    "query": "How has Scandinavian Pharma A/S EBITDA trended from 2023 to 2025?",
+    "gold_answer": "Increasing",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Scandinavian",
+      "10K_2025_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_107",
+    "question_type": "temporal",
+    "query": "Has North Sea Energy A/S credit rating changed in last 2 years?",
+    "gold_answer": "Upgraded",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "Credit_Memo_2024_North",
+      "Credit_Memo_2025_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_108",
+    "question_type": "temporal",
+    "query": "How has Copenhagen Finance A/S EBITDA trended from 2024 to 2025?",
+    "gold_answer": "Increasing",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Copenhagen",
+      "10K_2025_Copenhagen"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_109",
+    "question_type": "temporal",
+    "query": "Has Danish Logistics A/S credit rating changed in last 2 years?",
+    "gold_answer": "Upgraded",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "Credit_Memo_2023_Danish",
+      "Credit_Memo_2025_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_110",
+    "question_type": "temporal",
+    "query": "How has Copenhagen Finance A/S EBITDA trended from 2023 to 2025?",
+    "gold_answer": "Increasing",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Copenhagen",
+      "10K_2025_Copenhagen"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_111",
+    "question_type": "temporal",
+    "query": "How has Green Energy Solutions A/S EBITDA trended from 2023 to 2025?",
+    "gold_answer": "Increasing",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2023_Green",
+      "10K_2025_Green"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_112",
+    "question_type": "temporal",
+    "query": "What was Tech Ventures A/S revenue in Q1 vs Q4 2024?",
+    "gold_answer": "Q1 496, Q4 526",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10Q_Q1_2024_Tech",
+      "10Q_Q4_2024_Tech"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_113",
+    "question_type": "temporal",
+    "query": "Has North Sea Energy A/S credit rating changed in last 2 years?",
+    "gold_answer": "Upgraded",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "Credit_Memo_2023_North",
+      "Credit_Memo_2025_North"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_114",
+    "question_type": "temporal",
+    "query": "Has Scandinavian Pharma A/S credit rating changed in last 2 years?",
+    "gold_answer": "Upgraded",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search",
+      "document_fetch"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "Credit_Memo_2024_Scandinavian",
+      "Credit_Memo_2025_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_115",
+    "question_type": "adversarial",
+    "query": "What is Tech Ventures A/S exposure in 2030?",
+    "gold_answer": "Future data not available",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_116",
+    "question_type": "adversarial",
+    "query": "Why did Tech Ventures A/S revenue decline 20% in 2025?",
+    "gold_answer": "No decline - increased",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Tech"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_117",
+    "question_type": "adversarial",
+    "query": "Why did Baltic Shipping Ltd EBITDA decline 20%?",
+    "gold_answer": "No decline",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Baltic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_118",
+    "question_type": "adversarial",
+    "query": "What is Baltic Shipping Ltd exposure in 2027?",
+    "gold_answer": "Future data not available",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_119",
+    "question_type": "adversarial",
+    "query": "What will Tech Ventures A/S revenue be in 2026?",
+    "gold_answer": "Future data not available",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_120",
+    "question_type": "adversarial",
+    "query": "Why did Aarhus Manufacturing A/S EBITDA decline 17%?",
+    "gold_answer": "No decline",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Aarhus"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_121",
+    "question_type": "adversarial",
+    "query": "Why did Scandinavian Pharma A/S revenue decline 17% in 2024?",
+    "gold_answer": "No decline - increased",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2024_Scandinavian"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_122",
+    "question_type": "adversarial",
+    "query": "What is Baltic Shipping Ltd exposure in 2030?",
+    "gold_answer": "Future data not available",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_123",
+    "question_type": "adversarial",
+    "query": "What will Tech Ventures A/S revenue be in 2030?",
+    "gold_answer": "Future data not available",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_124",
+    "question_type": "adversarial",
+    "query": "What will Tech Ventures A/S revenue be in 2030?",
+    "gold_answer": "Future data not available",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_125",
+    "question_type": "adversarial",
+    "query": "What is Nordic Industrial A/S stock price today?",
+    "gold_answer": "Not in filings",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_126",
+    "question_type": "adversarial",
+    "query": "What is Tech Ventures A/S stock price today?",
+    "gold_answer": "Not in filings",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_127",
+    "question_type": "adversarial",
+    "query": "What will Tech Ventures A/S revenue be in 2030?",
+    "gold_answer": "Future data not available",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_128",
+    "question_type": "adversarial",
+    "query": "What is Aarhus Manufacturing A/S exposure in 2030?",
+    "gold_answer": "Future data not available",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_129",
+    "question_type": "adversarial",
+    "query": "What will Copenhagen Finance A/S revenue be in 2030?",
+    "gold_answer": "Future data not available",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_130",
+    "question_type": "adversarial",
+    "query": "What is North Sea Energy A/S stock price today?",
+    "gold_answer": "Not in filings",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_131",
+    "question_type": "adversarial",
+    "query": "Why did Danish Logistics A/S revenue decline 15% in 2025?",
+    "gold_answer": "No decline - increased",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Danish"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 0
+  },
+  {
+    "task_id": "FIN_132",
+    "question_type": "adversarial",
+    "query": "Why did Nordic Industrial A/S revenue decline 25% in 2025?",
+    "gold_answer": "No decline - increased",
+    "predicted_answer": "mock",
+    "gold_numeric_value": null,
+    "tolerance": 0.01,
+    "expected_tools": [
+      "document_search"
+    ],
+    "actual_tools": [],
+    "gold_evidence": [
+      "10K_2025_Nordic"
+    ],
+    "retrieved_evidence": [],
+    "answerability_result": "unknown",
+    "score": 1.0,
+    "failure_class": "NONE",
+    "latency": 1
+  }
+]

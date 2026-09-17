@@ -1,0 +1,85 @@
+{
+  "accuracy": 1.0,
+  "results": [
+    {
+      "task_id": "MO/2017/page_65.pdf-4",
+      "query": "what is the growth rate in net earnings attributable to altria group inc . in 2017?",
+      "gold_answer": "-0.28211",
+      "gold_program": "subtract(10222, 14239), divide(#0, 14239)",
+      "executed": "-0.28211250790083575",
+      "correct": true
+    },
+    {
+      "task_id": "PNC/2018/page_81.pdf-1",
+      "query": "at december 31 , 2018 , were securities available for sale greater than total senior and subordinate",
+      "gold_answer": "yes",
+      "gold_program": "greater(63.4, 30.9)",
+      "executed": "yes",
+      "correct": true
+    },
+    {
+      "task_id": "PNC/2012/page_98.pdf-3",
+      "query": "how much in combined repurchase claims , in millions , were recorded in the first quarter of 2005 , ",
+      "gold_answer": "170.0",
+      "gold_program": "add(12, 41), add(#0, 100), add(#1, 17)",
+      "executed": "170.0",
+      "correct": true
+    },
+    {
+      "task_id": "JKHY/2011/page_55.pdf-2",
+      "query": "if the maximum projected change to unrecognized tax benefits from the irs examination does occur , w",
+      "gold_answer": "4897.0",
+      "gold_program": "subtract(8897, 4000)",
+      "executed": "4897.0",
+      "correct": true
+    },
+    {
+      "task_id": "VLO/2013/page_24.pdf-2",
+      "query": "what is the total return in valero common stock from 2008-2013?",
+      "gold_answer": "181.24",
+      "gold_program": "subtract(281.24, const_100)",
+      "executed": "181.24",
+      "correct": true
+    },
+    {
+      "task_id": "ETR/2008/page_212.pdf-4",
+      "query": "what percent of the total owned and leased capability is owned by entergy louisiana?",
+      "gold_answer": "0.26515",
+      "gold_program": "divide(5854, 22078)",
+      "executed": "0.2651508288794275",
+      "correct": true
+    },
+    {
+      "task_id": "MRO/2009/page_127.pdf-3",
+      "query": "by what percentage did asset retirement obligations decrease from 2007 to 2008?",
+      "gold_answer": "-0.14903",
+      "gold_program": "subtract(965, 1134), divide(#0, 1134)",
+      "executed": "-0.1490299823633157",
+      "correct": true
+    },
+    {
+      "task_id": "MA/2008/page_125.pdf-4",
+      "query": "considering the years 2012 and 2013 , what is the variation observed in the operating leases?",
+      "gold_answer": "2209.0",
+      "gold_program": "subtract(9271, 7062)",
+      "executed": "2209.0",
+      "correct": true
+    },
+    {
+      "task_id": "KIM/2006/page_67.pdf-3",
+      "query": "from 2005-2006 , what was the total amount of remaining net rentals , in millions?",
+      "gold_answer": "131.2",
+      "gold_program": "add(62.3, 68.9)",
+      "executed": "131.2",
+      "correct": true
+    },
+    {
+      "task_id": "V/2010/page_28.pdf-1",
+      "query": "what is the average payment volume per transaction for visa inc?",
+      "gold_answer": "44.90354",
+      "gold_program": "divide(2793, 62.2)",
+      "executed": "44.90353697749196",
+      "correct": true
+    }
+  ]
+}
