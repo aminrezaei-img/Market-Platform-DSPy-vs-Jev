@@ -1,5 +1,10 @@
 # Financial Agent Reliability Lab - Phase 1E Enterprise Harness
 
+![Reference architecture: Financial Agent Reliability Platform — ingestion, orchestration, retrieval, tools, guardrails, release gate](assets/system-architecture.png)
+
+*Reference architecture and FinQA evaluation path — seven stages from ingestion to the release gate
+([full-size PNG](assets/system-architecture.png)).*
+
 **Status:** Phase 1 FROZEN + Phase 1.5 DSPy COMPLETE + Phase 1E Enterprise Harness COMPLETE
 **Date:** 2026-09-15
 **Version:** 0.1.6
