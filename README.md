@@ -98,6 +98,10 @@ Phase 2: LFM small-model specialisation (DEFERRED)
 
 ### Evaluation Harness (60%)
 
+![Evaluation harness — dataset registry, per-dimension metrics against gates, the P0-P4 release gates with a candidate blocked by a P1 regression, and the trace viewer with its evidence pack](assets/eval-harness.png)
+
+*The evaluation harness on a live 50-row FinQA sample: registries, metric-vs-gate results, the P0-P4 release gates showing the baseline PASS and the candidate BLOCKED on a P1 regression, and the trace viewer that opens the evidence pack behind any decision. ([full-size PNG](assets/eval-harness.png))*
+
 - **Dataset Registry:** id, version, source, licence, training_allowed, evaluation_only - FinAgent training_allowed=false prevents leakage
 - **Suite Registry:** suite != dataset - datasets, metrics, slices, lifecycle_policy
 - **Scorer Registry:** versioned evaluators, every score records scorer version
