@@ -8,13 +8,13 @@
 **Status:** Phase 1 FROZEN + Phase 1.5 DSPy COMPLETE + Phase 1E Enterprise Harness COMPLETE
 **Date:** 2026-09-15
 **Version:** 0.1.6
-**Purpose:** Technical interview demonstration for Danske Bank AI Engineer for Agent Development
+**Purpose:** Reference implementation of an evaluation-driven harness for financial agent workflows
 
-> No Danske Bank data is used.
+> No proprietary bank or client data is used.
 > No real customer data is used.
 > Internal banking data is synthetic.
 > Public benchmark data is used for research/evaluation.
-> The project is an interview prototype, not a production financial system.
+> The project is a reference prototype, not a production financial system.
 
 **Thesis:** An evaluation-driven enterprise agent development harness reference implementation for financial workflows.
 
@@ -114,7 +114,7 @@ Phase 2: LFM small-model specialisation (DEFERRED)
 - **Slice Analysis:** Never only global averages - adversarial, numerical, missing_data, conflict, high_risk - overall 94% alongside conflicting_data 62% prevents dangerous averages
 - **HITL Eval:** escalation precision/recall, missed/unnecessary escalation, human-review rate
 - **Cost/Latency:** P50/P95, model calls, tool calls, tokens, API cost, frontier calls - later Phase 2 uses for LFM cascade
-- **Lifecycle Evidence Pack:** Killer feature - audit-ready package with candidate/baseline identity, versions, datasets, scorer versions, judge validation, quality metrics, latency, cost, slice analysis, P0/P1, red-team, regression diff, HITL, limitations, final decision PASS/BLOCK
+- **Lifecycle Evidence Pack:** The audit-ready package with candidate/baseline identity, versions, datasets, scorer versions, judge validation, quality metrics, latency, cost, slice analysis, P0/P1, red-team, regression diff, HITL, limitations, final decision PASS/BLOCK
 - **CI Integration:** `agent-eval run --agent X@Y --suite A@B` returns 0=PASS, 1=BLOCK, 2=infra failure - blocks GitHub Actions
 - **Online Eval Interface:** trace ingest -> sampling -> online scorer -> alert - monitors P1, tool error spike, latency regression, abstention collapse
 - **Eval Dashboard:** Agents, Experiments, Suites, Regression, Slices, Failures, Judges, Lifecycle Evidence
@@ -225,7 +225,7 @@ This project demonstrates **reliability-first engineering for financial agents**
 - regressions are measurable
 - critical regressions block deployment
 
-**Most important demo:** Not "the agent answered correctly" but "the system detected that a candidate release became less safe and blocked it."
+**The behaviour that matters most:** not "the agent answered correctly" but "the system detected that a release candidate had become less safe, and blocked it."
 
 ## Architecture
 
@@ -426,12 +426,10 @@ Relative gates: compared to baseline, max degradation thresholds.
 
 Outcomes: PASS, PASS_WITH_WARNINGS, HUMAN_REVIEW, BLOCK
 
-**Deliberately Blocked Release Demo:**
+**Deliberately blocked release (reproducible):**
 - Baseline: cautious prompt (supervisor-v1) - high abstention recall
 - Candidate: aggressive prompt (supervisor-v2) - higher apparent answer quality but lower abstention reliability (fails to detect false premise)
-- Lifecycle Gate BLOCKS candidate when P1 failures increase.
-
-This is highest-value demonstration.
+- Lifecycle Gate BLOCKS the candidate when P1 failures increase.
 
 ## How to Run
 
@@ -536,7 +534,7 @@ Outputs regression comparison + Lifecycle Decision.
 | Tracer JSONL | AgentCore Observability (CloudWatch/OTel) |
 | EvaluationRunner + Scorer + Gate | AgentCore Evaluations |
 
-Implementation is local prototype, not deployed Danske/AWS system. Interfaces kept compatible so migration is config, not rewrite.
+Implementation is a local prototype, not a deployed bank platform. Interfaces are kept compatible so migration is configuration, not a rewrite.
 
 ## Databricks / LSEG / Bloomberg Mapping
 
@@ -633,31 +631,30 @@ financial-agent-reliability/
     └── generate_report.py
 ```
 
-## Interview Demos
+## Walkthroughs
 
-### Demo A - Happy Path
-Normal corporate brief for Nordic Industrial A/S. Show parallel data gathering, citations, tools, verifier, trace.
+Three flows cover the range of behaviour, from a clean answer to a blocked release.
 
-### Demo B - Failure
-Use R03 conflict or R04 timeout. Show failure, trace, verifier, human-review escalation, abstention not invention.
+**A - Happy path.** A normal corporate brief (Nordic Industrial A/S): parallel data gathering, citations,
+tool calls, the verifier pass, and the trace that records all of it.
 
-### Demo C - Blocked Release (Highest Value)
-Show candidate improves one metric but damages critical reliability metric, release BLOCKED. Demonstrates evaluation-first lifecycle.
+**B - Failure and abstention.** An R03 conflict or an R04 timeout: the failure surfaces in the trace, the
+verifier catches it, and the answer abstains or escalates to human review instead of inventing a value.
 
-## Engineering Principle
+**C - Blocked release.** A candidate release improves one metric while damaging a critical
+reliability metric, and the lifecycle gate blocks it - the evaluation-first lifecycle in a single run.
 
-> Do not optimize prototype to look intelligent. Optimize so every important behavior can be measured, explained, challenged.
+## Guided run
 
-## Demo Runbook
+```bash
+streamlit run app/streamlit_app.py
+```
 
-1. Start Streamlit: `streamlit run app/streamlit_app.py`
-2. Workflow tab: Run happy path brief, show final brief with citations
-3. Trace tab: Show supervisor decision, tool calls, retrieval, latencies
-4. Eval Board: Run golden suite, show P0/P1=0, metrics
-5. Regression: Compare baseline cautious vs candidate aggressive, show BLOCK
-6. Lifecycle: Show gate decision and blocking reasons
-
-Backup: Have `runs/` artifacts and screenshots ready in case live demo fails.
+1. **Workflow** - run the happy-path brief; the final brief carries its citations.
+2. **Trace** - supervisor decision, tool calls, retrieval and latencies for that run.
+3. **Eval Board** - golden-suite results with P0/P1 counts and per-metric scores.
+4. **Regression** - `baseline_cautious` against `candidate_aggressive`; the gate returns BLOCK.
+5. **Lifecycle** - the gate decision and its blocking reasons.
 
 ## Tests
 
